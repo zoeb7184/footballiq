@@ -21,7 +21,8 @@ htmlcov/
 !.env.example
 
 # Data — never in git (Rule: data lives in storage, git holds code)
-data/
+# Anchored to repo root: docs/data/ (documentation) must remain trackable.
+/data/
 *.csv
 *.parquet
 *.sqlite
