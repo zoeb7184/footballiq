@@ -1,8 +1,10 @@
-# Physical Data Architecture — v1
+# Physical Data Architecture — v2
 
 > Translation of `logical-data-model.md` to physical design. No SQL/code —
 > implementation lands in Module 2. Layers = database schemas (bronze/silver/
 > gold) on one engine: governance per layer, not infrastructure we don't need.
+> v2 (2026-07-02): extends v1 with the player/event/stats file family after
+> batch-2 profiling (`dataset-profile-batch2.md`). fact_match unchanged.
 
 ## 1. Medallion layers
 | Layer | Rule | Contents |
@@ -25,14 +27,32 @@ cross-check vs silver.match) + goalkeeper enrichment. Never in gold.
 - **TBD mapping:** silver keeps source null; gold load maps
   null-in-knockout → TBD(−2), otherwise → Unknown(−1). One translation point.
 
-## 3. Future fact expansion (non-breaking rules)
-Declared grains: fact_match_event (event occurrence), fact_match_team_stats
-(team-match), fact_player_match (player-match, from lineups).
-Rules: new facts join via conformed dims + existing match key;
-**fact_match never widens**; no fact→fact surrogate coupling; every new fact
-declares grain + contracts before load code. player_stats.csv = source
-aggregate (player-tournament grain): gold snapshot reconciled against
-event-derived numbers; base facts win, discrepancies logged.
+## 3. Fact family (v2 — expansion realized, non-breaking)
+Rules held from v1: new facts join via conformed dims + existing match key;
+**fact_match never widens**; no fact→fact surrogate coupling; every fact
+declares grain + contracts before load code.
+
+| Gold table | Grain | Source | Notes |
+|---|---|---|---|
+| fact_match | one match | matches | unchanged from v1 |
+| fact_match_event | one event occurrence | match_events | types: Goal/Assist/Yellow/Red/VAR. Contract: Σ Goal events per match = fact_match scores (verified 0 mismatches → permanent pipeline check) |
+| fact_match_team_stats | team-match (2/match) | match_team_stats | **partial coverage declared** (66/76 completed at profiling); coverage % logged per load; BI must not assume completeness |
+| fact_player_match | player registered to match (52/match incl. unused subs) | match_lineups | measures: minutes; is_starting_xi degenerate; participation, not events |
+| player_tournament_snapshot | player-tournament | player_stats | source-precomputed aggregate; reconciled vs events+lineups (base facts win, discrepancies logged); **BI-only, never an ML feature source** |
+
+Silver promotion exceptions: player_stats dead columns (shots,
+shots_on_target, average_rating — 100% null) stay bronze-only; GK-only
+fields structural-null by position; data_source defaults to "unverified".
+
+### DimPlayer (finalized, was deferred)
+Platform surrogate + natural player_id; 1,248 real members + Unknown(−1).
+Attributes: name, position (GK/DEF/MID/FWD), date_of_birth (age derived at
+query time, never stored), height_cm, caps, international_goals, club_team
+(string attribute — no dim_club in MVP; 450 clubs noted as future
+extension), national-team FK to dim_team, market_value_eur (Type-1 numeric
+attribute; also the valuation model label).
+Roles: Player of the Match (fact_match), participant (fact_player_match),
+event actor (fact_match_event).
 
 ## 4. ML feature layer
 - **gold.feature_match_prematch:** one row per match per feature_version;
@@ -44,6 +64,13 @@ event-derived numbers; base facts win, discrepancies logged.
 - **Training vs inference:** one pipeline, two consumers. Training =
   features ⋈ labels (completed); inference = scheduled matches (TBD excluded).
   Models stamped with feature_version.
+- **v2 leakage additions:** lineups/minutes/cumulative player stats are POST
+  for the outcome model — per-match-cutoff player aggregates derive from
+  fact_match_event + fact_player_match (as-of), never from
+  player_tournament_snapshot. Valuation model declared **cross-sectional**
+  (market_value snapshot date undocumented): estimates value from attributes
+  + observed performance; not a temporal forecast. dim_player registry
+  attributes (value, caps, age, height) are PRE for the outcome model.
 
 ## 5. BI layer (Power BI)
 - Semantic model reads **gold only**; import mode (small data, full DAX).
