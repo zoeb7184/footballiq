@@ -35,8 +35,9 @@ one business question answered end-to-end, production-grade per layer.
 
 ## Power BI dashboards (max 2)
 1. **Executive Squad Overview** — squad value, KPIs, value-vs-performance quadrant.
-2. **Transfer Market Intelligence** — model-vs-market value gaps, undervalued
-   players, age-value curves.
+2. **Talent Valuation Intelligence** — model-vs-market value gaps, undervalued
+   players, age-value curves. (Renamed from "Transfer Market Intelligence";
+   dataset is an international tournament — see PRD §5 R1.)
 
 ## Anti-scope (excluded from MVP)
 - Live/real-time data, streaming (Kafka), StatsBomb event data, pass networks
@@ -47,8 +48,9 @@ one business question answered end-to-end, production-grade per layer.
 - Custom React frontend, mobile apps, i18n
 - Agent frameworks beyond single-turn RAG
 
-Note: a minimal transfer-network graph module stays in scope (reuses
-warehouse data); event-data pass networks do not.
+Note: a minimal graph module stays in scope — club↔country talent-flow
+network from player club affiliations (PRD §5 R2); event-data pass networks
+do not.
 
 ## Portfolio completion criteria
 - **Architecture:** all layers present; the valuation vertical slice
