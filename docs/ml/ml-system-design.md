@@ -1,8 +1,10 @@
-# ML System Design — v1
+# ML System Design — v1.1
 
 > Phase 5 design. No code/training — implementation in Module 5.
 > Governance basis: availability tags (logical model §3), feature layer
 > (physical architecture §4), profiles batch 1–2.
+> v1.1 adds Part II (pipelines, serving, MLOps). Part I is settled design —
+> extended, never rewritten.
 
 ## 1. Problem decomposition
 | | Player Valuation | Match Outcome |
@@ -79,3 +81,59 @@ training); graph centrality (deterministic); temporal value forecasting
 - **Leakage battery (CI):** recompute-at-cutoff equality; registry tag audit
   on every model input; shuffled-label test (performance must collapse to
   chance); valuation label-lineage assertion.
+
+---
+
+# Part II — Pipelines, Serving, MLOps (v1.1)
+
+## 7. Pipeline architecture
+**Training (batch, deterministic):** gold facts/dims → versioned feature
+builder → materialized feature tables → per-model training job →
+**evaluation gate** (baseline comparison + leakage battery; fail = no
+registration) → registry entry. Orchestration = CLI entrypoints via make
+targets. No workflow orchestrator at this scale (deliberate).
+
+**Inference (batch "tournament mode"):** each data refresh → rebuild
+features → score all players + predictable scheduled matches → write
+prediction tables. **SHAP computed at batch time, stored with prediction.**
+**Prediction-as-data:** the API never runs a model — it reads
+gold.prediction_* tables. Auditable, lookup-latency, no training/serving
+drift. **No real-time inference in MVP** (documented assumption; request
+path is read-only).
+
+Flow: ingest → warehouse → feature build → train (occasional) / score
+(every refresh) → prediction tables → API + Power BI (same gold).
+
+## 8. Feature store integration (delta)
+- Models consume only materialized gold.feature_* rows matching pinned
+  feature_version; trainer and scorer refuse mismatches.
+- Builder writes registry-declared features only (CI-enforced).
+- Leakage battery runs as a **pre-training pipeline stage** as well as CI.
+- Final artifact refit on all eligible data after CV/backtest estimate.
+- Hyperparameters: fixed defaults or tiny grid (N=76 — search overfits
+  the protocol). Fixed seeds; seed recorded in registry.
+
+## 9. Serving contract
+**gold.prediction_player_valuation** (player × model_version):
+predicted_value_eur, value_gap_eur, top-k SHAP payload, feature_version,
+scored_at.
+**gold.prediction_match_outcome** (match × model_version): p_home/p_draw/
+p_away — knockout rows carry p_draw = 0 structurally — cutoff_ts, versions.
+
+API read models: GET /v1/players/{id}/valuation; GET /v1/valuations
+?sort=value_gap (scout shortlist = story 1); GET /v1/matches/{id}/prediction.
+Rules: every response carries model_version + feature_version + scored_at;
+TBD-opponent match → explicit not_predictable state with reason (never null,
+never fake probability); unscored ≠ unpredictable, structurally distinct.
+
+## 10. MLOps
+- **Registry:** model_registry table + versioned artifact directory.
+  Entry: model_id, task, semver, pinned feature_version, training snapshot
+  identity (bronze load_ids), git commit, hyperparams, metrics JSON, seed,
+  status ∈ {candidate, production, archived}. MLflow = future extension.
+- **Promotion:** candidate → production only through evaluation gate;
+  status changes recorded → "what served on date X" always answerable.
+- **Reproducibility contract (CI-runnable):** same commit + load_ids +
+  feature_version + seed ⇒ same metrics within float tolerance.
+- **CI:** leakage battery, feature/model registry audits, smoke-train on
+  sample per PR (pipeline health without full retrain).
