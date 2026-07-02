@@ -18,4 +18,7 @@ typecheck:      ## Strict type checking
 test:           ## Run test suite with coverage
 	pytest
 
-check: lint typecheck test  ## Full quality gate (what CI runs)
+lint-imports:   ## Enforce ADR-0002 layer rules
+	lint-imports
+
+check: lint typecheck lint-imports test  ## Full quality gate (what CI runs)
