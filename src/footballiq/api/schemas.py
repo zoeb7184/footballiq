@@ -112,17 +112,11 @@ class MatchListResponse(BaseModel):
 
 def match_out_from_record(rec: MatchRecord) -> ScheduledMatch | CompletedMatch:
     """Map a read-model record onto the discriminated contract."""
-    home = TeamRef(team_id=rec.home_team.team_id, name=rec.home_team.name,
-                   fifa_code=rec.home_team.fifa_code)
-    base = {
-        "match_id": rec.match_id,
-        "date": rec.match_date,
-        "kickoff_utc": rec.kickoff_utc,
-        "stage": rec.stage_name,
-        "is_knockout": rec.is_knockout,
-        "venue": rec.venue_name,
-        "home": home,
-    }
+    home = TeamRef(
+        team_id=rec.home_team.team_id,
+        name=rec.home_team.name,
+        fifa_code=rec.home_team.fifa_code,
+    )
     if rec.status == "Completed":
         if (
             rec.away_team is None
@@ -132,14 +126,35 @@ def match_out_from_record(rec: MatchRecord) -> ScheduledMatch | CompletedMatch:
             msg = f"contract violation: completed match {rec.match_id} incomplete in gold"
             raise ValueError(msg)  # surfaces as 500 — loud, never silent
         return CompletedMatch(
-            **base,
-            away=TeamRef(team_id=rec.away_team.team_id, name=rec.away_team.name,
-                         fifa_code=rec.away_team.fifa_code),
+            match_id=rec.match_id,
+            date=rec.match_date,
+            kickoff_utc=rec.kickoff_utc,
+            stage=rec.stage_name,
+            is_knockout=rec.is_knockout,
+            venue=rec.venue_name,
+            home=home,
+            away=TeamRef(
+                team_id=rec.away_team.team_id,
+                name=rec.away_team.name,
+                fifa_code=rec.away_team.fifa_code,
+            ),
             score=ScoreOut(home=rec.home_score, away=rec.away_score),
             xg=XgOut(home=rec.home_xg, away=rec.away_xg),
         )
     away: TeamRef | TbdOpponentRef = TbdOpponentRef()
     if rec.away_team is not None:
-        away = TeamRef(team_id=rec.away_team.team_id, name=rec.away_team.name,
-                       fifa_code=rec.away_team.fifa_code)
-    return ScheduledMatch(**base, away=away)
+        away = TeamRef(
+            team_id=rec.away_team.team_id,
+            name=rec.away_team.name,
+            fifa_code=rec.away_team.fifa_code,
+        )
+    return ScheduledMatch(
+        match_id=rec.match_id,
+        date=rec.match_date,
+        kickoff_utc=rec.kickoff_utc,
+        stage=rec.stage_name,
+        is_knockout=rec.is_knockout,
+        venue=rec.venue_name,
+        home=home,
+        away=away,
+    )
