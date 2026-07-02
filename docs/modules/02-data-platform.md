@@ -34,8 +34,13 @@ models (dead columns dropped, GK nulls structural), 6 dims + dim_date,
 **Validated on host (2026-07-02):** 7,428 rows ingested (re-run = 11 no-ops);
 22 dbt models built; **67 PASS / 1 WARN of 68 data tests**. Goal-sum
 reconciliation, matches_detailed reconciliation, grain tests, all FK
-relationships: PASS. The WARN (snapshot vs event goals, 9 players) is a
-definitional finding under investigation — warn-severity behaved as designed.
+relationships: PASS. The WARN (snapshot vs event goals, 9 players) was
+root-caused same-day: **all 9 were own goals** — the event log attributes
+own goals as Goal events to the scorer; the snapshot separates goals from
+own_goals. The reconciliation identity was corrected to
+`goals + own_goals = Goal events` and the definition documented in the test.
+Warn-severity behaved exactly as designed: a real definitional subtlety
+surfaced, investigated, encoded.
 Python side: 31 pytest tests incl. loader idempotency on SQLite.
 
 ## 6. Future improvements
