@@ -20,6 +20,9 @@ db-down:        ## Stop the warehouse (data volume preserved)
 ingest:         ## Load data/raw CSVs into the bronze layer
 	python -m footballiq.infrastructure.ingestion
 
+api:            ## Run the API locally (http://localhost:8000/docs)
+	uvicorn footballiq.api.main:create_app --factory --reload
+
 install:        ## Install package + dev tooling
 	pip install -e ".[dev]"
 	pre-commit install
