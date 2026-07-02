@@ -23,6 +23,7 @@ dev = [
     "pytest-cov>=5.0",
     "pre-commit>=3.7",
     "import-linter>=2.0",
+    "dbt-postgres>=1.8",
 ]
 
 [tool.hatch.build.targets.wheel]

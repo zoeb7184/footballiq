@@ -1,0 +1,16 @@
+name: footballiq
+version: "1.0.0"
+profile: footballiq
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+
+models:
+  footballiq:
+    silver:
+      +schema: silver
+      +materialized: table
+    gold:
+      +schema: gold
+      +materialized: table

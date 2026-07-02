@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    description: Verbatim CSV landings with load stamping (append-only).
+    tables:
+      - name: _loads
+      - name: raw_teams
+      - name: raw_venues
+      - name: raw_tournament_stages
+      - name: raw_referees
+      - name: raw_matches
+      - name: raw_matches_detailed
+      - name: raw_squads_and_players
+      - name: raw_player_stats
+      - name: raw_match_team_stats
+      - name: raw_match_lineups
+      - name: raw_match_events

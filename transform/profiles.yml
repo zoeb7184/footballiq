@@ -1,0 +1,14 @@
+# Committed on purpose: env-var driven, no secrets beyond local-dev defaults
+# (ADR-0003 — real credentials come from Key Vault in Azure).
+footballiq:
+  target: local
+  outputs:
+    local:
+      type: postgres
+      host: "{{ env_var('FIQ_DB_HOST', 'localhost') }}"
+      port: "{{ env_var('FIQ_DB_PORT', '5432') | as_number }}"
+      user: "{{ env_var('FIQ_DB_USER', 'fiq') }}"
+      password: "{{ env_var('FIQ_DB_PASSWORD', 'fiq_local_dev') }}"
+      dbname: "{{ env_var('FIQ_DB_NAME', 'footballiq') }}"
+      schema: silver
+      threads: 4

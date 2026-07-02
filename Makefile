@@ -1,5 +1,13 @@
 # FootballIQ Enterprise — developer commands (single entry point, mirrored in CI)
-.PHONY: install lint format typecheck test check db-up db-down ingest
+.PHONY: install lint format typecheck test check db-up db-down ingest transform dbt-test pipeline
+
+transform:      ## Build silver/gold models (dbt)
+	cd transform && dbt run --profiles-dir .
+
+dbt-test:       ## Run dbt data contracts
+	cd transform && dbt test --profiles-dir .
+
+pipeline: ingest transform dbt-test  ## Full data pipeline: bronze -> silver -> contracts
 
 db-up:          ## Start the warehouse (Postgres via docker compose)
 	docker compose up -d warehouse

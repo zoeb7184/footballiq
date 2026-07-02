@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: silver_team
+    columns:
+      - name: team_id
+        tests: [unique, not_null]
+      - name: fifa_code
+        tests: [unique, not_null]
+      - name: elo_rating
+        tests: [not_null]
+
+  - name: silver_venue
+    columns:
+      - name: venue_id
+        tests: [unique, not_null]
+
+  - name: silver_stage
+    columns:
+      - name: stage_id
+        tests: [unique, not_null]
+
+  - name: silver_referee
+    columns:
+      - name: referee_id
+        tests: [unique, not_null]
+
+  - name: silver_player
+    description: Player registry — carries the valuation label.
+    columns:
+      - name: player_id
+        tests: [unique, not_null]
+      - name: market_value_eur
+        tests: [not_null]   # verified full in profiling; regression guard
+      - name: position
+        tests:
+          - accepted_values:
+              values: [GK, DEF, MID, FWD]
+      - name: team_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_team')
+              field: team_id
+
+  - name: silver_match
+    description: Contract-clean matches (violations -> quarantine_match).
+    columns:
+      - name: match_id
+        tests: [unique, not_null]
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: [Scheduled, Completed]
+      - name: home_team_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_team')
+              field: team_id
+      - name: away_team_id
+        tests:
+          - relationships:   # nullable: TBD knockout slot is legal
+              to: ref('silver_team')
+              field: team_id
+      - name: stage_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_stage')
+              field: stage_id
+      - name: venue_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('silver_venue')
+              field: venue_id
+      - name: referee_id
+        tests:
+          - relationships:
+              to: ref('silver_referee')
+              field: referee_id
