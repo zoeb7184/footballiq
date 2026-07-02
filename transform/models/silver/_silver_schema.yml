@@ -35,7 +35,8 @@ models:
       - name: position
         tests:
           - accepted_values:
-              values: [GK, DEF, MID, FWD]
+              arguments:
+                values: [GK, DEF, MID, FWD]
       - name: team_id
         tests:
           - not_null
@@ -52,7 +53,8 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: [Scheduled, Completed]
+              arguments:
+                values: [Scheduled, Completed]
       - name: home_team_id
         tests:
           - not_null

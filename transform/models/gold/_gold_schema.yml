@@ -1,0 +1,123 @@
+version: 2
+
+models:
+  - name: dim_team
+    description: 48 real members + reserved Unknown(-1), TBD(-2).
+    columns:
+      - name: team_sk
+        tests: [unique, not_null]
+
+  - name: dim_venue
+    columns:
+      - name: venue_sk
+        tests: [unique, not_null]
+
+  - name: dim_stage
+    columns:
+      - name: stage_sk
+        tests: [unique, not_null]
+
+  - name: dim_referee
+    columns:
+      - name: referee_sk
+        tests: [unique, not_null]
+
+  - name: dim_player
+    description: 1,248 real members + Unknown(-1). Carries valuation label.
+    columns:
+      - name: player_sk
+        tests: [unique, not_null]
+
+  - name: dim_date
+    columns:
+      - name: date_key
+        tests: [unique, not_null]
+
+  - name: fact_match
+    description: Grain = one match. All FKs resolve (incl. reserved members).
+    columns:
+      - name: match_id
+        tests: [unique, not_null]
+      - name: home_team_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_team')
+              field: team_sk
+      - name: away_team_sk
+        tests:
+          - not_null   # never null in gold — TBD/Unknown are members
+          - relationships:
+              to: ref('dim_team')
+              field: team_sk
+      - name: stage_sk
+        tests:
+          - relationships:
+              to: ref('dim_stage')
+              field: stage_sk
+      - name: venue_sk
+        tests:
+          - relationships:
+              to: ref('dim_venue')
+              field: venue_sk
+      - name: referee_sk
+        tests:
+          - relationships:
+              to: ref('dim_referee')
+              field: referee_sk
+      - name: player_of_match_sk
+        tests:
+          - relationships:
+              to: ref('dim_player')
+              field: player_sk
+      - name: date_key
+        tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_key
+
+  - name: fact_match_event
+    columns:
+      - name: event_sk
+        tests: [unique, not_null]
+      - name: event_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: [Goal, Assist, Yellow Card, Red Card, VAR Review]
+      - name: player_sk
+        tests:
+          - relationships:
+              to: ref('dim_player')
+              field: player_sk
+
+  - name: fact_match_team_stats
+    description: >
+      PARTIAL COVERAGE by declaration (66/76 at profiling). Grain rule
+      (2 rows per covered match) enforced by assert_team_stats_grain.
+    columns:
+      - name: team_sk
+        tests:
+          - relationships:
+              to: ref('dim_team')
+              field: team_sk
+
+  - name: fact_player_match
+    columns:
+      - name: lineup_sk
+        tests: [unique, not_null]
+      - name: player_sk
+        tests:
+          - relationships:
+              to: ref('dim_player')
+              field: player_sk
+
+  - name: player_tournament_snapshot
+    columns:
+      - name: player_sk
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_player')
+              field: player_sk
