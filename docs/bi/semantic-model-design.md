@@ -1,4 +1,10 @@
-# Power BI Semantic Model & Dashboard Design — v1 (Module 4 spec)
+# BI Semantic Model & Dashboard Design — v1 (Module 4 spec)
+
+> **Implementation note (ADR-0005):** implemented in **Metabase**, not
+> Power BI (macOS constraint). This design is tool-portable and stays
+> authoritative: same star, dashboards, and KPI catalog. Role-playing
+> dim_team uses the alias-view fallback (§1); measures become versioned
+> SQL in `docs/bi/queries/`.
 
 > Scope ruling: scope.md caps MVP at **2 dashboards**; monitoring dashboards
 > are anti-scope. Everything beyond the two below = FUTURE EXTENSION (ADR

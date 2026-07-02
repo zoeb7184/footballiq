@@ -33,7 +33,7 @@ one business question answered end-to-end, production-grade per layer.
 | Metric | RMSLE; % within ±20% | Log loss; calibration vs naive baseline |
 | XAI | SHAP (required) | Global feature importance only |
 
-## Power BI dashboards (max 2)
+## BI dashboards (max 2) — Metabase per ADR-0005 (was Power BI)
 1. **Executive Squad Overview** — squad value, KPIs, value-vs-performance quadrant.
 2. **Talent Valuation Intelligence** — model-vs-market value gaps, undervalued
    players, age-value curves. (Renamed from "Transfer Market Intelligence";

@@ -1,8 +1,9 @@
 # KPI Catalog — single source of truth
 
-> Every KPI is defined once here. Power BI measures and API aggregations
-> implement these definitions verbatim; divergence is a defect.
-> DAX/SQL aggregate gold columns only — no ML or contract logic recomputation.
+> Every KPI is defined once here. BI questions (Metabase, ADR-0005) and API
+> aggregations implement these definitions verbatim; divergence is a defect.
+> Canonical SQL implementations live in `docs/bi/queries/` — BI and any
+> consumer copy from there, never reinvent.
 
 | KPI | Definition | Grain/context | Source columns |
 |---|---|---|---|
