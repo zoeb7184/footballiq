@@ -28,6 +28,6 @@ class GoldReadinessProbe(ReadinessProbe):
                 ).scalar_one()
                 if int(matches) == 0:
                     failures.append("gold.fact_match is empty (run `make pipeline`)")
-        except Exception as exc:  # noqa: BLE001 - readiness must never raise
+        except Exception as exc:  # broad by design: readiness must never raise
             failures.append(f"warehouse unreachable: {type(exc).__name__}")
         return ReadinessReport(ready=not failures, failures=tuple(failures))

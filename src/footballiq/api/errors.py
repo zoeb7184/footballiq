@@ -38,6 +38,6 @@ def register_error_handlers(app: FastAPI) -> None:
         return _problem(422, "Validation failed", str(exc.errors()[:3]))
 
     @app.exception_handler(Exception)
-    async def unexpected_error(_: Request, exc: Exception) -> JSONResponse:
+    async def unexpected_error(_: Request, _exc: Exception) -> JSONResponse:
         # Opaque by design: detail stays server-side, correlation id goes out.
         return _problem(500, "Internal server error", "unexpected error (see logs)")
