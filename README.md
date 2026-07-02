@@ -1,5 +1,7 @@
 # FootballIQ Enterprise
 
+[![CI](https://github.com/zoeb7184/footballiq/actions/workflows/ci.yml/badge.svg)](https://github.com/zoeb7184/footballiq/actions/workflows/ci.yml)
+
 **Enterprise AI Decision Intelligence Platform** — demonstrated on football analytics.
 
 Football is the showcase domain, not the product. The platform is built as a

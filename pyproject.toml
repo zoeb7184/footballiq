@@ -16,6 +16,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+pipeline = [
+    "dbt-postgres>=1.8",
+]
 dev = [
     "ruff>=0.4",
     "mypy>=1.10",
@@ -66,7 +69,7 @@ packages = ["footballiq"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
-addopts = "-q --cov=footballiq --cov-report=term-missing"
+addopts = "-q --cov=footballiq --cov-report=term-missing --cov-fail-under=80"
 
 [tool.coverage.run]
 source = ["src/footballiq"]

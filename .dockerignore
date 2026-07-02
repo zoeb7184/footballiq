@@ -1,0 +1,17 @@
+.git
+.github
+.venv*
+venv
+data
+docs
+tests
+transform/target
+transform/logs
+**/__pycache__
+*.py[cod]
+.mypy_cache
+.ruff_cache
+.pytest_cache
+.coverage
+.env
+.env.*

@@ -1,0 +1,42 @@
+# CI = exactly what developers run locally (make check) + offline dbt validation.
+# Deployment workflows (ACR/ACA) arrive in Module 9 per docs/infra/azure-architecture.md §8.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Lint (ruff)
+        run: make lint
+
+      - name: Type-check (mypy strict)
+        run: make typecheck
+
+      - name: Architecture contract (import-linter, ADR-0002)
+        run: make lint-imports
+
+      - name: Tests + coverage floor
+        run: make test
+
+      - name: dbt parse (offline SQL + manifest validation)
+        run: cd transform && dbt parse --profiles-dir .
+        # Full dbt data tests need a loaded warehouse (data is not in git);
+        # they run locally via `make dbt-test` and as a deploy gate (Module 9).
+
+      - name: Dependency audit (non-blocking)
+        run: pip install pip-audit && pip-audit || true
