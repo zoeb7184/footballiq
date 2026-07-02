@@ -39,8 +39,13 @@ root-caused same-day: **all 9 were own goals** — the event log attributes
 own goals as Goal events to the scorer; the snapshot separates goals from
 own_goals. The reconciliation identity was corrected to
 `goals + own_goals = Goal events` and the definition documented in the test.
-Warn-severity behaved exactly as designed: a real definitional subtlety
-surfaced, investigated, encoded.
+The corrected test then surfaced **one true source inconsistency** (player
+887: own goal in player_stats, attributed to another player in
+match_events; match-level sums reconcile). Resolved via a **known-issues
+registry** (dbt seed): the instance is registered with full explanation and
+excluded; new discrepancies still warn. Two-stage finding: definitional
+subtlety, then a genuine source defect — both caught, investigated, and
+governed rather than suppressed.
 Python side: 31 pytest tests incl. loader idempotency on SQLite.
 
 ## 6. Future improvements

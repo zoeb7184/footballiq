@@ -24,6 +24,8 @@ htmlcov/
 # Anchored to repo root: docs/data/ (documentation) must remain trackable.
 /data/
 *.csv
+# Exception: dbt seeds are governance config, not data — versioned on purpose.
+!transform/seeds/*.csv
 *.parquet
 *.sqlite
 

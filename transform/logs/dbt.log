@@ -6984,3 +6984,3230 @@ having count(*) > 1
 [0m17:23:15.729830 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a7b10a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a7f54c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a7f5ca0>]}
 [0m17:23:15.730015 [debug] [MainThread]: Flushing usage events
 [0m17:23:16.201238 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:29:18.385934 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106bfa240>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107649e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107649a90>]}
+
+
+============================== 17:29:18.389054 | dc68ddb4-0128-495f-8920-da4c54763c69 ==============================
+[0m17:29:18.389054 [info ] [MainThread]: Running with dbt=1.12.0-b3
+[0m17:29:18.389411 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'version_check': 'True', 'invocation_command': 'dbt test --profiles-dir .', 'cache_selected_only': 'False', 'target_path': 'None', 'empty': 'None', 'write_json': 'True', 'quiet': 'False', 'printer_width': '80', 'partial_parse': 'True', 'maximum_seed_size_mib': '1', 'indirect_selection': 'eager', 'profiles_dir': '.', 'warn_error': 'None', 'use_colors': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True', 'introspect': 'True', 'log_path': '/Users/zoebalikhan/Library/Application Support/Claude/local-agent-mode-sessions/3e104ed9-b211-4268-bdc8-2f53af750a00/3472f6ed-5b97-47e9-ab2f-e4beefcd2dc8/local_c3136f25-90cf-49dd-b26e-61017581d12f/outputs/footballiq/transform/logs', 'static_parser': 'True', 'no_print': 'None', 'debug': 'False', 'log_format': 'default'}
+[0m17:29:18.513579 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'dc68ddb4-0128-495f-8920-da4c54763c69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107716450>]}
+[0m17:29:18.549858 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'dc68ddb4-0128-495f-8920-da4c54763c69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106b59a00>]}
+[0m17:29:18.550815 [info ] [MainThread]: Registered adapter: postgres=1.10.2
+[0m17:29:18.646044 [debug] [MainThread]: checksum: 218ba08fd5e68a9608653868d0cfd1d241dfb709b72cfa19c6af877ae6f4a95b, vars: {}, profile: footballiq, target: local, version: 1.12.0b3
+[0m17:29:18.743970 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 3 files changed.
+[0m17:29:18.744733 [debug] [MainThread]: Partial parsing: updated file: footballiq://models/silver/_silver_schema.yml
+[0m17:29:18.745276 [debug] [MainThread]: Partial parsing: updated file: footballiq://models/gold/_gold_schema.yml
+[0m17:29:18.745550 [debug] [MainThread]: Partial parsing: updated file: footballiq://tests/assert_snapshot_goals_reconcile.sql
+[0m17:29:19.193246 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'dc68ddb4-0128-495f-8920-da4c54763c69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108c87290>]}
+[0m17:29:19.257086 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/zoebalikhan/Library/Application Support/Claude/local-agent-mode-sessions/3e104ed9-b211-4268-bdc8-2f53af750a00/3472f6ed-5b97-47e9-ab2f-e4beefcd2dc8/local_c3136f25-90cf-49dd-b26e-61017581d12f/outputs/footballiq/transform/target/manifest.json
+[0m17:29:19.259583 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/zoebalikhan/Library/Application Support/Claude/local-agent-mode-sessions/3e104ed9-b211-4268-bdc8-2f53af750a00/3472f6ed-5b97-47e9-ab2f-e4beefcd2dc8/local_c3136f25-90cf-49dd-b26e-61017581d12f/outputs/footballiq/transform/target/semantic_manifest.json
+[0m17:29:19.271805 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/zoebalikhan/Library/Application Support/Claude/local-agent-mode-sessions/3e104ed9-b211-4268-bdc8-2f53af750a00/3472f6ed-5b97-47e9-ab2f-e4beefcd2dc8/local_c3136f25-90cf-49dd-b26e-61017581d12f/outputs/footballiq/transform/target/osi_document.json
+[0m17:29:19.288552 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'dc68ddb4-0128-495f-8920-da4c54763c69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108d37bc0>]}
+[0m17:29:19.288843 [info ] [MainThread]: Found 23 models, 68 data tests, 12 sources, 477 macros
+[0m17:29:19.289036 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'dc68ddb4-0128-495f-8920-da4c54763c69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107cc6e40>]}
+[0m17:29:19.291650 [info ] [MainThread]: 
+[0m17:29:19.291855 [info ] [MainThread]: Concurrency: 4 threads (target='local')
+[0m17:29:19.292018 [info ] [MainThread]: 
+[0m17:29:19.292276 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m17:29:19.294950 [debug] [ThreadPool]: Acquiring new postgres connection 'list_footballiq_silver'
+[0m17:29:19.301074 [debug] [ThreadPool]: Acquiring new postgres connection 'list_footballiq_gold'
+[0m17:29:19.373001 [debug] [ThreadPool]: Using postgres connection "list_footballiq_silver"
+[0m17:29:19.373253 [debug] [ThreadPool]: Using postgres connection "list_footballiq_gold"
+[0m17:29:19.373449 [debug] [ThreadPool]: On list_footballiq_silver: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "connection_name": "list_footballiq_silver"} */
+select
+      'footballiq' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'silver'
+    union all
+    select
+      'footballiq' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'silver'
+    union all
+    select
+      'footballiq' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'silver'
+  
+[0m17:29:19.373652 [debug] [ThreadPool]: On list_footballiq_gold: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "connection_name": "list_footballiq_gold"} */
+select
+      'footballiq' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'gold'
+    union all
+    select
+      'footballiq' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'gold'
+    union all
+    select
+      'footballiq' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'gold'
+  
+[0m17:29:19.373828 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:29:19.373978 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:29:19.584588 [debug] [ThreadPool]: SQL status: SELECT 11 in 0.211 seconds
+[0m17:29:19.584940 [debug] [ThreadPool]: SQL status: SELECT 11 in 0.211 seconds
+[0m17:29:19.586016 [debug] [ThreadPool]: On list_footballiq_silver: ROLLBACK
+[0m17:29:19.586831 [debug] [ThreadPool]: On list_footballiq_gold: ROLLBACK
+[0m17:29:19.587688 [debug] [ThreadPool]: On list_footballiq_gold: Close
+[0m17:29:19.587885 [debug] [ThreadPool]: On list_footballiq_silver: Close
+[0m17:29:19.592989 [debug] [MainThread]: Using postgres connection "master"
+[0m17:29:19.593299 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m17:29:19.593535 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:29:19.616904 [debug] [MainThread]: SQL status: SELECT 0 in 0.023 seconds
+[0m17:29:19.617878 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'dc68ddb4-0128-495f-8920-da4c54763c69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108cde690>]}
+[0m17:29:19.618227 [debug] [MainThread]: On master: ROLLBACK
+[0m17:29:19.618783 [debug] [MainThread]: On master: COMMIT
+[0m17:29:19.618980 [debug] [MainThread]: Using postgres connection "master"
+[0m17:29:19.619154 [debug] [MainThread]: On master: COMMIT
+[0m17:29:19.620268 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m17:29:19.620547 [debug] [MainThread]: On master: Close
+[0m17:29:19.623189 [debug] [Thread-1 (]: Began running node test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d
+[0m17:29:19.623519 [debug] [Thread-2 (]: Began running node test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1
+[0m17:29:19.623773 [debug] [Thread-3 (]: Began running node test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de
+[0m17:29:19.624226 [debug] [Thread-4 (]: Began running node test.footballiq.assert_goal_events_reconcile_scores
+[0m17:29:19.624026 [info ] [Thread-1 (]: 1 of 68 START test accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review  [RUN]
+[0m17:29:19.624521 [info ] [Thread-2 (]: 2 of 68 START test accepted_values_silver_match_status__Scheduled__Completed ... [RUN]
+[0m17:29:19.624777 [info ] [Thread-3 (]: 3 of 68 START test accepted_values_silver_player_position__GK__DEF__MID__FWD ... [RUN]
+[0m17:29:19.625023 [info ] [Thread-4 (]: 4 of 68 START test assert_goal_events_reconcile_scores ......................... [RUN]
+[0m17:29:19.625320 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_footballiq_silver, now test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d)
+[0m17:29:19.625557 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_footballiq_gold, now test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1)
+[0m17:29:19.625823 [debug] [Thread-3 (]: Acquiring new postgres connection 'test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de'
+[0m17:29:19.626117 [debug] [Thread-4 (]: Acquiring new postgres connection 'test.footballiq.assert_goal_events_reconcile_scores'
+[0m17:29:19.626357 [debug] [Thread-1 (]: Began compiling node test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d
+[0m17:29:19.626564 [debug] [Thread-2 (]: Began compiling node test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1
+[0m17:29:19.626766 [debug] [Thread-3 (]: Began compiling node test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de
+[0m17:29:19.626963 [debug] [Thread-4 (]: Began compiling node test.footballiq.assert_goal_events_reconcile_scores
+[0m17:29:19.632548 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d"
+[0m17:29:19.634999 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1"
+[0m17:29:19.638534 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de"
+[0m17:29:19.640276 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.assert_goal_events_reconcile_scores"
+[0m17:29:19.640842 [debug] [Thread-2 (]: Began executing node test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1
+[0m17:29:19.641088 [debug] [Thread-4 (]: Began executing node test.footballiq.assert_goal_events_reconcile_scores
+[0m17:29:19.648211 [debug] [Thread-3 (]: Began executing node test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de
+[0m17:29:19.652471 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1"
+[0m17:29:19.652736 [debug] [Thread-1 (]: Began executing node test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d
+[0m17:29:19.653995 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.assert_goal_events_reconcile_scores"
+[0m17:29:19.655169 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de"
+[0m17:29:19.656389 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d"
+[0m17:29:19.656843 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1"
+[0m17:29:19.657056 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.assert_goal_events_reconcile_scores"
+[0m17:29:19.657237 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de"
+[0m17:29:19.657426 [debug] [Thread-2 (]: On test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        status as value_field,
+        count(*) as n_records
+
+    from "footballiq"."silver"."silver_match"
+    group by status
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'Scheduled','Completed'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.657661 [debug] [Thread-4 (]: On test.footballiq.assert_goal_events_reconcile_scores: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.assert_goal_events_reconcile_scores"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  -- Flagship reconciliation (verified 0 mismatches at profiling, now a
+-- permanent contract): goal events per completed match must equal the
+-- recorded total score. Any returned row = base facts disagree internally.
+with goals as (
+    select match_id, count(*) as goal_events
+    from "footballiq"."gold"."fact_match_event"
+    where event_type = 'Goal'
+    group by match_id
+)
+
+select
+    f.match_id,
+    f.home_score + f.away_score as recorded_goals,
+    coalesce(g.goal_events, 0)  as event_goals
+from "footballiq"."gold"."fact_match" as f
+left join goals as g on f.match_id = g.match_id
+where
+    f.status = 'Completed'
+    and f.home_score + f.away_score != coalesce(g.goal_events, 0)
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.657884 [debug] [Thread-3 (]: On test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        position as value_field,
+        count(*) as n_records
+
+    from "footballiq"."silver"."silver_player"
+    group by position
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'GK','DEF','MID','FWD'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.658084 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d"
+[0m17:29:19.658237 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:19.658399 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m17:29:19.658554 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m17:29:19.658735 [debug] [Thread-1 (]: On test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        event_type as value_field,
+        count(*) as n_records
+
+    from "footballiq"."gold"."fact_match_event"
+    group by event_type
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'Goal','Assist','Yellow Card','Red Card','VAR Review'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.659058 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:19.674805 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m17:29:19.675169 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.017 seconds
+[0m17:29:19.677786 [debug] [Thread-2 (]: On test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1: ROLLBACK
+[0m17:29:19.678039 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.020 seconds
+[0m17:29:19.678220 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.019 seconds
+[0m17:29:19.679036 [debug] [Thread-3 (]: On test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de: ROLLBACK
+[0m17:29:19.679840 [debug] [Thread-4 (]: On test.footballiq.assert_goal_events_reconcile_scores: ROLLBACK
+[0m17:29:19.680065 [debug] [Thread-2 (]: On test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1: Close
+[0m17:29:19.680724 [debug] [Thread-1 (]: On test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d: ROLLBACK
+[0m17:29:19.681176 [info ] [Thread-2 (]: 2 of 68 PASS accepted_values_silver_match_status__Scheduled__Completed ......... [[32mPASS[0m in 0.06s]
+[0m17:29:19.681507 [debug] [Thread-2 (]: Finished running node test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1
+[0m17:29:19.681728 [debug] [Thread-2 (]: Began running node test.footballiq.assert_quarantine_empty
+[0m17:29:19.681911 [debug] [Thread-3 (]: On test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de: Close
+[0m17:29:19.682094 [debug] [Thread-1 (]: On test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d: Close
+[0m17:29:19.682278 [info ] [Thread-2 (]: 5 of 68 START test assert_quarantine_empty ..................................... [RUN]
+[0m17:29:19.682564 [debug] [Thread-4 (]: On test.footballiq.assert_goal_events_reconcile_scores: Close
+[0m17:29:19.682935 [info ] [Thread-3 (]: 3 of 68 PASS accepted_values_silver_player_position__GK__DEF__MID__FWD ......... [[32mPASS[0m in 0.06s]
+[0m17:29:19.683468 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.accepted_values_silver_match_status__Scheduled__Completed.f1b1d094d1, now test.footballiq.assert_quarantine_empty)
+[0m17:29:19.683237 [info ] [Thread-1 (]: 1 of 68 PASS accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review  [[32mPASS[0m in 0.06s]
+[0m17:29:19.683846 [debug] [Thread-3 (]: Finished running node test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de
+[0m17:29:19.684124 [info ] [Thread-4 (]: 4 of 68 PASS assert_goal_events_reconcile_scores ............................... [[32mPASS[0m in 0.06s]
+[0m17:29:19.684394 [debug] [Thread-2 (]: Began compiling node test.footballiq.assert_quarantine_empty
+[0m17:29:19.684656 [debug] [Thread-1 (]: Finished running node test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d
+[0m17:29:19.684862 [debug] [Thread-3 (]: Began running node test.footballiq.assert_scores_match_detailed_file
+[0m17:29:19.685140 [debug] [Thread-4 (]: Finished running node test.footballiq.assert_goal_events_reconcile_scores
+[0m17:29:19.686913 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.assert_quarantine_empty"
+[0m17:29:19.687192 [debug] [Thread-1 (]: Began running node test.footballiq.assert_snapshot_goals_reconcile
+[0m17:29:19.687673 [debug] [Thread-4 (]: Began running node test.footballiq.assert_team_stats_grain
+[0m17:29:19.687421 [info ] [Thread-3 (]: 6 of 68 START test assert_scores_match_detailed_file ........................... [RUN]
+[0m17:29:19.688006 [info ] [Thread-1 (]: 7 of 68 START test assert_snapshot_goals_reconcile ............................. [RUN]
+[0m17:29:19.688220 [info ] [Thread-4 (]: 8 of 68 START test assert_team_stats_grain ..................................... [RUN]
+[0m17:29:19.688505 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.accepted_values_silver_player_position__GK__DEF__MID__FWD.c1851055de, now test.footballiq.assert_scores_match_detailed_file)
+[0m17:29:19.688723 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.accepted_values_fact_match_event_event_type__Goal__Assist__Yellow_Card__Red_Card__VAR_Review.ab25bb3b6d, now test.footballiq.assert_snapshot_goals_reconcile)
+[0m17:29:19.688967 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.assert_goal_events_reconcile_scores, now test.footballiq.assert_team_stats_grain)
+[0m17:29:19.689179 [debug] [Thread-3 (]: Began compiling node test.footballiq.assert_scores_match_detailed_file
+[0m17:29:19.689366 [debug] [Thread-2 (]: Began executing node test.footballiq.assert_quarantine_empty
+[0m17:29:19.689540 [debug] [Thread-1 (]: Began compiling node test.footballiq.assert_snapshot_goals_reconcile
+[0m17:29:19.689715 [debug] [Thread-4 (]: Began compiling node test.footballiq.assert_team_stats_grain
+[0m17:29:19.694292 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.assert_scores_match_detailed_file"
+[0m17:29:19.697286 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.assert_quarantine_empty"
+[0m17:29:19.703390 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.assert_snapshot_goals_reconcile"
+[0m17:29:19.707239 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.assert_team_stats_grain"
+[0m17:29:19.707892 [debug] [Thread-4 (]: Began executing node test.footballiq.assert_team_stats_grain
+[0m17:29:19.708110 [debug] [Thread-1 (]: Began executing node test.footballiq.assert_snapshot_goals_reconcile
+[0m17:29:19.708340 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.assert_quarantine_empty"
+[0m17:29:19.709690 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.assert_team_stats_grain"
+[0m17:29:19.710944 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.assert_snapshot_goals_reconcile"
+[0m17:29:19.711197 [debug] [Thread-2 (]: On test.footballiq.assert_quarantine_empty: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.assert_quarantine_empty"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  -- The quarantine should be empty on healthy data. A non-empty quarantine is
+-- a WARNING (data problem to investigate), not a broken pipeline.
+
+
+select match_id, quarantine_reason
+from "footballiq"."silver"."quarantine_match"
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.711410 [debug] [Thread-3 (]: Began executing node test.footballiq.assert_scores_match_detailed_file
+[0m17:29:19.711671 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:19.712889 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.assert_scores_match_detailed_file"
+[0m17:29:19.713265 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.assert_snapshot_goals_reconcile"
+[0m17:29:19.713483 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.assert_team_stats_grain"
+[0m17:29:19.713860 [debug] [Thread-1 (]: On test.footballiq.assert_snapshot_goals_reconcile: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.assert_snapshot_goals_reconcile"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  -- Snapshot vs base facts, per player.
+--
+-- DEFINITION (root-caused 2026-07-02, 9-player investigation): the event log
+-- attributes own goals as 'Goal' events to the scoring player (so match-score
+-- reconciliation sums correctly), while the snapshot separates `goals` from
+-- `own_goals`. Therefore the reconciliation identity is:
+--     snapshot.goals + snapshot.own_goals = count(Goal events)
+-- WARN severity: on a true disagreement, base facts win and the discrepancy
+-- is investigated, not hidden (physical architecture §3).
+
+
+with event_goals as (
+    select player_sk, count(*) as goals_from_events
+    from "footballiq"."gold"."fact_match_event"
+    where event_type = 'Goal'
+    group by player_sk
+)
+
+select
+    s.player_sk,
+    s.goals                          as snapshot_goals,
+    s.own_goals                      as snapshot_own_goals,
+    coalesce(e.goals_from_events, 0) as event_goals
+from "footballiq"."gold"."player_tournament_snapshot" as s
+left join event_goals as e on s.player_sk = e.player_sk
+where s.goals + s.own_goals != coalesce(e.goals_from_events, 0)
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.714125 [debug] [Thread-4 (]: On test.footballiq.assert_team_stats_grain: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.assert_team_stats_grain"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  -- Grain contract: every match covered by team stats has exactly 2 rows.
+select match_id, count(*) as rows_for_match
+from "footballiq"."gold"."fact_match_team_stats"
+group by match_id
+having count(*) != 2
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.714358 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:19.714649 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:19.715199 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.assert_scores_match_detailed_file"
+[0m17:29:19.716310 [debug] [Thread-3 (]: On test.footballiq.assert_scores_match_detailed_file: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.assert_scores_match_detailed_file"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  -- Reconciliation against matches_detailed (bronze-only fixture, physical
+-- architecture §1): scores in silver_match must agree with the denormalized
+-- source copy. Any returned row = a discrepancy between the two files.
+with detailed as (
+    select
+        match_id::int                  as match_id,
+        nullif(home_score, '')::int    as home_score,
+        nullif(away_score, '')::int    as away_score
+    from "footballiq"."bronze"."raw_matches_detailed"
+    where 
+    _load_id = (
+        select load_id
+        from "footballiq"."bronze"."_loads"
+        where source_file = 'matches_detailed.csv'
+        order by ingested_at desc
+        limit 1
+    )
+
+)
+
+select m.match_id
+from "footballiq"."silver"."silver_match" as m
+inner join detailed as d on m.match_id = d.match_id
+where
+    coalesce(m.home_score, -1) != coalesce(d.home_score, -1)
+    or coalesce(m.away_score, -1) != coalesce(d.away_score, -1)
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.716763 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:19.728257 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:19.728551 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.017 seconds
+[0m17:29:19.728776 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:19.729615 [debug] [Thread-4 (]: On test.footballiq.assert_team_stats_grain: ROLLBACK
+[0m17:29:19.730390 [debug] [Thread-2 (]: On test.footballiq.assert_quarantine_empty: ROLLBACK
+[0m17:29:19.731202 [debug] [Thread-1 (]: On test.footballiq.assert_snapshot_goals_reconcile: ROLLBACK
+[0m17:29:19.731791 [debug] [Thread-1 (]: On test.footballiq.assert_snapshot_goals_reconcile: Close
+[0m17:29:19.732004 [debug] [Thread-4 (]: On test.footballiq.assert_team_stats_grain: Close
+[0m17:29:19.732198 [debug] [Thread-2 (]: On test.footballiq.assert_quarantine_empty: Close
+[0m17:29:19.732597 [warn ] [Thread-1 (]: 7 of 68 WARN 1 assert_snapshot_goals_reconcile ................................. [[33mWARN 1[0m in 0.04s]
+[0m17:29:19.732868 [info ] [Thread-4 (]: 8 of 68 PASS assert_team_stats_grain ........................................... [[32mPASS[0m in 0.04s]
+[0m17:29:19.733496 [info ] [Thread-2 (]: 5 of 68 PASS assert_quarantine_empty ........................................... [[32mPASS[0m in 0.05s]
+[0m17:29:19.733736 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.017 seconds
+[0m17:29:19.734032 [debug] [Thread-1 (]: Finished running node test.footballiq.assert_snapshot_goals_reconcile
+[0m17:29:19.734311 [debug] [Thread-4 (]: Finished running node test.footballiq.assert_team_stats_grain
+[0m17:29:19.734561 [debug] [Thread-2 (]: Finished running node test.footballiq.assert_quarantine_empty
+[0m17:29:19.735356 [debug] [Thread-3 (]: On test.footballiq.assert_scores_match_detailed_file: ROLLBACK
+[0m17:29:19.735589 [debug] [Thread-1 (]: Began running node test.footballiq.not_null_dim_date_date_key.881d0a31b6
+[0m17:29:19.735814 [debug] [Thread-4 (]: Began running node test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2
+[0m17:29:19.736024 [debug] [Thread-2 (]: Began running node test.footballiq.not_null_dim_referee_referee_sk.9b8272060a
+[0m17:29:19.736234 [info ] [Thread-1 (]: 9 of 68 START test not_null_dim_date_date_key .................................. [RUN]
+[0m17:29:19.736449 [info ] [Thread-4 (]: 10 of 68 START test not_null_dim_player_player_sk .............................. [RUN]
+[0m17:29:19.736666 [debug] [Thread-3 (]: On test.footballiq.assert_scores_match_detailed_file: Close
+[0m17:29:19.736843 [info ] [Thread-2 (]: 11 of 68 START test not_null_dim_referee_referee_sk ............................ [RUN]
+[0m17:29:19.737076 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.assert_snapshot_goals_reconcile, now test.footballiq.not_null_dim_date_date_key.881d0a31b6)
+[0m17:29:19.737273 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.assert_team_stats_grain, now test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2)
+[0m17:29:19.737479 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.assert_quarantine_empty, now test.footballiq.not_null_dim_referee_referee_sk.9b8272060a)
+[0m17:29:19.737727 [info ] [Thread-3 (]: 6 of 68 PASS assert_scores_match_detailed_file ................................. [[32mPASS[0m in 0.05s]
+[0m17:29:19.737938 [debug] [Thread-1 (]: Began compiling node test.footballiq.not_null_dim_date_date_key.881d0a31b6
+[0m17:29:19.738163 [debug] [Thread-4 (]: Began compiling node test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2
+[0m17:29:19.738345 [debug] [Thread-2 (]: Began compiling node test.footballiq.not_null_dim_referee_referee_sk.9b8272060a
+[0m17:29:19.738614 [debug] [Thread-3 (]: Finished running node test.footballiq.assert_scores_match_detailed_file
+[0m17:29:19.743580 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.not_null_dim_date_date_key.881d0a31b6"
+[0m17:29:19.746199 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2"
+[0m17:29:19.748656 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.not_null_dim_referee_referee_sk.9b8272060a"
+[0m17:29:19.749007 [debug] [Thread-3 (]: Began running node test.footballiq.not_null_dim_stage_stage_sk.69635b420e
+[0m17:29:19.749457 [info ] [Thread-3 (]: 12 of 68 START test not_null_dim_stage_stage_sk ................................ [RUN]
+[0m17:29:19.749804 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.assert_scores_match_detailed_file, now test.footballiq.not_null_dim_stage_stage_sk.69635b420e)
+[0m17:29:19.750093 [debug] [Thread-3 (]: Began compiling node test.footballiq.not_null_dim_stage_stage_sk.69635b420e
+[0m17:29:19.750302 [debug] [Thread-4 (]: Began executing node test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2
+[0m17:29:19.750481 [debug] [Thread-2 (]: Began executing node test.footballiq.not_null_dim_referee_referee_sk.9b8272060a
+[0m17:29:19.750647 [debug] [Thread-1 (]: Began executing node test.footballiq.not_null_dim_date_date_key.881d0a31b6
+[0m17:29:19.752910 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.not_null_dim_stage_stage_sk.69635b420e"
+[0m17:29:19.754215 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2"
+[0m17:29:19.755415 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.not_null_dim_referee_referee_sk.9b8272060a"
+[0m17:29:19.757847 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.not_null_dim_date_date_key.881d0a31b6"
+[0m17:29:19.758566 [debug] [Thread-3 (]: Began executing node test.footballiq.not_null_dim_stage_stage_sk.69635b420e
+[0m17:29:19.758805 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.not_null_dim_date_date_key.881d0a31b6"
+[0m17:29:19.758999 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2"
+[0m17:29:19.759194 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.not_null_dim_referee_referee_sk.9b8272060a"
+[0m17:29:19.760357 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.not_null_dim_stage_stage_sk.69635b420e"
+[0m17:29:19.760559 [debug] [Thread-1 (]: On test.footballiq.not_null_dim_date_date_key.881d0a31b6: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_dim_date_date_key.881d0a31b6"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_key
+from "footballiq"."gold"."dim_date"
+where date_key is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.760760 [debug] [Thread-4 (]: On test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select player_sk
+from "footballiq"."gold"."dim_player"
+where player_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.760947 [debug] [Thread-2 (]: On test.footballiq.not_null_dim_referee_referee_sk.9b8272060a: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_dim_referee_referee_sk.9b8272060a"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select referee_sk
+from "footballiq"."gold"."dim_referee"
+where referee_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.761156 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:19.761321 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:19.761509 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:19.761778 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.not_null_dim_stage_stage_sk.69635b420e"
+[0m17:29:19.762063 [debug] [Thread-3 (]: On test.footballiq.not_null_dim_stage_stage_sk.69635b420e: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_dim_stage_stage_sk.69635b420e"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select stage_sk
+from "footballiq"."gold"."dim_stage"
+where stage_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.762239 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:19.772372 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m17:29:19.772678 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m17:29:19.773573 [debug] [Thread-1 (]: On test.footballiq.not_null_dim_date_date_key.881d0a31b6: ROLLBACK
+[0m17:29:19.774381 [debug] [Thread-4 (]: On test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2: ROLLBACK
+[0m17:29:19.774639 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m17:29:19.774866 [debug] [Thread-1 (]: On test.footballiq.not_null_dim_date_date_key.881d0a31b6: Close
+[0m17:29:19.775625 [debug] [Thread-3 (]: On test.footballiq.not_null_dim_stage_stage_sk.69635b420e: ROLLBACK
+[0m17:29:19.775842 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:19.776023 [debug] [Thread-4 (]: On test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2: Close
+[0m17:29:19.776556 [debug] [Thread-3 (]: On test.footballiq.not_null_dim_stage_stage_sk.69635b420e: Close
+[0m17:29:19.777253 [debug] [Thread-2 (]: On test.footballiq.not_null_dim_referee_referee_sk.9b8272060a: ROLLBACK
+[0m17:29:19.776395 [info ] [Thread-1 (]: 9 of 68 PASS not_null_dim_date_date_key ........................................ [[32mPASS[0m in 0.04s]
+[0m17:29:19.777665 [info ] [Thread-4 (]: 10 of 68 PASS not_null_dim_player_player_sk .................................... [[32mPASS[0m in 0.04s]
+[0m17:29:19.777993 [info ] [Thread-3 (]: 12 of 68 PASS not_null_dim_stage_stage_sk ...................................... [[32mPASS[0m in 0.03s]
+[0m17:29:19.778504 [debug] [Thread-1 (]: Finished running node test.footballiq.not_null_dim_date_date_key.881d0a31b6
+[0m17:29:19.778690 [debug] [Thread-2 (]: On test.footballiq.not_null_dim_referee_referee_sk.9b8272060a: Close
+[0m17:29:19.778953 [debug] [Thread-4 (]: Finished running node test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2
+[0m17:29:19.779231 [debug] [Thread-3 (]: Finished running node test.footballiq.not_null_dim_stage_stage_sk.69635b420e
+[0m17:29:19.779452 [debug] [Thread-1 (]: Began running node test.footballiq.not_null_dim_team_team_sk.4e61b560f5
+[0m17:29:19.779694 [debug] [Thread-4 (]: Began running node test.footballiq.not_null_dim_venue_venue_sk.65f47f102c
+[0m17:29:19.779957 [info ] [Thread-2 (]: 11 of 68 PASS not_null_dim_referee_referee_sk .................................. [[32mPASS[0m in 0.04s]
+[0m17:29:19.780194 [debug] [Thread-3 (]: Began running node test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6
+[0m17:29:19.780398 [info ] [Thread-1 (]: 13 of 68 START test not_null_dim_team_team_sk .................................. [RUN]
+[0m17:29:19.780596 [info ] [Thread-4 (]: 14 of 68 START test not_null_dim_venue_venue_sk ................................ [RUN]
+[0m17:29:19.780969 [debug] [Thread-2 (]: Finished running node test.footballiq.not_null_dim_referee_referee_sk.9b8272060a
+[0m17:29:19.781152 [info ] [Thread-3 (]: 15 of 68 START test not_null_fact_match_away_team_sk ........................... [RUN]
+[0m17:29:19.781421 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_dim_date_date_key.881d0a31b6, now test.footballiq.not_null_dim_team_team_sk.4e61b560f5)
+[0m17:29:19.781658 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_dim_player_player_sk.b17f9f7ba2, now test.footballiq.not_null_dim_venue_venue_sk.65f47f102c)
+[0m17:29:19.781880 [debug] [Thread-2 (]: Began running node test.footballiq.not_null_fact_match_event_event_sk.43b839cb66
+[0m17:29:19.782085 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_dim_stage_stage_sk.69635b420e, now test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6)
+[0m17:29:19.782265 [debug] [Thread-1 (]: Began compiling node test.footballiq.not_null_dim_team_team_sk.4e61b560f5
+[0m17:29:19.782436 [debug] [Thread-4 (]: Began compiling node test.footballiq.not_null_dim_venue_venue_sk.65f47f102c
+[0m17:29:19.782803 [debug] [Thread-3 (]: Began compiling node test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6
+[0m17:29:19.782660 [info ] [Thread-2 (]: 16 of 68 START test not_null_fact_match_event_event_sk ......................... [RUN]
+[0m17:29:19.785133 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.not_null_dim_team_team_sk.4e61b560f5"
+[0m17:29:19.786987 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.not_null_dim_venue_venue_sk.65f47f102c"
+[0m17:29:19.788838 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6"
+[0m17:29:19.789063 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_dim_referee_referee_sk.9b8272060a, now test.footballiq.not_null_fact_match_event_event_sk.43b839cb66)
+[0m17:29:19.789376 [debug] [Thread-2 (]: Began compiling node test.footballiq.not_null_fact_match_event_event_sk.43b839cb66
+[0m17:29:19.791417 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.not_null_fact_match_event_event_sk.43b839cb66"
+[0m17:29:19.791761 [debug] [Thread-3 (]: Began executing node test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6
+[0m17:29:19.791945 [debug] [Thread-4 (]: Began executing node test.footballiq.not_null_dim_venue_venue_sk.65f47f102c
+[0m17:29:19.792117 [debug] [Thread-1 (]: Began executing node test.footballiq.not_null_dim_team_team_sk.4e61b560f5
+[0m17:29:19.793248 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6"
+[0m17:29:19.794404 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.not_null_dim_venue_venue_sk.65f47f102c"
+[0m17:29:19.795524 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.not_null_dim_team_team_sk.4e61b560f5"
+[0m17:29:19.795705 [debug] [Thread-2 (]: Began executing node test.footballiq.not_null_fact_match_event_event_sk.43b839cb66
+[0m17:29:19.796893 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.not_null_fact_match_event_event_sk.43b839cb66"
+[0m17:29:19.797201 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6"
+[0m17:29:19.797408 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.not_null_dim_venue_venue_sk.65f47f102c"
+[0m17:29:19.797591 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.not_null_dim_team_team_sk.4e61b560f5"
+[0m17:29:19.797817 [debug] [Thread-3 (]: On test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select away_team_sk
+from "footballiq"."gold"."fact_match"
+where away_team_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.798071 [debug] [Thread-4 (]: On test.footballiq.not_null_dim_venue_venue_sk.65f47f102c: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_dim_venue_venue_sk.65f47f102c"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select venue_sk
+from "footballiq"."gold"."dim_venue"
+where venue_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.798316 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.not_null_fact_match_event_event_sk.43b839cb66"
+[0m17:29:19.798489 [debug] [Thread-1 (]: On test.footballiq.not_null_dim_team_team_sk.4e61b560f5: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_dim_team_team_sk.4e61b560f5"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select team_sk
+from "footballiq"."gold"."dim_team"
+where team_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.798676 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:19.798847 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:19.799029 [debug] [Thread-2 (]: On test.footballiq.not_null_fact_match_event_event_sk.43b839cb66: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_fact_match_event_event_sk.43b839cb66"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select event_sk
+from "footballiq"."gold"."fact_match_event"
+where event_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.799197 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:19.799488 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:19.811477 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m17:29:19.812099 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.013 seconds
+[0m17:29:19.813224 [debug] [Thread-2 (]: On test.footballiq.not_null_fact_match_event_event_sk.43b839cb66: ROLLBACK
+[0m17:29:19.813493 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.015 seconds
+[0m17:29:19.813690 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:19.814494 [debug] [Thread-3 (]: On test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6: ROLLBACK
+[0m17:29:19.815942 [debug] [Thread-4 (]: On test.footballiq.not_null_dim_venue_venue_sk.65f47f102c: ROLLBACK
+[0m17:29:19.816224 [debug] [Thread-2 (]: On test.footballiq.not_null_fact_match_event_event_sk.43b839cb66: Close
+[0m17:29:19.816958 [debug] [Thread-1 (]: On test.footballiq.not_null_dim_team_team_sk.4e61b560f5: ROLLBACK
+[0m17:29:19.817452 [info ] [Thread-2 (]: 16 of 68 PASS not_null_fact_match_event_event_sk ............................... [[32mPASS[0m in 0.03s]
+[0m17:29:19.817971 [debug] [Thread-2 (]: Finished running node test.footballiq.not_null_fact_match_event_event_sk.43b839cb66
+[0m17:29:19.818303 [debug] [Thread-3 (]: On test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6: Close
+[0m17:29:19.818538 [debug] [Thread-2 (]: Began running node test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7
+[0m17:29:19.818723 [debug] [Thread-4 (]: On test.footballiq.not_null_dim_venue_venue_sk.65f47f102c: Close
+[0m17:29:19.818949 [debug] [Thread-1 (]: On test.footballiq.not_null_dim_team_team_sk.4e61b560f5: Close
+[0m17:29:19.819300 [info ] [Thread-2 (]: 17 of 68 START test not_null_fact_match_home_team_sk ........................... [RUN]
+[0m17:29:19.819621 [info ] [Thread-3 (]: 15 of 68 PASS not_null_fact_match_away_team_sk ................................. [[32mPASS[0m in 0.04s]
+[0m17:29:19.820124 [info ] [Thread-4 (]: 14 of 68 PASS not_null_dim_venue_venue_sk ...................................... [[32mPASS[0m in 0.04s]
+[0m17:29:19.820586 [info ] [Thread-1 (]: 13 of 68 PASS not_null_dim_team_team_sk ........................................ [[32mPASS[0m in 0.04s]
+[0m17:29:19.820858 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_fact_match_event_event_sk.43b839cb66, now test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7)
+[0m17:29:19.821155 [debug] [Thread-3 (]: Finished running node test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6
+[0m17:29:19.821425 [debug] [Thread-4 (]: Finished running node test.footballiq.not_null_dim_venue_venue_sk.65f47f102c
+[0m17:29:19.821681 [debug] [Thread-1 (]: Finished running node test.footballiq.not_null_dim_team_team_sk.4e61b560f5
+[0m17:29:19.821858 [debug] [Thread-2 (]: Began compiling node test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7
+[0m17:29:19.822100 [debug] [Thread-3 (]: Began running node test.footballiq.not_null_fact_match_match_id.1e341ef749
+[0m17:29:19.822366 [debug] [Thread-4 (]: Began running node test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae
+[0m17:29:19.822585 [debug] [Thread-1 (]: Began running node test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376
+[0m17:29:19.825208 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7"
+[0m17:29:19.825531 [info ] [Thread-3 (]: 18 of 68 START test not_null_fact_match_match_id ............................... [RUN]
+[0m17:29:19.825758 [info ] [Thread-4 (]: 19 of 68 START test not_null_fact_player_match_lineup_sk ....................... [RUN]
+[0m17:29:19.825998 [info ] [Thread-1 (]: 20 of 68 START test not_null_player_tournament_snapshot_player_sk .............. [RUN]
+[0m17:29:19.826280 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_fact_match_away_team_sk.95e5c918d6, now test.footballiq.not_null_fact_match_match_id.1e341ef749)
+[0m17:29:19.826497 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_dim_venue_venue_sk.65f47f102c, now test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae)
+[0m17:29:19.826695 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_dim_team_team_sk.4e61b560f5, now test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376)
+[0m17:29:19.826904 [debug] [Thread-3 (]: Began compiling node test.footballiq.not_null_fact_match_match_id.1e341ef749
+[0m17:29:19.827093 [debug] [Thread-4 (]: Began compiling node test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae
+[0m17:29:19.827272 [debug] [Thread-2 (]: Began executing node test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7
+[0m17:29:19.827431 [debug] [Thread-1 (]: Began compiling node test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376
+[0m17:29:19.830981 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.not_null_fact_match_match_id.1e341ef749"
+[0m17:29:19.834082 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae"
+[0m17:29:19.835680 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7"
+[0m17:29:19.837873 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376"
+[0m17:29:19.838360 [debug] [Thread-3 (]: Began executing node test.footballiq.not_null_fact_match_match_id.1e341ef749
+[0m17:29:19.839582 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.not_null_fact_match_match_id.1e341ef749"
+[0m17:29:19.839830 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7"
+[0m17:29:19.840045 [debug] [Thread-4 (]: Began executing node test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae
+[0m17:29:19.840261 [debug] [Thread-1 (]: Began executing node test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376
+[0m17:29:19.840464 [debug] [Thread-2 (]: On test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select home_team_sk
+from "footballiq"."gold"."fact_match"
+where home_team_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.841642 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae"
+[0m17:29:19.842702 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376"
+[0m17:29:19.842890 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:19.843085 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.not_null_fact_match_match_id.1e341ef749"
+[0m17:29:19.843439 [debug] [Thread-3 (]: On test.footballiq.not_null_fact_match_match_id.1e341ef749: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_fact_match_match_id.1e341ef749"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select match_id
+from "footballiq"."gold"."fact_match"
+where match_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.843643 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae"
+[0m17:29:19.843826 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:19.844032 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376"
+[0m17:29:19.844214 [debug] [Thread-4 (]: On test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select lineup_sk
+from "footballiq"."gold"."fact_player_match"
+where lineup_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.844467 [debug] [Thread-1 (]: On test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select player_sk
+from "footballiq"."gold"."player_tournament_snapshot"
+where player_sk is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.844651 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:19.844829 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:19.856915 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:19.857331 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.013 seconds
+[0m17:29:19.858440 [debug] [Thread-2 (]: On test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7: ROLLBACK
+[0m17:29:19.859635 [debug] [Thread-3 (]: On test.footballiq.not_null_fact_match_match_id.1e341ef749: ROLLBACK
+[0m17:29:19.860103 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.015 seconds
+[0m17:29:19.861017 [debug] [Thread-1 (]: On test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376: ROLLBACK
+[0m17:29:19.861263 [debug] [Thread-2 (]: On test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7: Close
+[0m17:29:19.861450 [debug] [Thread-3 (]: On test.footballiq.not_null_fact_match_match_id.1e341ef749: Close
+[0m17:29:19.861652 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.017 seconds
+[0m17:29:19.862782 [debug] [Thread-4 (]: On test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae: ROLLBACK
+[0m17:29:19.863590 [debug] [Thread-1 (]: On test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376: Close
+[0m17:29:19.863245 [info ] [Thread-3 (]: 18 of 68 PASS not_null_fact_match_match_id ..................................... [[32mPASS[0m in 0.04s]
+[0m17:29:19.864411 [info ] [Thread-2 (]: 17 of 68 PASS not_null_fact_match_home_team_sk ................................. [[32mPASS[0m in 0.04s]
+[0m17:29:19.865242 [debug] [Thread-3 (]: Finished running node test.footballiq.not_null_fact_match_match_id.1e341ef749
+[0m17:29:19.865827 [debug] [Thread-4 (]: On test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae: Close
+[0m17:29:19.865609 [info ] [Thread-1 (]: 20 of 68 PASS not_null_player_tournament_snapshot_player_sk .................... [[32mPASS[0m in 0.04s]
+[0m17:29:19.866181 [debug] [Thread-2 (]: Finished running node test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7
+[0m17:29:19.866439 [debug] [Thread-3 (]: Began running node test.footballiq.not_null_silver_match_home_team_id.7e826b5e96
+[0m17:29:19.867202 [debug] [Thread-1 (]: Finished running node test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376
+[0m17:29:19.866863 [info ] [Thread-4 (]: 19 of 68 PASS not_null_fact_player_match_lineup_sk ............................. [[32mPASS[0m in 0.04s]
+[0m17:29:19.867496 [debug] [Thread-2 (]: Began running node test.footballiq.not_null_silver_match_match_id.55d9e87320
+[0m17:29:19.867716 [info ] [Thread-3 (]: 21 of 68 START test not_null_silver_match_home_team_id ......................... [RUN]
+[0m17:29:19.867977 [debug] [Thread-1 (]: Began running node test.footballiq.not_null_silver_match_stage_id.3f148d0b73
+[0m17:29:19.868309 [debug] [Thread-4 (]: Finished running node test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae
+[0m17:29:19.868532 [info ] [Thread-2 (]: 22 of 68 START test not_null_silver_match_match_id ............................. [RUN]
+[0m17:29:19.868935 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_fact_match_match_id.1e341ef749, now test.footballiq.not_null_silver_match_home_team_id.7e826b5e96)
+[0m17:29:19.869149 [info ] [Thread-1 (]: 23 of 68 START test not_null_silver_match_stage_id ............................. [RUN]
+[0m17:29:19.869476 [debug] [Thread-4 (]: Began running node test.footballiq.not_null_silver_match_status.97070b3ac6
+[0m17:29:19.869859 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_fact_match_home_team_sk.72dbb938e7, now test.footballiq.not_null_silver_match_match_id.55d9e87320)
+[0m17:29:19.870106 [debug] [Thread-3 (]: Began compiling node test.footballiq.not_null_silver_match_home_team_id.7e826b5e96
+[0m17:29:19.870326 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_player_tournament_snapshot_player_sk.2e88622376, now test.footballiq.not_null_silver_match_stage_id.3f148d0b73)
+[0m17:29:19.870532 [info ] [Thread-4 (]: 24 of 68 START test not_null_silver_match_status ............................... [RUN]
+[0m17:29:19.870738 [debug] [Thread-2 (]: Began compiling node test.footballiq.not_null_silver_match_match_id.55d9e87320
+[0m17:29:19.873055 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.not_null_silver_match_home_team_id.7e826b5e96"
+[0m17:29:19.873275 [debug] [Thread-1 (]: Began compiling node test.footballiq.not_null_silver_match_stage_id.3f148d0b73
+[0m17:29:19.873477 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_fact_player_match_lineup_sk.41346f96ae, now test.footballiq.not_null_silver_match_status.97070b3ac6)
+[0m17:29:19.875933 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.not_null_silver_match_match_id.55d9e87320"
+[0m17:29:19.878174 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.not_null_silver_match_stage_id.3f148d0b73"
+[0m17:29:19.878400 [debug] [Thread-4 (]: Began compiling node test.footballiq.not_null_silver_match_status.97070b3ac6
+[0m17:29:19.882207 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.not_null_silver_match_status.97070b3ac6"
+[0m17:29:19.882492 [debug] [Thread-3 (]: Began executing node test.footballiq.not_null_silver_match_home_team_id.7e826b5e96
+[0m17:29:19.883854 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.not_null_silver_match_home_team_id.7e826b5e96"
+[0m17:29:19.884090 [debug] [Thread-2 (]: Began executing node test.footballiq.not_null_silver_match_match_id.55d9e87320
+[0m17:29:19.885291 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.not_null_silver_match_match_id.55d9e87320"
+[0m17:29:19.885482 [debug] [Thread-1 (]: Began executing node test.footballiq.not_null_silver_match_stage_id.3f148d0b73
+[0m17:29:19.886756 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.not_null_silver_match_stage_id.3f148d0b73"
+[0m17:29:19.886989 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.not_null_silver_match_home_team_id.7e826b5e96"
+[0m17:29:19.887197 [debug] [Thread-4 (]: Began executing node test.footballiq.not_null_silver_match_status.97070b3ac6
+[0m17:29:19.887493 [debug] [Thread-3 (]: On test.footballiq.not_null_silver_match_home_team_id.7e826b5e96: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_match_home_team_id.7e826b5e96"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select home_team_id
+from "footballiq"."silver"."silver_match"
+where home_team_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.889142 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.not_null_silver_match_status.97070b3ac6"
+[0m17:29:19.889397 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:19.889621 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.not_null_silver_match_match_id.55d9e87320"
+[0m17:29:19.889956 [debug] [Thread-2 (]: On test.footballiq.not_null_silver_match_match_id.55d9e87320: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_match_match_id.55d9e87320"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select match_id
+from "footballiq"."silver"."silver_match"
+where match_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.890241 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:19.895296 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.not_null_silver_match_stage_id.3f148d0b73"
+[0m17:29:19.895958 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_match_stage_id.3f148d0b73: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_match_stage_id.3f148d0b73"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select stage_id
+from "footballiq"."silver"."silver_match"
+where stage_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.896439 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:19.897220 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.not_null_silver_match_status.97070b3ac6"
+[0m17:29:19.898302 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_match_status.97070b3ac6: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_match_status.97070b3ac6"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select status
+from "footballiq"."silver"."silver_match"
+where status is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.899748 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:19.917404 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.027 seconds
+[0m17:29:19.918121 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.029 seconds
+[0m17:29:19.920730 [debug] [Thread-2 (]: On test.footballiq.not_null_silver_match_match_id.55d9e87320: ROLLBACK
+[0m17:29:19.927038 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.030 seconds
+[0m17:29:19.927388 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.028 seconds
+[0m17:29:19.927742 [debug] [Thread-3 (]: On test.footballiq.not_null_silver_match_home_team_id.7e826b5e96: ROLLBACK
+[0m17:29:19.929548 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_match_stage_id.3f148d0b73: ROLLBACK
+[0m17:29:19.929916 [debug] [Thread-2 (]: On test.footballiq.not_null_silver_match_match_id.55d9e87320: Close
+[0m17:29:19.932117 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_match_status.97070b3ac6: ROLLBACK
+[0m17:29:19.932976 [info ] [Thread-2 (]: 22 of 68 PASS not_null_silver_match_match_id ................................... [[32mPASS[0m in 0.06s]
+[0m17:29:19.933940 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_match_status.97070b3ac6: Close
+[0m17:29:19.934291 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_match_stage_id.3f148d0b73: Close
+[0m17:29:19.935130 [debug] [Thread-3 (]: On test.footballiq.not_null_silver_match_home_team_id.7e826b5e96: Close
+[0m17:29:19.935486 [debug] [Thread-2 (]: Finished running node test.footballiq.not_null_silver_match_match_id.55d9e87320
+[0m17:29:19.936023 [info ] [Thread-4 (]: 24 of 68 PASS not_null_silver_match_status ..................................... [[32mPASS[0m in 0.06s]
+[0m17:29:19.936439 [info ] [Thread-1 (]: 23 of 68 PASS not_null_silver_match_stage_id ................................... [[32mPASS[0m in 0.07s]
+[0m17:29:19.936846 [info ] [Thread-3 (]: 21 of 68 PASS not_null_silver_match_home_team_id ............................... [[32mPASS[0m in 0.07s]
+[0m17:29:19.937157 [debug] [Thread-2 (]: Began running node test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8
+[0m17:29:19.937500 [debug] [Thread-4 (]: Finished running node test.footballiq.not_null_silver_match_status.97070b3ac6
+[0m17:29:19.937922 [debug] [Thread-1 (]: Finished running node test.footballiq.not_null_silver_match_stage_id.3f148d0b73
+[0m17:29:19.938475 [debug] [Thread-3 (]: Finished running node test.footballiq.not_null_silver_match_home_team_id.7e826b5e96
+[0m17:29:19.939070 [debug] [Thread-4 (]: Began running node test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed
+[0m17:29:19.938852 [info ] [Thread-2 (]: 25 of 68 START test not_null_silver_match_venue_id ............................. [RUN]
+[0m17:29:19.939645 [debug] [Thread-1 (]: Began running node test.footballiq.not_null_silver_player_player_id.6ce55751ce
+[0m17:29:19.939921 [debug] [Thread-3 (]: Began running node test.footballiq.not_null_silver_player_team_id.24580a2298
+[0m17:29:19.940308 [info ] [Thread-4 (]: 26 of 68 START test not_null_silver_player_market_value_eur .................... [RUN]
+[0m17:29:19.940769 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_match_match_id.55d9e87320, now test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8)
+[0m17:29:19.941075 [info ] [Thread-1 (]: 27 of 68 START test not_null_silver_player_player_id ........................... [RUN]
+[0m17:29:19.941525 [info ] [Thread-3 (]: 28 of 68 START test not_null_silver_player_team_id ............................. [RUN]
+[0m17:29:19.941781 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_match_status.97070b3ac6, now test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed)
+[0m17:29:19.941982 [debug] [Thread-2 (]: Began compiling node test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8
+[0m17:29:19.942192 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_match_stage_id.3f148d0b73, now test.footballiq.not_null_silver_player_player_id.6ce55751ce)
+[0m17:29:19.942391 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_match_home_team_id.7e826b5e96, now test.footballiq.not_null_silver_player_team_id.24580a2298)
+[0m17:29:19.942596 [debug] [Thread-4 (]: Began compiling node test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed
+[0m17:29:19.945101 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8"
+[0m17:29:19.945324 [debug] [Thread-1 (]: Began compiling node test.footballiq.not_null_silver_player_player_id.6ce55751ce
+[0m17:29:19.945516 [debug] [Thread-3 (]: Began compiling node test.footballiq.not_null_silver_player_team_id.24580a2298
+[0m17:29:19.948968 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed"
+[0m17:29:19.951868 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.not_null_silver_player_player_id.6ce55751ce"
+[0m17:29:19.955195 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.not_null_silver_player_team_id.24580a2298"
+[0m17:29:19.955607 [debug] [Thread-2 (]: Began executing node test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8
+[0m17:29:19.957138 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8"
+[0m17:29:19.957368 [debug] [Thread-4 (]: Began executing node test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed
+[0m17:29:19.957586 [debug] [Thread-3 (]: Began executing node test.footballiq.not_null_silver_player_team_id.24580a2298
+[0m17:29:19.958850 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed"
+[0m17:29:19.961578 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.not_null_silver_player_team_id.24580a2298"
+[0m17:29:19.961872 [debug] [Thread-1 (]: Began executing node test.footballiq.not_null_silver_player_player_id.6ce55751ce
+[0m17:29:19.962353 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8"
+[0m17:29:19.965036 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.not_null_silver_player_player_id.6ce55751ce"
+[0m17:29:19.965391 [debug] [Thread-2 (]: On test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select venue_id
+from "footballiq"."silver"."silver_match"
+where venue_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.965910 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed"
+[0m17:29:19.966182 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:19.966404 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.not_null_silver_player_team_id.24580a2298"
+[0m17:29:19.966640 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select market_value_eur
+from "footballiq"."silver"."silver_player"
+where market_value_eur is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.966978 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.not_null_silver_player_player_id.6ce55751ce"
+[0m17:29:19.967214 [debug] [Thread-3 (]: On test.footballiq.not_null_silver_player_team_id.24580a2298: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_player_team_id.24580a2298"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select team_id
+from "footballiq"."silver"."silver_player"
+where team_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.967403 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:19.967636 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_player_player_id.6ce55751ce: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_player_player_id.6ce55751ce"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select player_id
+from "footballiq"."silver"."silver_player"
+where player_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:19.967852 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:19.968160 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:19.981835 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:19.982128 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m17:29:19.983045 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_player_player_id.6ce55751ce: ROLLBACK
+[0m17:29:19.983257 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.015 seconds
+[0m17:29:19.983460 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m17:29:19.984228 [debug] [Thread-2 (]: On test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8: ROLLBACK
+[0m17:29:19.984957 [debug] [Thread-3 (]: On test.footballiq.not_null_silver_player_team_id.24580a2298: ROLLBACK
+[0m17:29:19.985666 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed: ROLLBACK
+[0m17:29:19.985862 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_player_player_id.6ce55751ce: Close
+[0m17:29:19.986465 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed: Close
+[0m17:29:19.986292 [info ] [Thread-1 (]: 27 of 68 PASS not_null_silver_player_player_id ................................. [[32mPASS[0m in 0.04s]
+[0m17:29:19.986712 [debug] [Thread-3 (]: On test.footballiq.not_null_silver_player_team_id.24580a2298: Close
+[0m17:29:19.986955 [debug] [Thread-2 (]: On test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8: Close
+[0m17:29:19.987488 [debug] [Thread-1 (]: Finished running node test.footballiq.not_null_silver_player_player_id.6ce55751ce
+[0m17:29:19.987237 [info ] [Thread-4 (]: 26 of 68 PASS not_null_silver_player_market_value_eur .......................... [[32mPASS[0m in 0.05s]
+[0m17:29:19.987911 [info ] [Thread-3 (]: 28 of 68 PASS not_null_silver_player_team_id ................................... [[32mPASS[0m in 0.05s]
+[0m17:29:19.988333 [info ] [Thread-2 (]: 25 of 68 PASS not_null_silver_match_venue_id ................................... [[32mPASS[0m in 0.05s]
+[0m17:29:19.988678 [debug] [Thread-1 (]: Began running node test.footballiq.not_null_silver_referee_referee_id.92186308aa
+[0m17:29:19.989164 [debug] [Thread-4 (]: Finished running node test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed
+[0m17:29:19.989496 [debug] [Thread-3 (]: Finished running node test.footballiq.not_null_silver_player_team_id.24580a2298
+[0m17:29:19.989769 [debug] [Thread-2 (]: Finished running node test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8
+[0m17:29:19.989983 [info ] [Thread-1 (]: 29 of 68 START test not_null_silver_referee_referee_id ......................... [RUN]
+[0m17:29:19.990214 [debug] [Thread-4 (]: Began running node test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6
+[0m17:29:19.990432 [debug] [Thread-3 (]: Began running node test.footballiq.not_null_silver_team_elo_rating.71ab093a41
+[0m17:29:19.990637 [debug] [Thread-2 (]: Began running node test.footballiq.not_null_silver_team_fifa_code.b818b3f788
+[0m17:29:19.990883 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_player_player_id.6ce55751ce, now test.footballiq.not_null_silver_referee_referee_id.92186308aa)
+[0m17:29:19.991075 [info ] [Thread-4 (]: 30 of 68 START test not_null_silver_stage_stage_id ............................. [RUN]
+[0m17:29:19.991269 [info ] [Thread-3 (]: 31 of 68 START test not_null_silver_team_elo_rating ............................ [RUN]
+[0m17:29:19.991477 [info ] [Thread-2 (]: 32 of 68 START test not_null_silver_team_fifa_code ............................. [RUN]
+[0m17:29:19.991685 [debug] [Thread-1 (]: Began compiling node test.footballiq.not_null_silver_referee_referee_id.92186308aa
+[0m17:29:19.991926 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_player_market_value_eur.ddd62adbed, now test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6)
+[0m17:29:19.992144 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_player_team_id.24580a2298, now test.footballiq.not_null_silver_team_elo_rating.71ab093a41)
+[0m17:29:19.992340 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_match_venue_id.4e2a6b49c8, now test.footballiq.not_null_silver_team_fifa_code.b818b3f788)
+[0m17:29:19.995444 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.not_null_silver_referee_referee_id.92186308aa"
+[0m17:29:19.995792 [debug] [Thread-4 (]: Began compiling node test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6
+[0m17:29:19.995997 [debug] [Thread-3 (]: Began compiling node test.footballiq.not_null_silver_team_elo_rating.71ab093a41
+[0m17:29:19.996185 [debug] [Thread-2 (]: Began compiling node test.footballiq.not_null_silver_team_fifa_code.b818b3f788
+[0m17:29:19.999081 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6"
+[0m17:29:20.002495 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.not_null_silver_team_elo_rating.71ab093a41"
+[0m17:29:20.004774 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.not_null_silver_team_fifa_code.b818b3f788"
+[0m17:29:20.005238 [debug] [Thread-1 (]: Began executing node test.footballiq.not_null_silver_referee_referee_id.92186308aa
+[0m17:29:20.006521 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.not_null_silver_referee_referee_id.92186308aa"
+[0m17:29:20.007054 [debug] [Thread-4 (]: Began executing node test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6
+[0m17:29:20.008440 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6"
+[0m17:29:20.008704 [debug] [Thread-3 (]: Began executing node test.footballiq.not_null_silver_team_elo_rating.71ab093a41
+[0m17:29:20.008908 [debug] [Thread-2 (]: Began executing node test.footballiq.not_null_silver_team_fifa_code.b818b3f788
+[0m17:29:20.010266 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.not_null_silver_team_elo_rating.71ab093a41"
+[0m17:29:20.011644 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.not_null_silver_team_fifa_code.b818b3f788"
+[0m17:29:20.011936 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.not_null_silver_referee_referee_id.92186308aa"
+[0m17:29:20.012249 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6"
+[0m17:29:20.012512 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_referee_referee_id.92186308aa: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_referee_referee_id.92186308aa"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select referee_id
+from "footballiq"."silver"."silver_referee"
+where referee_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.012736 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select stage_id
+from "footballiq"."silver"."silver_stage"
+where stage_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.012973 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:20.013195 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.not_null_silver_team_elo_rating.71ab093a41"
+[0m17:29:20.013479 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.013686 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.not_null_silver_team_fifa_code.b818b3f788"
+[0m17:29:20.013955 [debug] [Thread-3 (]: On test.footballiq.not_null_silver_team_elo_rating.71ab093a41: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_team_elo_rating.71ab093a41"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select elo_rating
+from "footballiq"."silver"."silver_team"
+where elo_rating is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.014204 [debug] [Thread-2 (]: On test.footballiq.not_null_silver_team_fifa_code.b818b3f788: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_team_fifa_code.b818b3f788"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select fifa_code
+from "footballiq"."silver"."silver_team"
+where fifa_code is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.014601 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.014796 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.028892 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m17:29:20.029323 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:20.029558 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m17:29:20.030700 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_referee_referee_id.92186308aa: ROLLBACK
+[0m17:29:20.031733 [debug] [Thread-2 (]: On test.footballiq.not_null_silver_team_fifa_code.b818b3f788: ROLLBACK
+[0m17:29:20.032504 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6: ROLLBACK
+[0m17:29:20.032719 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.018 seconds
+[0m17:29:20.033639 [debug] [Thread-3 (]: On test.footballiq.not_null_silver_team_elo_rating.71ab093a41: ROLLBACK
+[0m17:29:20.033855 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_referee_referee_id.92186308aa: Close
+[0m17:29:20.034032 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6: Close
+[0m17:29:20.034202 [debug] [Thread-2 (]: On test.footballiq.not_null_silver_team_fifa_code.b818b3f788: Close
+[0m17:29:20.034593 [info ] [Thread-1 (]: 29 of 68 PASS not_null_silver_referee_referee_id ............................... [[32mPASS[0m in 0.04s]
+[0m17:29:20.035377 [debug] [Thread-3 (]: On test.footballiq.not_null_silver_team_elo_rating.71ab093a41: Close
+[0m17:29:20.036020 [debug] [Thread-1 (]: Finished running node test.footballiq.not_null_silver_referee_referee_id.92186308aa
+[0m17:29:20.035044 [info ] [Thread-4 (]: 30 of 68 PASS not_null_silver_stage_stage_id ................................... [[32mPASS[0m in 0.04s]
+[0m17:29:20.035755 [info ] [Thread-2 (]: 32 of 68 PASS not_null_silver_team_fifa_code ................................... [[32mPASS[0m in 0.04s]
+[0m17:29:20.036943 [debug] [Thread-1 (]: Began running node test.footballiq.not_null_silver_team_team_id.41a73980a0
+[0m17:29:20.036733 [info ] [Thread-3 (]: 31 of 68 PASS not_null_silver_team_elo_rating .................................. [[32mPASS[0m in 0.04s]
+[0m17:29:20.037308 [debug] [Thread-4 (]: Finished running node test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6
+[0m17:29:20.037589 [debug] [Thread-2 (]: Finished running node test.footballiq.not_null_silver_team_fifa_code.b818b3f788
+[0m17:29:20.038049 [debug] [Thread-3 (]: Finished running node test.footballiq.not_null_silver_team_elo_rating.71ab093a41
+[0m17:29:20.037813 [info ] [Thread-1 (]: 33 of 68 START test not_null_silver_team_team_id ............................... [RUN]
+[0m17:29:20.038298 [debug] [Thread-4 (]: Began running node test.footballiq.not_null_silver_venue_venue_id.92579f462f
+[0m17:29:20.038506 [debug] [Thread-2 (]: Began running node test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a
+[0m17:29:20.038709 [debug] [Thread-3 (]: Began running node test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c
+[0m17:29:20.038932 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_referee_referee_id.92186308aa, now test.footballiq.not_null_silver_team_team_id.41a73980a0)
+[0m17:29:20.039127 [info ] [Thread-4 (]: 34 of 68 START test not_null_silver_venue_venue_id ............................. [RUN]
+[0m17:29:20.039341 [info ] [Thread-2 (]: 35 of 68 START test relationships_fact_match_away_team_sk__team_sk__ref_dim_team_  [RUN]
+[0m17:29:20.039538 [info ] [Thread-3 (]: 36 of 68 START test relationships_fact_match_date_key__date_key__ref_dim_date_ . [RUN]
+[0m17:29:20.039735 [debug] [Thread-1 (]: Began compiling node test.footballiq.not_null_silver_team_team_id.41a73980a0
+[0m17:29:20.040012 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_stage_stage_id.4b8d848dc6, now test.footballiq.not_null_silver_venue_venue_id.92579f462f)
+[0m17:29:20.040222 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_team_fifa_code.b818b3f788, now test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a)
+[0m17:29:20.040419 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_team_elo_rating.71ab093a41, now test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c)
+[0m17:29:20.043828 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.not_null_silver_team_team_id.41a73980a0"
+[0m17:29:20.044082 [debug] [Thread-4 (]: Began compiling node test.footballiq.not_null_silver_venue_venue_id.92579f462f
+[0m17:29:20.044272 [debug] [Thread-2 (]: Began compiling node test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a
+[0m17:29:20.044451 [debug] [Thread-3 (]: Began compiling node test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c
+[0m17:29:20.046555 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.not_null_silver_venue_venue_id.92579f462f"
+[0m17:29:20.049703 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a"
+[0m17:29:20.052398 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c"
+[0m17:29:20.052756 [debug] [Thread-1 (]: Began executing node test.footballiq.not_null_silver_team_team_id.41a73980a0
+[0m17:29:20.054087 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.not_null_silver_team_team_id.41a73980a0"
+[0m17:29:20.054374 [debug] [Thread-4 (]: Began executing node test.footballiq.not_null_silver_venue_venue_id.92579f462f
+[0m17:29:20.055581 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.not_null_silver_venue_venue_id.92579f462f"
+[0m17:29:20.055846 [debug] [Thread-3 (]: Began executing node test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c
+[0m17:29:20.057029 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c"
+[0m17:29:20.057434 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.not_null_silver_team_team_id.41a73980a0"
+[0m17:29:20.057686 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.not_null_silver_venue_venue_id.92579f462f"
+[0m17:29:20.057962 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_team_team_id.41a73980a0: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_team_team_id.41a73980a0"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select team_id
+from "footballiq"."silver"."silver_team"
+where team_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.058176 [debug] [Thread-2 (]: Began executing node test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a
+[0m17:29:20.058382 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_venue_venue_id.92579f462f: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.not_null_silver_venue_venue_id.92579f462f"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select venue_id
+from "footballiq"."silver"."silver_venue"
+where venue_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.058606 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:20.060887 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a"
+[0m17:29:20.061270 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c"
+[0m17:29:20.061631 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.062085 [debug] [Thread-3 (]: On test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select date_key as from_field
+    from "footballiq"."gold"."fact_match"
+    where date_key is not null
+),
+
+parent as (
+    select date_key as to_field
+    from "footballiq"."gold"."dim_date"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.062549 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.063184 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a"
+[0m17:29:20.063469 [debug] [Thread-2 (]: On test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select away_team_sk as from_field
+    from "footballiq"."gold"."fact_match"
+    where away_team_sk is not null
+),
+
+parent as (
+    select team_sk as to_field
+    from "footballiq"."gold"."dim_team"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.063910 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.078997 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.020 seconds
+[0m17:29:20.080864 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_team_team_id.41a73980a0: ROLLBACK
+[0m17:29:20.081262 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.020 seconds
+[0m17:29:20.081495 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.018 seconds
+[0m17:29:20.081716 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.019 seconds
+[0m17:29:20.082618 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_venue_venue_id.92579f462f: ROLLBACK
+[0m17:29:20.082835 [debug] [Thread-1 (]: On test.footballiq.not_null_silver_team_team_id.41a73980a0: Close
+[0m17:29:20.083554 [debug] [Thread-2 (]: On test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a: ROLLBACK
+[0m17:29:20.084335 [debug] [Thread-3 (]: On test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c: ROLLBACK
+[0m17:29:20.085047 [debug] [Thread-2 (]: On test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a: Close
+[0m17:29:20.084761 [info ] [Thread-1 (]: 33 of 68 PASS not_null_silver_team_team_id ..................................... [[32mPASS[0m in 0.05s]
+[0m17:29:20.085370 [debug] [Thread-3 (]: On test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c: Close
+[0m17:29:20.085562 [debug] [Thread-4 (]: On test.footballiq.not_null_silver_venue_venue_id.92579f462f: Close
+[0m17:29:20.086164 [debug] [Thread-1 (]: Finished running node test.footballiq.not_null_silver_team_team_id.41a73980a0
+[0m17:29:20.085892 [info ] [Thread-2 (]: 35 of 68 PASS relationships_fact_match_away_team_sk__team_sk__ref_dim_team_ .... [[32mPASS[0m in 0.05s]
+[0m17:29:20.086564 [info ] [Thread-3 (]: 36 of 68 PASS relationships_fact_match_date_key__date_key__ref_dim_date_ ....... [[32mPASS[0m in 0.05s]
+[0m17:29:20.087336 [debug] [Thread-1 (]: Began running node test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3
+[0m17:29:20.087039 [info ] [Thread-4 (]: 34 of 68 PASS not_null_silver_venue_venue_id ................................... [[32mPASS[0m in 0.05s]
+[0m17:29:20.087773 [debug] [Thread-2 (]: Finished running node test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a
+[0m17:29:20.088101 [debug] [Thread-3 (]: Finished running node test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c
+[0m17:29:20.088312 [info ] [Thread-1 (]: 37 of 68 START test relationships_fact_match_event_player_sk__player_sk__ref_dim_player_  [RUN]
+[0m17:29:20.088609 [debug] [Thread-4 (]: Finished running node test.footballiq.not_null_silver_venue_venue_id.92579f462f
+[0m17:29:20.088831 [debug] [Thread-2 (]: Began running node test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0
+[0m17:29:20.089064 [debug] [Thread-3 (]: Began running node test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7
+[0m17:29:20.089326 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_team_team_id.41a73980a0, now test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3)
+[0m17:29:20.089529 [debug] [Thread-4 (]: Began running node test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3
+[0m17:29:20.089729 [info ] [Thread-2 (]: 38 of 68 START test relationships_fact_match_home_team_sk__team_sk__ref_dim_team_  [RUN]
+[0m17:29:20.090004 [info ] [Thread-3 (]: 39 of 68 START test relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_  [RUN]
+[0m17:29:20.090244 [debug] [Thread-1 (]: Began compiling node test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3
+[0m17:29:20.090454 [info ] [Thread-4 (]: 40 of 68 START test relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_  [RUN]
+[0m17:29:20.090693 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_match_away_team_sk__team_sk__ref_dim_team_.2818a9a62a, now test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0)
+[0m17:29:20.090910 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_match_date_key__date_key__ref_dim_date_.7d52c9261c, now test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7)
+[0m17:29:20.094439 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3"
+[0m17:29:20.094745 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.not_null_silver_venue_venue_id.92579f462f, now test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3)
+[0m17:29:20.094961 [debug] [Thread-2 (]: Began compiling node test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0
+[0m17:29:20.095164 [debug] [Thread-3 (]: Began compiling node test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7
+[0m17:29:20.095535 [debug] [Thread-4 (]: Began compiling node test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3
+[0m17:29:20.098436 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0"
+[0m17:29:20.101761 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7"
+[0m17:29:20.106010 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3"
+[0m17:29:20.106348 [debug] [Thread-1 (]: Began executing node test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3
+[0m17:29:20.107919 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3"
+[0m17:29:20.108269 [debug] [Thread-3 (]: Began executing node test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7
+[0m17:29:20.109446 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7"
+[0m17:29:20.109698 [debug] [Thread-4 (]: Began executing node test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3
+[0m17:29:20.109910 [debug] [Thread-2 (]: Began executing node test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0
+[0m17:29:20.111154 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3"
+[0m17:29:20.112332 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0"
+[0m17:29:20.112633 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3"
+[0m17:29:20.112860 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7"
+[0m17:29:20.113125 [debug] [Thread-1 (]: On test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select player_sk as from_field
+    from "footballiq"."gold"."fact_match_event"
+    where player_sk is not null
+),
+
+parent as (
+    select player_sk as to_field
+    from "footballiq"."gold"."dim_player"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.113378 [debug] [Thread-3 (]: On test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select player_of_match_sk as from_field
+    from "footballiq"."gold"."fact_match"
+    where player_of_match_sk is not null
+),
+
+parent as (
+    select player_sk as to_field
+    from "footballiq"."gold"."dim_player"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.113600 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3"
+[0m17:29:20.113777 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:20.113959 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0"
+[0m17:29:20.114126 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.114314 [debug] [Thread-4 (]: On test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select referee_sk as from_field
+    from "footballiq"."gold"."fact_match"
+    where referee_sk is not null
+),
+
+parent as (
+    select referee_sk as to_field
+    from "footballiq"."gold"."dim_referee"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.114612 [debug] [Thread-2 (]: On test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select home_team_sk as from_field
+    from "footballiq"."gold"."fact_match"
+    where home_team_sk is not null
+),
+
+parent as (
+    select team_sk as to_field
+    from "footballiq"."gold"."dim_team"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.114894 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.115277 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.128050 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:20.128398 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:20.128645 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.015 seconds
+[0m17:29:20.128881 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m17:29:20.129774 [debug] [Thread-3 (]: On test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7: ROLLBACK
+[0m17:29:20.130561 [debug] [Thread-4 (]: On test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3: ROLLBACK
+[0m17:29:20.131305 [debug] [Thread-1 (]: On test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3: ROLLBACK
+[0m17:29:20.132015 [debug] [Thread-2 (]: On test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0: ROLLBACK
+[0m17:29:20.132782 [debug] [Thread-2 (]: On test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0: Close
+[0m17:29:20.132992 [debug] [Thread-1 (]: On test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3: Close
+[0m17:29:20.133179 [debug] [Thread-4 (]: On test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3: Close
+[0m17:29:20.134355 [debug] [Thread-3 (]: On test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7: Close
+[0m17:29:20.133636 [info ] [Thread-1 (]: 37 of 68 PASS relationships_fact_match_event_player_sk__player_sk__ref_dim_player_  [[32mPASS[0m in 0.04s]
+[0m17:29:20.133940 [info ] [Thread-2 (]: 38 of 68 PASS relationships_fact_match_home_team_sk__team_sk__ref_dim_team_ .... [[32mPASS[0m in 0.04s]
+[0m17:29:20.136168 [debug] [Thread-1 (]: Finished running node test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3
+[0m17:29:20.135311 [info ] [Thread-4 (]: 40 of 68 PASS relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_  [[32mPASS[0m in 0.04s]
+[0m17:29:20.136502 [debug] [Thread-2 (]: Finished running node test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0
+[0m17:29:20.135886 [info ] [Thread-3 (]: 39 of 68 PASS relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_  [[32mPASS[0m in 0.04s]
+[0m17:29:20.136771 [debug] [Thread-1 (]: Began running node test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551
+[0m17:29:20.137093 [debug] [Thread-4 (]: Finished running node test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3
+[0m17:29:20.137296 [debug] [Thread-2 (]: Began running node test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc
+[0m17:29:20.137554 [debug] [Thread-3 (]: Finished running node test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7
+[0m17:29:20.137747 [info ] [Thread-1 (]: 41 of 68 START test relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_  [RUN]
+[0m17:29:20.137999 [debug] [Thread-4 (]: Began running node test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4
+[0m17:29:20.138216 [info ] [Thread-2 (]: 42 of 68 START test relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_  [RUN]
+[0m17:29:20.138453 [debug] [Thread-3 (]: Began running node test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8
+[0m17:29:20.138731 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_match_event_player_sk__player_sk__ref_dim_player_.bad8de94b3, now test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551)
+[0m17:29:20.138931 [info ] [Thread-4 (]: 43 of 68 START test relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_  [RUN]
+[0m17:29:20.139158 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_match_home_team_sk__team_sk__ref_dim_team_.cdff42e4b0, now test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc)
+[0m17:29:20.139371 [info ] [Thread-3 (]: 44 of 68 START test relationships_fact_player_match_player_sk__player_sk__ref_dim_player_  [RUN]
+[0m17:29:20.139584 [debug] [Thread-1 (]: Began compiling node test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551
+[0m17:29:20.139778 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_match_referee_sk__referee_sk__ref_dim_referee_.06c03ba7c3, now test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4)
+[0m17:29:20.139970 [debug] [Thread-2 (]: Began compiling node test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc
+[0m17:29:20.140163 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_match_player_of_match_sk__player_sk__ref_dim_player_.8a6d82c1e7, now test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8)
+[0m17:29:20.143033 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551"
+[0m17:29:20.143314 [debug] [Thread-4 (]: Began compiling node test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4
+[0m17:29:20.145969 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc"
+[0m17:29:20.146204 [debug] [Thread-3 (]: Began compiling node test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8
+[0m17:29:20.148968 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4"
+[0m17:29:20.151704 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8"
+[0m17:29:20.152116 [debug] [Thread-1 (]: Began executing node test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551
+[0m17:29:20.153287 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551"
+[0m17:29:20.153631 [debug] [Thread-3 (]: Began executing node test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8
+[0m17:29:20.154738 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8"
+[0m17:29:20.154948 [debug] [Thread-2 (]: Began executing node test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc
+[0m17:29:20.155141 [debug] [Thread-4 (]: Began executing node test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4
+[0m17:29:20.155370 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551"
+[0m17:29:20.157474 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc"
+[0m17:29:20.158662 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4"
+[0m17:29:20.158905 [debug] [Thread-1 (]: On test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select stage_sk as from_field
+    from "footballiq"."gold"."fact_match"
+    where stage_sk is not null
+),
+
+parent as (
+    select stage_sk as to_field
+    from "footballiq"."gold"."dim_stage"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.159137 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8"
+[0m17:29:20.159377 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:20.159582 [debug] [Thread-3 (]: On test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select player_sk as from_field
+    from "footballiq"."gold"."fact_player_match"
+    where player_sk is not null
+),
+
+parent as (
+    select player_sk as to_field
+    from "footballiq"."gold"."dim_player"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.159894 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.160116 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4"
+[0m17:29:20.160307 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc"
+[0m17:29:20.160550 [debug] [Thread-4 (]: On test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select venue_sk as from_field
+    from "footballiq"."gold"."fact_match"
+    where venue_sk is not null
+),
+
+parent as (
+    select venue_sk as to_field
+    from "footballiq"."gold"."dim_venue"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.160782 [debug] [Thread-2 (]: On test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select team_sk as from_field
+    from "footballiq"."gold"."fact_match_team_stats"
+    where team_sk is not null
+),
+
+parent as (
+    select team_sk as to_field
+    from "footballiq"."gold"."dim_team"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.161003 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.161186 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.168859 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.009 seconds
+[0m17:29:20.169847 [debug] [Thread-1 (]: On test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551: ROLLBACK
+[0m17:29:20.170104 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m17:29:20.170782 [debug] [Thread-3 (]: On test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8: ROLLBACK
+[0m17:29:20.170997 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m17:29:20.171201 [debug] [Thread-1 (]: On test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551: Close
+[0m17:29:20.171400 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m17:29:20.172176 [debug] [Thread-2 (]: On test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc: ROLLBACK
+[0m17:29:20.172377 [debug] [Thread-3 (]: On test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8: Close
+[0m17:29:20.173054 [debug] [Thread-4 (]: On test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4: ROLLBACK
+[0m17:29:20.173355 [info ] [Thread-1 (]: 41 of 68 PASS relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_ ...... [[32mPASS[0m in 0.03s]
+[0m17:29:20.174055 [debug] [Thread-4 (]: On test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4: Close
+[0m17:29:20.173842 [info ] [Thread-3 (]: 44 of 68 PASS relationships_fact_player_match_player_sk__player_sk__ref_dim_player_  [[32mPASS[0m in 0.03s]
+[0m17:29:20.174354 [debug] [Thread-1 (]: Finished running node test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551
+[0m17:29:20.174515 [debug] [Thread-2 (]: On test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc: Close
+[0m17:29:20.175083 [debug] [Thread-3 (]: Finished running node test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8
+[0m17:29:20.174794 [info ] [Thread-4 (]: 43 of 68 PASS relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_ ...... [[32mPASS[0m in 0.04s]
+[0m17:29:20.175362 [debug] [Thread-1 (]: Began running node test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e
+[0m17:29:20.175633 [debug] [Thread-3 (]: Began running node test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef
+[0m17:29:20.175904 [info ] [Thread-2 (]: 42 of 68 PASS relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_  [[32mPASS[0m in 0.04s]
+[0m17:29:20.176193 [debug] [Thread-4 (]: Finished running node test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4
+[0m17:29:20.176376 [info ] [Thread-1 (]: 45 of 68 START test relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_  [RUN]
+[0m17:29:20.176587 [info ] [Thread-3 (]: 46 of 68 START test relationships_silver_match_away_team_id__team_id__ref_silver_team_  [RUN]
+[0m17:29:20.176904 [debug] [Thread-2 (]: Finished running node test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc
+[0m17:29:20.177113 [debug] [Thread-4 (]: Began running node test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d
+[0m17:29:20.177316 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_match_stage_sk__stage_sk__ref_dim_stage_.ecba0f4551, now test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e)
+[0m17:29:20.177516 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_player_match_player_sk__player_sk__ref_dim_player_.62028683a8, now test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef)
+[0m17:29:20.177705 [debug] [Thread-2 (]: Began running node test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e
+[0m17:29:20.177882 [info ] [Thread-4 (]: 47 of 68 START test relationships_silver_match_home_team_id__team_id__ref_silver_team_  [RUN]
+[0m17:29:20.178083 [debug] [Thread-1 (]: Began compiling node test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e
+[0m17:29:20.178278 [debug] [Thread-3 (]: Began compiling node test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef
+[0m17:29:20.178453 [info ] [Thread-2 (]: 48 of 68 START test relationships_silver_match_referee_id__referee_id__ref_silver_referee_  [RUN]
+[0m17:29:20.178649 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_match_venue_sk__venue_sk__ref_dim_venue_.d28354b9f4, now test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d)
+[0m17:29:20.181648 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e"
+[0m17:29:20.184477 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef"
+[0m17:29:20.184808 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_fact_match_team_stats_team_sk__team_sk__ref_dim_team_.1826ea10dc, now test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e)
+[0m17:29:20.185058 [debug] [Thread-4 (]: Began compiling node test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d
+[0m17:29:20.185372 [debug] [Thread-2 (]: Began compiling node test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e
+[0m17:29:20.188322 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d"
+[0m17:29:20.190982 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e"
+[0m17:29:20.191251 [debug] [Thread-3 (]: Began executing node test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef
+[0m17:29:20.191456 [debug] [Thread-1 (]: Began executing node test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e
+[0m17:29:20.192818 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef"
+[0m17:29:20.194115 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e"
+[0m17:29:20.194476 [debug] [Thread-2 (]: Began executing node test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e
+[0m17:29:20.194674 [debug] [Thread-4 (]: Began executing node test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d
+[0m17:29:20.195897 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e"
+[0m17:29:20.197116 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d"
+[0m17:29:20.197488 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef"
+[0m17:29:20.197705 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e"
+[0m17:29:20.198076 [debug] [Thread-3 (]: On test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select away_team_id as from_field
+    from "footballiq"."silver"."silver_match"
+    where away_team_id is not null
+),
+
+parent as (
+    select team_id as to_field
+    from "footballiq"."silver"."silver_team"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.198320 [debug] [Thread-1 (]: On test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select player_sk as from_field
+    from "footballiq"."gold"."player_tournament_snapshot"
+    where player_sk is not null
+),
+
+parent as (
+    select player_sk as to_field
+    from "footballiq"."gold"."dim_player"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.198598 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e"
+[0m17:29:20.198795 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.199000 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d"
+[0m17:29:20.199162 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:20.199358 [debug] [Thread-2 (]: On test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select referee_id as from_field
+    from "footballiq"."silver"."silver_match"
+    where referee_id is not null
+),
+
+parent as (
+    select referee_id as to_field
+    from "footballiq"."silver"."silver_referee"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.199645 [debug] [Thread-4 (]: On test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select home_team_id as from_field
+    from "footballiq"."silver"."silver_match"
+    where home_team_id is not null
+),
+
+parent as (
+    select team_id as to_field
+    from "footballiq"."silver"."silver_team"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.199872 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.200059 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.210683 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m17:29:20.210974 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m17:29:20.211205 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m17:29:20.211438 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m17:29:20.212308 [debug] [Thread-3 (]: On test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef: ROLLBACK
+[0m17:29:20.212995 [debug] [Thread-4 (]: On test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d: ROLLBACK
+[0m17:29:20.213618 [debug] [Thread-1 (]: On test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e: ROLLBACK
+[0m17:29:20.214356 [debug] [Thread-2 (]: On test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e: ROLLBACK
+[0m17:29:20.215349 [debug] [Thread-1 (]: On test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e: Close
+[0m17:29:20.215557 [debug] [Thread-3 (]: On test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef: Close
+[0m17:29:20.215897 [info ] [Thread-1 (]: 45 of 68 PASS relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_  [[32mPASS[0m in 0.04s]
+[0m17:29:20.216109 [debug] [Thread-2 (]: On test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e: Close
+[0m17:29:20.216269 [debug] [Thread-4 (]: On test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d: Close
+[0m17:29:20.216524 [info ] [Thread-3 (]: 46 of 68 PASS relationships_silver_match_away_team_id__team_id__ref_silver_team_  [[32mPASS[0m in 0.04s]
+[0m17:29:20.216872 [debug] [Thread-1 (]: Finished running node test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e
+[0m17:29:20.217770 [debug] [Thread-3 (]: Finished running node test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef
+[0m17:29:20.217179 [info ] [Thread-2 (]: 48 of 68 PASS relationships_silver_match_referee_id__referee_id__ref_silver_referee_  [[32mPASS[0m in 0.03s]
+[0m17:29:20.218071 [debug] [Thread-1 (]: Began running node test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463
+[0m17:29:20.217452 [info ] [Thread-4 (]: 47 of 68 PASS relationships_silver_match_home_team_id__team_id__ref_silver_team_  [[32mPASS[0m in 0.04s]
+[0m17:29:20.218387 [debug] [Thread-3 (]: Began running node test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd
+[0m17:29:20.218687 [debug] [Thread-2 (]: Finished running node test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e
+[0m17:29:20.218880 [info ] [Thread-1 (]: 49 of 68 START test relationships_silver_match_stage_id__stage_id__ref_silver_stage_  [RUN]
+[0m17:29:20.219145 [debug] [Thread-4 (]: Finished running node test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d
+[0m17:29:20.219328 [info ] [Thread-3 (]: 50 of 68 START test relationships_silver_match_venue_id__venue_id__ref_silver_venue_  [RUN]
+[0m17:29:20.219545 [debug] [Thread-2 (]: Began running node test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d
+[0m17:29:20.219766 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_player_tournament_snapshot_player_sk__player_sk__ref_dim_player_.3573a7c95e, now test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463)
+[0m17:29:20.219962 [debug] [Thread-4 (]: Began running node test.footballiq.unique_dim_date_date_key.0869fd48f9
+[0m17:29:20.220150 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_silver_match_away_team_id__team_id__ref_silver_team_.2e5d9e8aef, now test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd)
+[0m17:29:20.220328 [info ] [Thread-2 (]: 51 of 68 START test relationships_silver_player_team_id__team_id__ref_silver_team_  [RUN]
+[0m17:29:20.220529 [debug] [Thread-1 (]: Began compiling node test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463
+[0m17:29:20.220720 [info ] [Thread-4 (]: 52 of 68 START test unique_dim_date_date_key ................................... [RUN]
+[0m17:29:20.220908 [debug] [Thread-3 (]: Began compiling node test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd
+[0m17:29:20.221101 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_silver_match_referee_id__referee_id__ref_silver_referee_.f1b65d6e7e, now test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d)
+[0m17:29:20.225203 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463"
+[0m17:29:20.225477 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_silver_match_home_team_id__team_id__ref_silver_team_.069129cf7d, now test.footballiq.unique_dim_date_date_key.0869fd48f9)
+[0m17:29:20.227965 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd"
+[0m17:29:20.228191 [debug] [Thread-2 (]: Began compiling node test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d
+[0m17:29:20.228434 [debug] [Thread-4 (]: Began compiling node test.footballiq.unique_dim_date_date_key.0869fd48f9
+[0m17:29:20.232544 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d"
+[0m17:29:20.235997 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.unique_dim_date_date_key.0869fd48f9"
+[0m17:29:20.236447 [debug] [Thread-3 (]: Began executing node test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd
+[0m17:29:20.237795 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd"
+[0m17:29:20.238090 [debug] [Thread-1 (]: Began executing node test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463
+[0m17:29:20.238275 [debug] [Thread-2 (]: Began executing node test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d
+[0m17:29:20.239583 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463"
+[0m17:29:20.239820 [debug] [Thread-4 (]: Began executing node test.footballiq.unique_dim_date_date_key.0869fd48f9
+[0m17:29:20.241096 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d"
+[0m17:29:20.241422 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd"
+[0m17:29:20.242621 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.unique_dim_date_date_key.0869fd48f9"
+[0m17:29:20.242947 [debug] [Thread-3 (]: On test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select venue_id as from_field
+    from "footballiq"."silver"."silver_match"
+    where venue_id is not null
+),
+
+parent as (
+    select venue_id as to_field
+    from "footballiq"."silver"."silver_venue"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.243210 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.243489 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463"
+[0m17:29:20.243720 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d"
+[0m17:29:20.243937 [debug] [Thread-1 (]: On test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select stage_id as from_field
+    from "footballiq"."silver"."silver_match"
+    where stage_id is not null
+),
+
+parent as (
+    select stage_id as to_field
+    from "footballiq"."silver"."silver_stage"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.244192 [debug] [Thread-2 (]: On test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select team_id as from_field
+    from "footballiq"."silver"."silver_player"
+    where team_id is not null
+),
+
+parent as (
+    select team_id as to_field
+    from "footballiq"."silver"."silver_team"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.244409 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.unique_dim_date_date_key.0869fd48f9"
+[0m17:29:20.244583 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:20.244768 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.244957 [debug] [Thread-4 (]: On test.footballiq.unique_dim_date_date_key.0869fd48f9: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_dim_date_date_key.0869fd48f9"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    date_key as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."dim_date"
+where date_key is not null
+group by date_key
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.245264 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.252239 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.009 seconds
+[0m17:29:20.253589 [debug] [Thread-3 (]: On test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd: ROLLBACK
+[0m17:29:20.254359 [debug] [Thread-3 (]: On test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd: Close
+[0m17:29:20.255059 [info ] [Thread-3 (]: 50 of 68 PASS relationships_silver_match_venue_id__venue_id__ref_silver_venue_ . [[32mPASS[0m in 0.03s]
+[0m17:29:20.255443 [debug] [Thread-3 (]: Finished running node test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd
+[0m17:29:20.255683 [debug] [Thread-3 (]: Began running node test.footballiq.unique_dim_player_player_sk.ac32895952
+[0m17:29:20.256011 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m17:29:20.256490 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m17:29:20.256686 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m17:29:20.256266 [info ] [Thread-3 (]: 53 of 68 START test unique_dim_player_player_sk ................................ [RUN]
+[0m17:29:20.257583 [debug] [Thread-1 (]: On test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463: ROLLBACK
+[0m17:29:20.258318 [debug] [Thread-2 (]: On test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d: ROLLBACK
+[0m17:29:20.258987 [debug] [Thread-4 (]: On test.footballiq.unique_dim_date_date_key.0869fd48f9: ROLLBACK
+[0m17:29:20.259223 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_silver_match_venue_id__venue_id__ref_silver_venue_.4d48d388bd, now test.footballiq.unique_dim_player_player_sk.ac32895952)
+[0m17:29:20.259509 [debug] [Thread-3 (]: Began compiling node test.footballiq.unique_dim_player_player_sk.ac32895952
+[0m17:29:20.261997 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.unique_dim_player_player_sk.ac32895952"
+[0m17:29:20.262230 [debug] [Thread-4 (]: On test.footballiq.unique_dim_date_date_key.0869fd48f9: Close
+[0m17:29:20.262428 [debug] [Thread-1 (]: On test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463: Close
+[0m17:29:20.262626 [debug] [Thread-2 (]: On test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d: Close
+[0m17:29:20.262978 [info ] [Thread-4 (]: 52 of 68 PASS unique_dim_date_date_key ......................................... [[32mPASS[0m in 0.04s]
+[0m17:29:20.264120 [debug] [Thread-4 (]: Finished running node test.footballiq.unique_dim_date_date_key.0869fd48f9
+[0m17:29:20.263290 [info ] [Thread-1 (]: 49 of 68 PASS relationships_silver_match_stage_id__stage_id__ref_silver_stage_ . [[32mPASS[0m in 0.04s]
+[0m17:29:20.264877 [debug] [Thread-4 (]: Began running node test.footballiq.unique_dim_referee_referee_sk.aacc87ff56
+[0m17:29:20.265540 [debug] [Thread-1 (]: Finished running node test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463
+[0m17:29:20.263552 [info ] [Thread-2 (]: 51 of 68 PASS relationships_silver_player_team_id__team_id__ref_silver_team_ ... [[32mPASS[0m in 0.04s]
+[0m17:29:20.265797 [debug] [Thread-3 (]: Began executing node test.footballiq.unique_dim_player_player_sk.ac32895952
+[0m17:29:20.265989 [info ] [Thread-4 (]: 54 of 68 START test unique_dim_referee_referee_sk .............................. [RUN]
+[0m17:29:20.266232 [debug] [Thread-1 (]: Began running node test.footballiq.unique_dim_stage_stage_sk.6810ca6f82
+[0m17:29:20.266502 [debug] [Thread-2 (]: Finished running node test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d
+[0m17:29:20.267990 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.unique_dim_player_player_sk.ac32895952"
+[0m17:29:20.268252 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_dim_date_date_key.0869fd48f9, now test.footballiq.unique_dim_referee_referee_sk.aacc87ff56)
+[0m17:29:20.269164 [debug] [Thread-2 (]: Began running node test.footballiq.unique_dim_team_team_sk.468bb59338
+[0m17:29:20.268484 [info ] [Thread-1 (]: 55 of 68 START test unique_dim_stage_stage_sk .................................. [RUN]
+[0m17:29:20.269598 [debug] [Thread-4 (]: Began compiling node test.footballiq.unique_dim_referee_referee_sk.aacc87ff56
+[0m17:29:20.269932 [info ] [Thread-2 (]: 56 of 68 START test unique_dim_team_team_sk .................................... [RUN]
+[0m17:29:20.270314 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_silver_match_stage_id__stage_id__ref_silver_stage_.2cb9cc0463, now test.footballiq.unique_dim_stage_stage_sk.6810ca6f82)
+[0m17:29:20.273076 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.unique_dim_referee_referee_sk.aacc87ff56"
+[0m17:29:20.273448 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.relationships_silver_player_team_id__team_id__ref_silver_team_.735f8f633d, now test.footballiq.unique_dim_team_team_sk.468bb59338)
+[0m17:29:20.273701 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.unique_dim_player_player_sk.ac32895952"
+[0m17:29:20.273898 [debug] [Thread-1 (]: Began compiling node test.footballiq.unique_dim_stage_stage_sk.6810ca6f82
+[0m17:29:20.274118 [debug] [Thread-2 (]: Began compiling node test.footballiq.unique_dim_team_team_sk.468bb59338
+[0m17:29:20.274326 [debug] [Thread-3 (]: On test.footballiq.unique_dim_player_player_sk.ac32895952: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_dim_player_player_sk.ac32895952"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    player_sk as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."dim_player"
+where player_sk is not null
+group by player_sk
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.278325 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.unique_dim_stage_stage_sk.6810ca6f82"
+[0m17:29:20.280474 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.unique_dim_team_team_sk.468bb59338"
+[0m17:29:20.280749 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.281106 [debug] [Thread-4 (]: Began executing node test.footballiq.unique_dim_referee_referee_sk.aacc87ff56
+[0m17:29:20.283878 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.unique_dim_referee_referee_sk.aacc87ff56"
+[0m17:29:20.284351 [debug] [Thread-1 (]: Began executing node test.footballiq.unique_dim_stage_stage_sk.6810ca6f82
+[0m17:29:20.284634 [debug] [Thread-2 (]: Began executing node test.footballiq.unique_dim_team_team_sk.468bb59338
+[0m17:29:20.286289 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.unique_dim_stage_stage_sk.6810ca6f82"
+[0m17:29:20.287728 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.unique_dim_team_team_sk.468bb59338"
+[0m17:29:20.288225 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.unique_dim_referee_referee_sk.aacc87ff56"
+[0m17:29:20.288511 [debug] [Thread-4 (]: On test.footballiq.unique_dim_referee_referee_sk.aacc87ff56: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_dim_referee_referee_sk.aacc87ff56"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    referee_sk as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."dim_referee"
+where referee_sk is not null
+group by referee_sk
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.288720 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.289012 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.unique_dim_stage_stage_sk.6810ca6f82"
+[0m17:29:20.289204 [debug] [Thread-1 (]: On test.footballiq.unique_dim_stage_stage_sk.6810ca6f82: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_dim_stage_stage_sk.6810ca6f82"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    stage_sk as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."dim_stage"
+where stage_sk is not null
+group by stage_sk
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.289401 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:20.289633 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.unique_dim_team_team_sk.468bb59338"
+[0m17:29:20.289912 [debug] [Thread-2 (]: On test.footballiq.unique_dim_team_team_sk.468bb59338: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_dim_team_team_sk.468bb59338"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    team_sk as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."dim_team"
+where team_sk is not null
+group by team_sk
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.290093 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.292094 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m17:29:20.293347 [debug] [Thread-3 (]: On test.footballiq.unique_dim_player_player_sk.ac32895952: ROLLBACK
+[0m17:29:20.293866 [debug] [Thread-3 (]: On test.footballiq.unique_dim_player_player_sk.ac32895952: Close
+[0m17:29:20.294264 [info ] [Thread-3 (]: 53 of 68 PASS unique_dim_player_player_sk ...................................... [[32mPASS[0m in 0.04s]
+[0m17:29:20.294584 [debug] [Thread-3 (]: Finished running node test.footballiq.unique_dim_player_player_sk.ac32895952
+[0m17:29:20.294798 [debug] [Thread-3 (]: Began running node test.footballiq.unique_dim_venue_venue_sk.d080a6133b
+[0m17:29:20.294980 [info ] [Thread-3 (]: 57 of 68 START test unique_dim_venue_venue_sk .................................. [RUN]
+[0m17:29:20.295208 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_dim_player_player_sk.ac32895952, now test.footballiq.unique_dim_venue_venue_sk.d080a6133b)
+[0m17:29:20.295384 [debug] [Thread-3 (]: Began compiling node test.footballiq.unique_dim_venue_venue_sk.d080a6133b
+[0m17:29:20.298848 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.unique_dim_venue_venue_sk.d080a6133b"
+[0m17:29:20.299487 [debug] [Thread-3 (]: Began executing node test.footballiq.unique_dim_venue_venue_sk.d080a6133b
+[0m17:29:20.301509 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.unique_dim_venue_venue_sk.d080a6133b"
+[0m17:29:20.301794 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.013 seconds
+[0m17:29:20.302013 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.013 seconds
+[0m17:29:20.302229 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m17:29:20.303044 [debug] [Thread-4 (]: On test.footballiq.unique_dim_referee_referee_sk.aacc87ff56: ROLLBACK
+[0m17:29:20.303795 [debug] [Thread-1 (]: On test.footballiq.unique_dim_stage_stage_sk.6810ca6f82: ROLLBACK
+[0m17:29:20.304491 [debug] [Thread-2 (]: On test.footballiq.unique_dim_team_team_sk.468bb59338: ROLLBACK
+[0m17:29:20.304756 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.unique_dim_venue_venue_sk.d080a6133b"
+[0m17:29:20.304971 [debug] [Thread-3 (]: On test.footballiq.unique_dim_venue_venue_sk.d080a6133b: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_dim_venue_venue_sk.d080a6133b"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    venue_sk as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."dim_venue"
+where venue_sk is not null
+group by venue_sk
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.305181 [debug] [Thread-1 (]: On test.footballiq.unique_dim_stage_stage_sk.6810ca6f82: Close
+[0m17:29:20.305370 [debug] [Thread-4 (]: On test.footballiq.unique_dim_referee_referee_sk.aacc87ff56: Close
+[0m17:29:20.305552 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.305715 [debug] [Thread-2 (]: On test.footballiq.unique_dim_team_team_sk.468bb59338: Close
+[0m17:29:20.306097 [info ] [Thread-1 (]: 55 of 68 PASS unique_dim_stage_stage_sk ........................................ [[32mPASS[0m in 0.04s]
+[0m17:29:20.306485 [info ] [Thread-4 (]: 54 of 68 PASS unique_dim_referee_referee_sk .................................... [[32mPASS[0m in 0.04s]
+[0m17:29:20.307738 [info ] [Thread-2 (]: 56 of 68 PASS unique_dim_team_team_sk .......................................... [[32mPASS[0m in 0.03s]
+[0m17:29:20.309749 [debug] [Thread-1 (]: Finished running node test.footballiq.unique_dim_stage_stage_sk.6810ca6f82
+[0m17:29:20.310162 [debug] [Thread-4 (]: Finished running node test.footballiq.unique_dim_referee_referee_sk.aacc87ff56
+[0m17:29:20.310511 [debug] [Thread-2 (]: Finished running node test.footballiq.unique_dim_team_team_sk.468bb59338
+[0m17:29:20.310822 [debug] [Thread-1 (]: Began running node test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e
+[0m17:29:20.311396 [debug] [Thread-4 (]: Began running node test.footballiq.unique_fact_match_match_id.96f4009b03
+[0m17:29:20.312051 [debug] [Thread-2 (]: Began running node test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6
+[0m17:29:20.312290 [info ] [Thread-1 (]: 58 of 68 START test unique_fact_match_event_event_sk ........................... [RUN]
+[0m17:29:20.312621 [info ] [Thread-4 (]: 59 of 68 START test unique_fact_match_match_id ................................. [RUN]
+[0m17:29:20.313063 [info ] [Thread-2 (]: 60 of 68 START test unique_fact_player_match_lineup_sk ......................... [RUN]
+[0m17:29:20.313520 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_dim_stage_stage_sk.6810ca6f82, now test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e)
+[0m17:29:20.313950 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_dim_referee_referee_sk.aacc87ff56, now test.footballiq.unique_fact_match_match_id.96f4009b03)
+[0m17:29:20.314245 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_dim_team_team_sk.468bb59338, now test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6)
+[0m17:29:20.314960 [debug] [Thread-1 (]: Began compiling node test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e
+[0m17:29:20.315245 [debug] [Thread-4 (]: Began compiling node test.footballiq.unique_fact_match_match_id.96f4009b03
+[0m17:29:20.315460 [debug] [Thread-2 (]: Began compiling node test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6
+[0m17:29:20.318000 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e"
+[0m17:29:20.320258 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.unique_fact_match_match_id.96f4009b03"
+[0m17:29:20.322408 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6"
+[0m17:29:20.322662 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.017 seconds
+[0m17:29:20.323584 [debug] [Thread-3 (]: On test.footballiq.unique_dim_venue_venue_sk.d080a6133b: ROLLBACK
+[0m17:29:20.323929 [debug] [Thread-1 (]: Began executing node test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e
+[0m17:29:20.324127 [debug] [Thread-2 (]: Began executing node test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6
+[0m17:29:20.324316 [debug] [Thread-3 (]: On test.footballiq.unique_dim_venue_venue_sk.d080a6133b: Close
+[0m17:29:20.325573 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e"
+[0m17:29:20.325756 [debug] [Thread-4 (]: Began executing node test.footballiq.unique_fact_match_match_id.96f4009b03
+[0m17:29:20.327971 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6"
+[0m17:29:20.329524 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.unique_fact_match_match_id.96f4009b03"
+[0m17:29:20.328339 [info ] [Thread-3 (]: 57 of 68 PASS unique_dim_venue_venue_sk ........................................ [[32mPASS[0m in 0.03s]
+[0m17:29:20.330052 [debug] [Thread-3 (]: Finished running node test.footballiq.unique_dim_venue_venue_sk.d080a6133b
+[0m17:29:20.330293 [debug] [Thread-3 (]: Began running node test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9
+[0m17:29:20.330496 [info ] [Thread-3 (]: 61 of 68 START test unique_player_tournament_snapshot_player_sk ................ [RUN]
+[0m17:29:20.330723 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_dim_venue_venue_sk.d080a6133b, now test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9)
+[0m17:29:20.330977 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6"
+[0m17:29:20.331171 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e"
+[0m17:29:20.331349 [debug] [Thread-3 (]: Began compiling node test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9
+[0m17:29:20.331550 [debug] [Thread-2 (]: On test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    lineup_sk as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."fact_player_match"
+where lineup_sk is not null
+group by lineup_sk
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.331810 [debug] [Thread-1 (]: On test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    event_sk as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."fact_match_event"
+where event_sk is not null
+group by event_sk
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.332108 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.unique_fact_match_match_id.96f4009b03"
+[0m17:29:20.334301 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9"
+[0m17:29:20.334529 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.334732 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:20.334925 [debug] [Thread-4 (]: On test.footballiq.unique_fact_match_match_id.96f4009b03: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_fact_match_match_id.96f4009b03"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    match_id as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."fact_match"
+where match_id is not null
+group by match_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.335288 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.335597 [debug] [Thread-3 (]: Began executing node test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9
+[0m17:29:20.336940 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9"
+[0m17:29:20.337374 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9"
+[0m17:29:20.337591 [debug] [Thread-3 (]: On test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    player_sk as unique_field,
+    count(*) as n_records
+
+from "footballiq"."gold"."player_tournament_snapshot"
+where player_sk is not null
+group by player_sk
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.337787 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.345043 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m17:29:20.345340 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m17:29:20.346253 [debug] [Thread-4 (]: On test.footballiq.unique_fact_match_match_id.96f4009b03: ROLLBACK
+[0m17:29:20.346458 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m17:29:20.347229 [debug] [Thread-1 (]: On test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e: ROLLBACK
+[0m17:29:20.347485 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m17:29:20.348681 [debug] [Thread-2 (]: On test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6: ROLLBACK
+[0m17:29:20.348932 [debug] [Thread-4 (]: On test.footballiq.unique_fact_match_match_id.96f4009b03: Close
+[0m17:29:20.349648 [debug] [Thread-3 (]: On test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9: ROLLBACK
+[0m17:29:20.349831 [debug] [Thread-1 (]: On test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e: Close
+[0m17:29:20.350168 [info ] [Thread-4 (]: 59 of 68 PASS unique_fact_match_match_id ....................................... [[32mPASS[0m in 0.04s]
+[0m17:29:20.350458 [info ] [Thread-1 (]: 58 of 68 PASS unique_fact_match_event_event_sk ................................. [[32mPASS[0m in 0.04s]
+[0m17:29:20.350736 [debug] [Thread-4 (]: Finished running node test.footballiq.unique_fact_match_match_id.96f4009b03
+[0m17:29:20.350904 [debug] [Thread-3 (]: On test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9: Close
+[0m17:29:20.351071 [debug] [Thread-2 (]: On test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6: Close
+[0m17:29:20.351326 [debug] [Thread-1 (]: Finished running node test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e
+[0m17:29:20.351558 [debug] [Thread-4 (]: Began running node test.footballiq.unique_silver_match_match_id.cf32a57e17
+[0m17:29:20.352109 [debug] [Thread-1 (]: Began running node test.footballiq.unique_silver_player_player_id.6f931152c1
+[0m17:29:20.351903 [info ] [Thread-3 (]: 61 of 68 PASS unique_player_tournament_snapshot_player_sk ...................... [[32mPASS[0m in 0.02s]
+[0m17:29:20.352382 [info ] [Thread-2 (]: 60 of 68 PASS unique_fact_player_match_lineup_sk ............................... [[32mPASS[0m in 0.04s]
+[0m17:29:20.353095 [debug] [Thread-3 (]: Finished running node test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9
+[0m17:29:20.352612 [info ] [Thread-4 (]: 62 of 68 START test unique_silver_match_match_id ............................... [RUN]
+[0m17:29:20.353394 [debug] [Thread-2 (]: Finished running node test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6
+[0m17:29:20.352795 [info ] [Thread-1 (]: 63 of 68 START test unique_silver_player_player_id ............................. [RUN]
+[0m17:29:20.353624 [debug] [Thread-3 (]: Began running node test.footballiq.unique_silver_referee_referee_id.7bc847a986
+[0m17:29:20.353837 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_fact_match_match_id.96f4009b03, now test.footballiq.unique_silver_match_match_id.cf32a57e17)
+[0m17:29:20.354031 [debug] [Thread-2 (]: Began running node test.footballiq.unique_silver_stage_stage_id.582e5aae43
+[0m17:29:20.354215 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_fact_match_event_event_sk.2c65cdd36e, now test.footballiq.unique_silver_player_player_id.6f931152c1)
+[0m17:29:20.354408 [info ] [Thread-3 (]: 64 of 68 START test unique_silver_referee_referee_id ........................... [RUN]
+[0m17:29:20.354610 [debug] [Thread-4 (]: Began compiling node test.footballiq.unique_silver_match_match_id.cf32a57e17
+[0m17:29:20.354800 [info ] [Thread-2 (]: 65 of 68 START test unique_silver_stage_stage_id ............................... [RUN]
+[0m17:29:20.355050 [debug] [Thread-1 (]: Began compiling node test.footballiq.unique_silver_player_player_id.6f931152c1
+[0m17:29:20.355249 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_player_tournament_snapshot_player_sk.17ffdf5bc9, now test.footballiq.unique_silver_referee_referee_id.7bc847a986)
+[0m17:29:20.357451 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.unique_silver_match_match_id.cf32a57e17"
+[0m17:29:20.357675 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_fact_player_match_lineup_sk.4bb3d5b6b6, now test.footballiq.unique_silver_stage_stage_id.582e5aae43)
+[0m17:29:20.359500 [debug] [Thread-1 (]: Writing injected SQL for node "test.footballiq.unique_silver_player_player_id.6f931152c1"
+[0m17:29:20.359707 [debug] [Thread-3 (]: Began compiling node test.footballiq.unique_silver_referee_referee_id.7bc847a986
+[0m17:29:20.359914 [debug] [Thread-2 (]: Began compiling node test.footballiq.unique_silver_stage_stage_id.582e5aae43
+[0m17:29:20.361868 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.unique_silver_referee_referee_id.7bc847a986"
+[0m17:29:20.363723 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.unique_silver_stage_stage_id.582e5aae43"
+[0m17:29:20.364065 [debug] [Thread-4 (]: Began executing node test.footballiq.unique_silver_match_match_id.cf32a57e17
+[0m17:29:20.365530 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.unique_silver_match_match_id.cf32a57e17"
+[0m17:29:20.365854 [debug] [Thread-1 (]: Began executing node test.footballiq.unique_silver_player_player_id.6f931152c1
+[0m17:29:20.367106 [debug] [Thread-1 (]: Writing runtime sql for node "test.footballiq.unique_silver_player_player_id.6f931152c1"
+[0m17:29:20.367377 [debug] [Thread-3 (]: Began executing node test.footballiq.unique_silver_referee_referee_id.7bc847a986
+[0m17:29:20.369495 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.unique_silver_referee_referee_id.7bc847a986"
+[0m17:29:20.369804 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.unique_silver_match_match_id.cf32a57e17"
+[0m17:29:20.370046 [debug] [Thread-4 (]: On test.footballiq.unique_silver_match_match_id.cf32a57e17: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_silver_match_match_id.cf32a57e17"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    match_id as unique_field,
+    count(*) as n_records
+
+from "footballiq"."silver"."silver_match"
+where match_id is not null
+group by match_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.370261 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.370514 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.unique_silver_referee_referee_id.7bc847a986"
+[0m17:29:20.370719 [debug] [Thread-1 (]: Using postgres connection "test.footballiq.unique_silver_player_player_id.6f931152c1"
+[0m17:29:20.370890 [debug] [Thread-2 (]: Began executing node test.footballiq.unique_silver_stage_stage_id.582e5aae43
+[0m17:29:20.371077 [debug] [Thread-3 (]: On test.footballiq.unique_silver_referee_referee_id.7bc847a986: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_silver_referee_referee_id.7bc847a986"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    referee_id as unique_field,
+    count(*) as n_records
+
+from "footballiq"."silver"."silver_referee"
+where referee_id is not null
+group by referee_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.371286 [debug] [Thread-1 (]: On test.footballiq.unique_silver_player_player_id.6f931152c1: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_silver_player_player_id.6f931152c1"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    player_id as unique_field,
+    count(*) as n_records
+
+from "footballiq"."silver"."silver_player"
+where player_id is not null
+group by player_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.372446 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.unique_silver_stage_stage_id.582e5aae43"
+[0m17:29:20.372649 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.372835 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:29:20.373290 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.unique_silver_stage_stage_id.582e5aae43"
+[0m17:29:20.373485 [debug] [Thread-2 (]: On test.footballiq.unique_silver_stage_stage_id.582e5aae43: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_silver_stage_stage_id.582e5aae43"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    stage_id as unique_field,
+    count(*) as n_records
+
+from "footballiq"."silver"."silver_stage"
+where stage_id is not null
+group by stage_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.373666 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.379158 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.009 seconds
+[0m17:29:20.380104 [debug] [Thread-4 (]: On test.footballiq.unique_silver_match_match_id.cf32a57e17: ROLLBACK
+[0m17:29:20.380755 [debug] [Thread-4 (]: On test.footballiq.unique_silver_match_match_id.cf32a57e17: Close
+[0m17:29:20.381662 [info ] [Thread-4 (]: 62 of 68 PASS unique_silver_match_match_id ..................................... [[32mPASS[0m in 0.03s]
+[0m17:29:20.382268 [debug] [Thread-4 (]: Finished running node test.footballiq.unique_silver_match_match_id.cf32a57e17
+[0m17:29:20.382501 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m17:29:20.382692 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m17:29:20.382990 [debug] [Thread-4 (]: Began running node test.footballiq.unique_silver_team_fifa_code.d96134d5df
+[0m17:29:20.383251 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m17:29:20.384069 [debug] [Thread-1 (]: On test.footballiq.unique_silver_player_player_id.6f931152c1: ROLLBACK
+[0m17:29:20.384778 [debug] [Thread-3 (]: On test.footballiq.unique_silver_referee_referee_id.7bc847a986: ROLLBACK
+[0m17:29:20.385617 [debug] [Thread-2 (]: On test.footballiq.unique_silver_stage_stage_id.582e5aae43: ROLLBACK
+[0m17:29:20.384995 [info ] [Thread-4 (]: 66 of 68 START test unique_silver_team_fifa_code ............................... [RUN]
+[0m17:29:20.385962 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_silver_match_match_id.cf32a57e17, now test.footballiq.unique_silver_team_fifa_code.d96134d5df)
+[0m17:29:20.386182 [debug] [Thread-4 (]: Began compiling node test.footballiq.unique_silver_team_fifa_code.d96134d5df
+[0m17:29:20.388426 [debug] [Thread-4 (]: Writing injected SQL for node "test.footballiq.unique_silver_team_fifa_code.d96134d5df"
+[0m17:29:20.388695 [debug] [Thread-3 (]: On test.footballiq.unique_silver_referee_referee_id.7bc847a986: Close
+[0m17:29:20.388883 [debug] [Thread-2 (]: On test.footballiq.unique_silver_stage_stage_id.582e5aae43: Close
+[0m17:29:20.389412 [debug] [Thread-1 (]: On test.footballiq.unique_silver_player_player_id.6f931152c1: Close
+[0m17:29:20.389826 [debug] [Thread-4 (]: Began executing node test.footballiq.unique_silver_team_fifa_code.d96134d5df
+[0m17:29:20.391208 [debug] [Thread-4 (]: Writing runtime sql for node "test.footballiq.unique_silver_team_fifa_code.d96134d5df"
+[0m17:29:20.389228 [info ] [Thread-3 (]: 64 of 68 PASS unique_silver_referee_referee_id ................................. [[32mPASS[0m in 0.03s]
+[0m17:29:20.391889 [debug] [Thread-3 (]: Finished running node test.footballiq.unique_silver_referee_referee_id.7bc847a986
+[0m17:29:20.392132 [debug] [Thread-3 (]: Began running node test.footballiq.unique_silver_team_team_id.18e6f233d5
+[0m17:29:20.389685 [info ] [Thread-2 (]: 65 of 68 PASS unique_silver_stage_stage_id ..................................... [[32mPASS[0m in 0.03s]
+[0m17:29:20.392658 [debug] [Thread-2 (]: Finished running node test.footballiq.unique_silver_stage_stage_id.582e5aae43
+[0m17:29:20.392835 [debug] [Thread-2 (]: Began running node test.footballiq.unique_silver_venue_venue_id.8068b94ee8
+[0m17:29:20.391604 [info ] [Thread-1 (]: 63 of 68 PASS unique_silver_player_player_id ................................... [[32mPASS[0m in 0.04s]
+[0m17:29:20.393251 [debug] [Thread-4 (]: Using postgres connection "test.footballiq.unique_silver_team_fifa_code.d96134d5df"
+[0m17:29:20.393481 [debug] [Thread-1 (]: Finished running node test.footballiq.unique_silver_player_player_id.6f931152c1
+[0m17:29:20.392322 [info ] [Thread-3 (]: 67 of 68 START test unique_silver_team_team_id ................................. [RUN]
+[0m17:29:20.393727 [debug] [Thread-4 (]: On test.footballiq.unique_silver_team_fifa_code.d96134d5df: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_silver_team_fifa_code.d96134d5df"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    fifa_code as unique_field,
+    count(*) as n_records
+
+from "footballiq"."silver"."silver_team"
+where fifa_code is not null
+group by fifa_code
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.392998 [info ] [Thread-2 (]: 68 of 68 START test unique_silver_venue_venue_id ............................... [RUN]
+[0m17:29:20.394146 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_silver_referee_referee_id.7bc847a986, now test.footballiq.unique_silver_team_team_id.18e6f233d5)
+[0m17:29:20.394344 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:29:20.394533 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.footballiq.unique_silver_stage_stage_id.582e5aae43, now test.footballiq.unique_silver_venue_venue_id.8068b94ee8)
+[0m17:29:20.394739 [debug] [Thread-3 (]: Began compiling node test.footballiq.unique_silver_team_team_id.18e6f233d5
+[0m17:29:20.394993 [debug] [Thread-2 (]: Began compiling node test.footballiq.unique_silver_venue_venue_id.8068b94ee8
+[0m17:29:20.398995 [debug] [Thread-3 (]: Writing injected SQL for node "test.footballiq.unique_silver_team_team_id.18e6f233d5"
+[0m17:29:20.401690 [debug] [Thread-2 (]: Writing injected SQL for node "test.footballiq.unique_silver_venue_venue_id.8068b94ee8"
+[0m17:29:20.402422 [debug] [Thread-3 (]: Began executing node test.footballiq.unique_silver_team_team_id.18e6f233d5
+[0m17:29:20.402628 [debug] [Thread-2 (]: Began executing node test.footballiq.unique_silver_venue_venue_id.8068b94ee8
+[0m17:29:20.404053 [debug] [Thread-3 (]: Writing runtime sql for node "test.footballiq.unique_silver_team_team_id.18e6f233d5"
+[0m17:29:20.405397 [debug] [Thread-2 (]: Writing runtime sql for node "test.footballiq.unique_silver_venue_venue_id.8068b94ee8"
+[0m17:29:20.405685 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m17:29:20.406626 [debug] [Thread-4 (]: On test.footballiq.unique_silver_team_fifa_code.d96134d5df: ROLLBACK
+[0m17:29:20.407011 [debug] [Thread-2 (]: Using postgres connection "test.footballiq.unique_silver_venue_venue_id.8068b94ee8"
+[0m17:29:20.407208 [debug] [Thread-4 (]: On test.footballiq.unique_silver_team_fifa_code.d96134d5df: Close
+[0m17:29:20.407401 [debug] [Thread-3 (]: Using postgres connection "test.footballiq.unique_silver_team_team_id.18e6f233d5"
+[0m17:29:20.407587 [debug] [Thread-2 (]: On test.footballiq.unique_silver_venue_venue_id.8068b94ee8: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_silver_venue_venue_id.8068b94ee8"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    venue_id as unique_field,
+    count(*) as n_records
+
+from "footballiq"."silver"."silver_venue"
+where venue_id is not null
+group by venue_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.407810 [debug] [Thread-3 (]: On test.footballiq.unique_silver_team_team_id.18e6f233d5: /* {"app": "dbt", "dbt_version": "1.12.0b3", "profile_name": "footballiq", "target_name": "local", "node_id": "test.footballiq.unique_silver_team_team_id.18e6f233d5"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    team_id as unique_field,
+    count(*) as n_records
+
+from "footballiq"."silver"."silver_team"
+where team_id is not null
+group by team_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m17:29:20.408219 [info ] [Thread-4 (]: 66 of 68 PASS unique_silver_team_fifa_code ..................................... [[32mPASS[0m in 0.02s]
+[0m17:29:20.408474 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:29:20.408648 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:29:20.408913 [debug] [Thread-4 (]: Finished running node test.footballiq.unique_silver_team_fifa_code.d96134d5df
+[0m17:29:20.417432 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.009 seconds
+[0m17:29:20.418337 [debug] [Thread-3 (]: On test.footballiq.unique_silver_team_team_id.18e6f233d5: ROLLBACK
+[0m17:29:20.418762 [debug] [Thread-3 (]: On test.footballiq.unique_silver_team_team_id.18e6f233d5: Close
+[0m17:29:20.419129 [info ] [Thread-3 (]: 67 of 68 PASS unique_silver_team_team_id ....................................... [[32mPASS[0m in 0.02s]
+[0m17:29:20.419432 [debug] [Thread-3 (]: Finished running node test.footballiq.unique_silver_team_team_id.18e6f233d5
+[0m17:29:20.420002 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m17:29:20.420749 [debug] [Thread-2 (]: On test.footballiq.unique_silver_venue_venue_id.8068b94ee8: ROLLBACK
+[0m17:29:20.421190 [debug] [Thread-2 (]: On test.footballiq.unique_silver_venue_venue_id.8068b94ee8: Close
+[0m17:29:20.421533 [info ] [Thread-2 (]: 68 of 68 PASS unique_silver_venue_venue_id ..................................... [[32mPASS[0m in 0.03s]
+[0m17:29:20.421822 [debug] [Thread-2 (]: Finished running node test.footballiq.unique_silver_venue_venue_id.8068b94ee8
+[0m17:29:20.422912 [debug] [MainThread]: On master: COMMIT
+[0m17:29:20.423100 [debug] [MainThread]: Using postgres connection "master"
+[0m17:29:20.423238 [debug] [MainThread]: On master: COMMIT
+[0m17:29:20.423364 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m17:29:20.430641 [debug] [MainThread]: SQL status: COMMIT in 0.007 seconds
+[0m17:29:20.430894 [debug] [MainThread]: On master: Close
+[0m17:29:20.431129 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:29:20.431344 [debug] [MainThread]: Connection 'test.footballiq.unique_silver_player_player_id.6f931152c1' was properly closed.
+[0m17:29:20.431586 [debug] [MainThread]: Connection 'test.footballiq.unique_silver_venue_venue_id.8068b94ee8' was properly closed.
+[0m17:29:20.431820 [debug] [MainThread]: Connection 'test.footballiq.unique_silver_team_team_id.18e6f233d5' was properly closed.
+[0m17:29:20.431976 [debug] [MainThread]: Connection 'test.footballiq.unique_silver_team_fifa_code.d96134d5df' was properly closed.
+[0m17:29:20.432212 [info ] [MainThread]: 
+[0m17:29:20.432423 [info ] [MainThread]: Finished running 68 data tests in 0 hours 0 minutes and 1.14 seconds (1.14s).
+[0m17:29:20.436281 [debug] [MainThread]: Command end result
+[0m17:29:20.461277 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/zoebalikhan/Library/Application Support/Claude/local-agent-mode-sessions/3e104ed9-b211-4268-bdc8-2f53af750a00/3472f6ed-5b97-47e9-ab2f-e4beefcd2dc8/local_c3136f25-90cf-49dd-b26e-61017581d12f/outputs/footballiq/transform/target/manifest.json
+[0m17:29:20.463453 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/zoebalikhan/Library/Application Support/Claude/local-agent-mode-sessions/3e104ed9-b211-4268-bdc8-2f53af750a00/3472f6ed-5b97-47e9-ab2f-e4beefcd2dc8/local_c3136f25-90cf-49dd-b26e-61017581d12f/outputs/footballiq/transform/target/semantic_manifest.json
+[0m17:29:20.465313 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/zoebalikhan/Library/Application Support/Claude/local-agent-mode-sessions/3e104ed9-b211-4268-bdc8-2f53af750a00/3472f6ed-5b97-47e9-ab2f-e4beefcd2dc8/local_c3136f25-90cf-49dd-b26e-61017581d12f/outputs/footballiq/transform/target/osi_document.json
+[0m17:29:20.472350 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/zoebalikhan/Library/Application Support/Claude/local-agent-mode-sessions/3e104ed9-b211-4268-bdc8-2f53af750a00/3472f6ed-5b97-47e9-ab2f-e4beefcd2dc8/local_c3136f25-90cf-49dd-b26e-61017581d12f/outputs/footballiq/transform/target/run_results.json
+[0m17:29:20.472645 [info ] [MainThread]: 
+[0m17:29:20.472874 [info ] [MainThread]: [33mCompleted with 1 warning:[0m
+[0m17:29:20.473038 [info ] [MainThread]: 
+[0m17:29:20.473265 [warn ] [MainThread]: [[33mWARNING[0m]: in test assert_snapshot_goals_reconcile (tests/assert_snapshot_goals_reconcile.sql)
+[0m17:29:20.473504 [warn ] [MainThread]: [[33mWARNING[0m]: Got 1 result, configured to warn if != 0
+[0m17:29:20.473668 [info ] [MainThread]: 
+[0m17:29:20.473849 [info ] [MainThread]:   compiled code at target/compiled/footballiq/tests/assert_snapshot_goals_reconcile.sql
+[0m17:29:20.474020 [info ] [MainThread]: 
+[0m17:29:20.474198 [info ] [MainThread]: Done. PASS=67 WARN=1 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=68
+[0m17:29:20.477118 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 2.1467745, "process_in_blocks": "0", "process_kernel_time": 0.440862, "process_mem_max_rss": "163446784", "process_out_blocks": "0", "process_user_time": 2.55682}
+[0m17:29:20.477462 [debug] [MainThread]: Command `dbt test` succeeded at 17:29:20.477416 after 2.15 seconds
+[0m17:29:20.477716 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108a77860>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1076493a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107649d30>]}
+[0m17:29:20.477938 [debug] [MainThread]: Flushing usage events
+[0m17:29:21.328952 [debug] [MainThread]: An error was encountered while trying to flush usage events

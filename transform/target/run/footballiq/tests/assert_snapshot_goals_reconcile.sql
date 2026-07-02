@@ -7,10 +7,15 @@
     from (
       
     
-  -- Snapshot vs base facts: per-player goals in the source-precomputed
--- snapshot should match Goal events. WARN severity — on disagreement the
--- base facts win and the discrepancy is investigated, not hidden
--- (physical architecture §3).
+  -- Snapshot vs base facts, per player.
+--
+-- DEFINITION (root-caused 2026-07-02, 9-player investigation): the event log
+-- attributes own goals as 'Goal' events to the scoring player (so match-score
+-- reconciliation sums correctly), while the snapshot separates `goals` from
+-- `own_goals`. Therefore the reconciliation identity is:
+--     snapshot.goals + snapshot.own_goals = count(Goal events)
+-- WARN severity: on a true disagreement, base facts win and the discrepancy
+-- is investigated, not hidden (physical architecture §3).
 
 
 with event_goals as (
@@ -22,11 +27,12 @@ with event_goals as (
 
 select
     s.player_sk,
-    s.goals                              as snapshot_goals,
-    coalesce(e.goals_from_events, 0)     as event_goals
+    s.goals                          as snapshot_goals,
+    s.own_goals                      as snapshot_own_goals,
+    coalesce(e.goals_from_events, 0) as event_goals
 from "footballiq"."gold"."player_tournament_snapshot" as s
 left join event_goals as e on s.player_sk = e.player_sk
-where s.goals != coalesce(e.goals_from_events, 0)
+where s.goals + s.own_goals != coalesce(e.goals_from_events, 0)
   
   
       

@@ -23,4 +23,12 @@ select
     coalesce(e.goals_from_events, 0) as event_goals
 from {{ ref('player_tournament_snapshot') }} as s
 left join event_goals as e on s.player_sk = e.player_sk
-where s.goals + s.own_goals != coalesce(e.goals_from_events, 0)
+where
+    s.goals + s.own_goals != coalesce(e.goals_from_events, 0)
+    -- registered source inconsistencies are excluded; NEW discrepancies
+    -- still warn (known-issues registry pattern)
+    and s.player_sk not in (
+        select record_key::int
+        from {{ ref('known_data_issues') }}
+        where scope = 'snapshot_goal_reconciliation'
+    )

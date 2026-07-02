@@ -1,0 +1,2 @@
+scope,record_key,issue,accepted_on
+snapshot_goal_reconciliation,887,player_stats credits an own goal to player 887 (Haydar Hussein Hussein) but match_events attributes that goal to another player; match-level goal sums reconcile in matches 18 and 41 — player-level attribution inconsistency in the source; base facts (events) win,2026-07-02

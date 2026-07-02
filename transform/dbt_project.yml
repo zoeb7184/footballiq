@@ -5,6 +5,11 @@ profile: footballiq
 model-paths: ["models"]
 macro-paths: ["macros"]
 test-paths: ["tests"]
+seed-paths: ["seeds"]
+
+seeds:
+  footballiq:
+    +schema: silver  # governance/reference data lives with conformed layer
 
 models:
   footballiq:
