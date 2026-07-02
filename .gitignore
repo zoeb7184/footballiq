@@ -15,6 +15,11 @@ venv/
 .coverage
 htmlcov/
 
+# dbt build artifacts
+transform/target/
+transform/logs/
+transform/dbt_packages/
+
 # Environments & secrets — never in git
 .env
 .env.*
