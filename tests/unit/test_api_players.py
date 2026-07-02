@@ -75,7 +75,7 @@ def test_get_player_404_and_auth() -> None:
     assert _client().get("/v1/players").status_code == 401
 
 
-def test_adapter_orders_by_value_and_filters(tmp_path: Path) -> None:
+def test_adapter_orders_by_value_and_filters() -> None:
     engine = create_engine("sqlite://")
     with engine.begin() as conn:
         conn.execute(text(
