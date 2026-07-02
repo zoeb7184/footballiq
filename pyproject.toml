@@ -92,6 +92,7 @@ name = "Clean architecture layers (ADR-0002)"
 type = "layers"
 layers = [
     "footballiq.api",
+    "footballiq.ml",
     "footballiq.infrastructure",
     "footballiq.application",
     "footballiq.domains",

@@ -23,6 +23,9 @@ ingest:         ## Load data/raw CSVs into the bronze layer
 api:            ## Run the API locally (http://localhost:8000/docs)
 	uvicorn footballiq.api.main:create_app --factory --reload
 
+features:       ## Build ML feature tables in gold
+	python -m footballiq.ml features
+
 bi-up:          ## Start Metabase (http://localhost:3000)
 	docker compose up -d bi
 	@echo "Metabase starting — first boot takes ~1-2 min: http://localhost:3000"
