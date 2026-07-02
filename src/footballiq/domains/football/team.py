@@ -16,7 +16,7 @@ class Team(Entity[TeamId]):
 
     __slots__ = ("confederation", "elo_rating", "fifa_code", "fifa_ranking", "name")
 
-    def __init__(
+    def __init__(  # noqa: PLR0913 - master-data attributes are irreducible
         self,
         team_id: TeamId,
         *,

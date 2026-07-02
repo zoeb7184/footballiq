@@ -1,10 +1,10 @@
 """Domain enumerations."""
 
-from enum import Enum, unique
+from enum import StrEnum, unique
 
 
 @unique
-class Position(str, Enum):
+class Position(StrEnum):
     """Player position groups as they appear in the registry."""
 
     GOALKEEPER = "GK"
@@ -14,7 +14,7 @@ class Position(str, Enum):
 
 
 @unique
-class MatchStatus(str, Enum):
+class MatchStatus(StrEnum):
     """Match lifecycle states (accumulating-status fact: forward-only)."""
 
     SCHEDULED = "Scheduled"

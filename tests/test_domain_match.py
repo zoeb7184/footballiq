@@ -11,9 +11,10 @@ from footballiq.domains.football.values import TBD, Score, XgPair
 from footballiq.kernel.errors import InvariantViolation
 
 _KICKOFF = datetime(2026, 6, 11, 19, 0, tzinfo=UTC)
+_DEFAULT_AWAY = TeamId(2)
 
 
-def _fixture(*, away: TeamId | None = TeamId(2), knockout: bool = False) -> Match:
+def _fixture(*, away: TeamId | None = _DEFAULT_AWAY, knockout: bool = False) -> Match:
     return Match(
         MatchId(1),
         home=TeamId(1),

@@ -10,13 +10,13 @@ from types import TracebackType
 from typing import Protocol, TypeVar
 
 TEntity = TypeVar("TEntity")
-IdT = TypeVar("IdT", contravariant=True)
+IdT_contra = TypeVar("IdT_contra", contravariant=True)
 
 
-class Repository(Protocol[TEntity, IdT]):
+class Repository(Protocol[TEntity, IdT_contra]):
     """Collection-like access to entities of one type."""
 
-    def get(self, entity_id: IdT) -> TEntity | None: ...
+    def get(self, entity_id: IdT_contra) -> TEntity | None: ...
 
     def add(self, entity: TEntity) -> None: ...
 
