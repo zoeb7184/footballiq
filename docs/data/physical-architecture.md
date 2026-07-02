@@ -14,7 +14,10 @@
 | gold | Star + serving tables; only layer BI/API/ML read | fact_match, dim_*, features, predictions |
 
 matches_detailed is **bronze-only**: reconciliation fixture (score/row-count
-cross-check vs silver.match) + goalkeeper enrichment. Never in gold.
+cross-check vs silver.match). Never in gold.
+*(Amended per ARB 2026-07-02 finding M1a: the originally planned goalkeeper
+enrichment was superseded — match_lineups provides goalkeepers at better
+grain; the enrichment was never implemented and is formally dropped.)*
 
 ## 2. Warehouse schema
 - **fact_match:** surrogate FKs, degenerate status, nullable measures,

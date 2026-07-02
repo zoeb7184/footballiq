@@ -13,6 +13,8 @@ authors = [{ name = "Zoeb Ali Khan", email = "zoebalikhan00@gmail.com" }]
 dependencies = [
     "sqlalchemy>=2.0",
     "psycopg[binary]>=3.1",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
 ]
 
 [project.optional-dependencies]
@@ -27,6 +29,7 @@ dev = [
     "pre-commit>=3.7",
     "import-linter>=2.0",
     "dbt-postgres>=1.8",
+    "httpx>=0.27",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -73,6 +76,9 @@ addopts = "-q --cov=footballiq --cov-report=term-missing --cov-fail-under=80"
 
 [tool.coverage.run]
 source = ["src/footballiq"]
+# CLI entry-point wrappers excluded (testing-strategy.md: meaningful
+# coverage, not vanity numbers — the wrapped logic is tested directly).
+omit = ["*/__main__.py"]
 
 # ADR-0002 layer rules, mechanically enforced (imports against the arrows fail).
 [tool.importlinter]
