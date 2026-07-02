@@ -101,7 +101,8 @@ def test_contract_violation_in_gold_surfaces_as_500() -> None:
         home_team=_MEXICO, away_team=_RSA, status="Completed",
         home_score=None, away_score=None, home_xg=None, away_xg=None,  # illegal
     )
-    app_client = _client()
-    app_client.app.state.match_queries = MatchQueries(_FakeMatches([broken]))  # type: ignore[attr-defined]
-    resp = app_client.get("/v1/matches/7", headers=_AUTH)
+    client = _client()
+    queries = MatchQueries(_FakeMatches([broken]))
+    client.app.state.match_queries = queries  # type: ignore[attr-defined]
+    resp = client.get("/v1/matches/7", headers=_AUTH)
     assert resp.status_code == 500  # loud, never a silent half-answer
