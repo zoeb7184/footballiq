@@ -38,7 +38,7 @@
 - [Testing strategy](testing-strategy.md) — consolidated; most of it is running code
 
 ## Module reports (delivery record)
-- [00 Foundation](modules/00-foundation.md) · [01 Domain core](modules/01-domain-core.md) · [02 Data platform](modules/02-data-platform.md) · [03 API](modules/03-api.md)
+- [00 Foundation](modules/00-foundation.md) · [01 Domain core](modules/01-domain-core.md) · [02 Data platform](modules/02-data-platform.md) · [03 API](modules/03-api.md) · [04 BI](modules/04-bi.md)
 - Template: [module-report](templates/module-report.md)
 
 ## Reviews

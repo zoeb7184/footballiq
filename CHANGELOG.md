@@ -6,6 +6,20 @@ All notable changes to FootballIQ Enterprise. Format follows
 
 ## [Unreleased]
 
+## [0.4.0] — 2026-07-02
+### Added
+- **Module 4 — BI dashboards (Metabase, ADR-0005):** Executive Squad
+  Overview (KPI cards, value-vs-performance quadrant, rankings, xG
+  over/underperformance) and Talent Valuation Intelligence (age-value
+  curve, top-25, value by position)
+- Metabase compose service connecting as the grant-locked `fiq_api` role
+  (gold-only BI, verified)
+- Versioned KPI SQL catalog (`docs/bi/queries/`) — one truth per KPI,
+  shared BI/API (parity mechanism operational; 76/223 verified live)
+### Changed
+- ADR-0005: Metabase replaces Power BI (macOS constraint); BI design docs
+  annotated, remain tool-portable
+
 ## [0.3.0] — 2026-07-02
 ### Added
 - **Module 3 — FastAPI backend:** query-only read API over gold —

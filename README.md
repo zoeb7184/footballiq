@@ -40,7 +40,7 @@ Local-first runtime, Azure-ready by construction — see
 | 1 | Domain core (entities, value objects) | ✅ |
 | 2 | Data platform: ingestion + medallion warehouse | ✅ |
 | 3 | FastAPI backend | ✅ |
-| 4 | BI dashboards (Metabase, ADR-0005) | ⏳ |
+| 4 | BI dashboards (Metabase, ADR-0005) | ✅ |
 | 5 | ML + explainable AI (SHAP) | ⏳ |
 | 6 | Graph analytics | ⏳ |
 | 7 | LLM + RAG assistant | ⏳ |
