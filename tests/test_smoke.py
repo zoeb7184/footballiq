@@ -3,8 +3,9 @@
 import footballiq
 
 
-def test_package_version() -> None:
-    assert footballiq.__version__ == "0.1.0"
+def test_package_version_is_semver() -> None:
+    major, minor, patch = footballiq.__version__.split(".")
+    assert all(part.isdigit() for part in (major, minor, patch))
 
 
 def test_layer_packages_import() -> None:

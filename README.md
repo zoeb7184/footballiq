@@ -49,8 +49,15 @@ Local-first runtime, Azure-ready by construction — see
 
 ```bash
 make install   # package + dev tooling + pre-commit hooks
-make check     # lint + strict type-check + tests (the CI gate)
+make check     # lint + strict type-check + import-linter + tests (the CI gate)
+make db-up     # warehouse (Postgres via docker compose)
+make pipeline  # bronze ingestion -> dbt silver/gold -> 68 data contracts
 ```
+
+**Data setup:** datasets are never committed (see `.gitignore`). Place the
+FIFA World Cup 2026 CSVs (Kaggle) into `data/raw/` before running
+`make pipeline` — the 11 expected files are declared in
+`src/footballiq/infrastructure/ingestion/manifest.py`.
 
 ## Documentation
 

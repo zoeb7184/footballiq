@@ -5,4 +5,4 @@ swap `domains/football` and the ingestion adapters to serve manufacturing,
 finance, healthcare, logistics, or retail.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
