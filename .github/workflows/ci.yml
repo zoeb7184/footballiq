@@ -10,6 +10,19 @@ on:
 jobs:
   quality:
     runs-on: ubuntu-latest
+    services:
+      postgres:  # ARB H1: integration tests run against real Postgres
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: fiq
+          POSTGRES_PASSWORD: fiq_ci
+          POSTGRES_DB: footballiq_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U fiq -d footballiq_test"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+    env:
+      FIQ_TEST_DATABASE_URL: postgresql+psycopg://fiq:fiq_ci@localhost:5432/footballiq_test
     steps:
       - uses: actions/checkout@v4
 
