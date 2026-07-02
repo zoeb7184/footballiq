@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping
-
 from sqlalchemy import Engine, text
+from sqlalchemy.engine import RowMapping
 
 from footballiq.application.read_models import TeamReadModel, TeamRecord
 
@@ -14,7 +13,7 @@ _COLUMNS = (
 )
 
 
-def _record(row: Mapping[str, object]) -> TeamRecord:
+def _record(row: RowMapping) -> TeamRecord:
     return TeamRecord(
         team_id=int(str(row["team_id_nat"])),
         name=str(row["team_name"]),
