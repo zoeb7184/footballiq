@@ -42,39 +42,46 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('dim_team')
-              field: team_sk
+              arguments:
+                to: ref('dim_team')
+                field: team_sk
       - name: away_team_sk
         tests:
           - not_null   # never null in gold — TBD/Unknown are members
           - relationships:
-              to: ref('dim_team')
-              field: team_sk
+              arguments:
+                to: ref('dim_team')
+                field: team_sk
       - name: stage_sk
         tests:
           - relationships:
-              to: ref('dim_stage')
-              field: stage_sk
+              arguments:
+                to: ref('dim_stage')
+                field: stage_sk
       - name: venue_sk
         tests:
           - relationships:
-              to: ref('dim_venue')
-              field: venue_sk
+              arguments:
+                to: ref('dim_venue')
+                field: venue_sk
       - name: referee_sk
         tests:
           - relationships:
-              to: ref('dim_referee')
-              field: referee_sk
+              arguments:
+                to: ref('dim_referee')
+                field: referee_sk
       - name: player_of_match_sk
         tests:
           - relationships:
-              to: ref('dim_player')
-              field: player_sk
+              arguments:
+                to: ref('dim_player')
+                field: player_sk
       - name: date_key
         tests:
           - relationships:
-              to: ref('dim_date')
-              field: date_key
+              arguments:
+                to: ref('dim_date')
+                field: date_key
 
   - name: fact_match_event
     columns:
@@ -88,8 +95,9 @@ models:
       - name: player_sk
         tests:
           - relationships:
-              to: ref('dim_player')
-              field: player_sk
+              arguments:
+                to: ref('dim_player')
+                field: player_sk
 
   - name: fact_match_team_stats
     description: >
@@ -99,8 +107,9 @@ models:
       - name: team_sk
         tests:
           - relationships:
-              to: ref('dim_team')
-              field: team_sk
+              arguments:
+                to: ref('dim_team')
+                field: team_sk
 
   - name: fact_player_match
     columns:
@@ -109,8 +118,9 @@ models:
       - name: player_sk
         tests:
           - relationships:
-              to: ref('dim_player')
-              field: player_sk
+              arguments:
+                to: ref('dim_player')
+                field: player_sk
 
   - name: player_tournament_snapshot
     columns:
@@ -119,5 +129,6 @@ models:
           - unique
           - not_null
           - relationships:
-              to: ref('dim_player')
-              field: player_sk
+              arguments:
+                to: ref('dim_player')
+                field: player_sk

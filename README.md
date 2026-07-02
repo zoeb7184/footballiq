@@ -36,7 +36,7 @@ Local-first runtime, Azure-ready by construction — see
 |---|---|---|
 | 0 | Foundation: scaffold, ADRs, quality gates | ✅ |
 | 1 | Domain core (entities, value objects) | ✅ |
-| 2 | Data platform: ingestion + medallion warehouse | ⏳ |
+| 2 | Data platform: ingestion + medallion warehouse | ✅ |
 | 3 | FastAPI backend | ⏳ |
 | 4 | Power BI dashboards | ⏳ |
 | 5 | ML + explainable AI (SHAP) | ⏳ |

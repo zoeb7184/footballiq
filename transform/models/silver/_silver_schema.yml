@@ -41,8 +41,9 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('silver_team')
-              field: team_id
+              arguments:
+                to: ref('silver_team')
+                field: team_id
 
   - name: silver_match
     description: Contract-clean matches (violations -> quarantine_match).
@@ -59,27 +60,32 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('silver_team')
-              field: team_id
+              arguments:
+                to: ref('silver_team')
+                field: team_id
       - name: away_team_id
         tests:
           - relationships:   # nullable: TBD knockout slot is legal
-              to: ref('silver_team')
-              field: team_id
+              arguments:
+                to: ref('silver_team')
+                field: team_id
       - name: stage_id
         tests:
           - not_null
           - relationships:
-              to: ref('silver_stage')
-              field: stage_id
+              arguments:
+                to: ref('silver_stage')
+                field: stage_id
       - name: venue_id
         tests:
           - not_null
           - relationships:
-              to: ref('silver_venue')
-              field: venue_id
+              arguments:
+                to: ref('silver_venue')
+                field: venue_id
       - name: referee_id
         tests:
           - relationships:
-              to: ref('silver_referee')
-              field: referee_id
+              arguments:
+                to: ref('silver_referee')
+                field: referee_id
