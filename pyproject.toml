@@ -10,7 +10,10 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Zoeb Ali Khan", email = "zoebalikhan00@gmail.com" }]
-dependencies = []
+dependencies = [
+    "sqlalchemy>=2.0",
+    "psycopg[binary]>=3.1",
+]
 
 [project.optional-dependencies]
 dev = [

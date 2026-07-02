@@ -1,0 +1,22 @@
+# FootballIQ Enterprise — local runtime (ADR-0003: local-first, Azure-ready)
+services:
+  warehouse:
+    image: postgres:16-alpine
+    container_name: fiq-warehouse
+    environment:
+      POSTGRES_USER: fiq
+      POSTGRES_PASSWORD: fiq_local_dev  # local dev only; Key Vault in Azure (ADR-0003)
+      POSTGRES_DB: footballiq
+    ports:
+      - "5432:5432"
+    volumes:
+      - warehouse_data:/var/lib/postgresql/data
+      - ./infra/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fiq -d footballiq"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  warehouse_data:

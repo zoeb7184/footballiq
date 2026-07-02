@@ -1,5 +1,16 @@
 # FootballIQ Enterprise — developer commands (single entry point, mirrored in CI)
-.PHONY: install lint format typecheck test check
+.PHONY: install lint format typecheck test check db-up db-down ingest
+
+db-up:          ## Start the warehouse (Postgres via docker compose)
+	docker compose up -d warehouse
+	@until docker compose exec warehouse pg_isready -U fiq -d footballiq -q; do sleep 1; done
+	@echo "warehouse ready"
+
+db-down:        ## Stop the warehouse (data volume preserved)
+	docker compose down
+
+ingest:         ## Load data/raw CSVs into the bronze layer
+	python -m footballiq.infrastructure.ingestion
 
 install:        ## Install package + dev tooling
 	pip install -e ".[dev]"
