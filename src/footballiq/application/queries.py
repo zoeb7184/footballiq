@@ -8,6 +8,9 @@ from footballiq.application.read_models import (
     MatchReadModel,
     MatchRecord,
     Page,
+    PlayerFilter,
+    PlayerReadModel,
+    PlayerRecord,
     TeamReadModel,
     TeamRecord,
 )
@@ -61,3 +64,28 @@ class MatchQueries:
 
     def get_match(self, match_id: int) -> MatchRecord | None:
         return self._matches.get_match(match_id)
+
+
+@dataclass(frozen=True, slots=True)
+class PlayerPage:
+    """A page of players with its envelope."""
+
+    items: list[PlayerRecord]
+    page: Page
+
+
+class PlayerQueries:
+    """User intents over the player registry."""
+
+    def __init__(self, read_model: PlayerReadModel) -> None:
+        self._players = read_model
+
+    def list_players(
+        self, *, limit: int, offset: int, filters: PlayerFilter
+    ) -> PlayerPage:
+        items = self._players.list_players(limit=limit, offset=offset, filters=filters)
+        total = self._players.count_players(filters=filters)
+        return PlayerPage(items=items, page=Page(total=total, limit=limit, offset=offset))
+
+    def get_player(self, player_id: int) -> PlayerRecord | None:
+        return self._players.get_player(player_id)

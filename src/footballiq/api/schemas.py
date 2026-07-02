@@ -11,7 +11,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field
 
-from footballiq.application.read_models import MatchRecord, TeamRecord
+from footballiq.application.read_models import MatchRecord, PlayerRecord, TeamRecord
 
 
 class TeamResponse(BaseModel):
@@ -99,6 +99,51 @@ class CompletedMatch(_MatchBase):
 
 
 MatchOut = Annotated[ScheduledMatch | CompletedMatch, Field(discriminator="status")]
+
+
+class PlayerResponse(BaseModel):
+    """One registered player with national-team context.
+
+    market_value_eur is the source snapshot (the valuation label); model
+    valuations arrive as separate prediction endpoints in Module 5.
+    """
+
+    player_id: int
+    name: str
+    position: str
+    club: str
+    market_value_eur: int
+    caps: int
+    international_goals: int
+    date_of_birth: str
+    height_cm: int
+    team: TeamRef
+
+    @classmethod
+    def from_record(cls, rec: PlayerRecord) -> PlayerResponse:
+        return cls(
+            player_id=rec.player_id,
+            name=rec.name,
+            position=rec.position,
+            club=rec.club,
+            market_value_eur=rec.market_value_eur,
+            caps=rec.caps,
+            international_goals=rec.international_goals,
+            date_of_birth=rec.date_of_birth,
+            height_cm=rec.height_cm,
+            team=TeamRef(
+                team_id=rec.team.team_id, name=rec.team.name, fifa_code=rec.team.fifa_code
+            ),
+        )
+
+
+class PlayerListResponse(BaseModel):
+    """Paginated player registry (default order: market value, descending)."""
+
+    items: list[PlayerResponse]
+    total: int
+    limit: int
+    offset: int
 
 
 class MatchListResponse(BaseModel):

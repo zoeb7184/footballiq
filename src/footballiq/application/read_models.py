@@ -85,3 +85,39 @@ class MatchReadModel(Protocol):
     def count_matches(self, *, status: str | None) -> int: ...
 
     def get_match(self, match_id: int) -> MatchRecord | None: ...
+
+
+@dataclass(frozen=True, slots=True)
+class PlayerRecord:
+    """One player from gold.dim_player with national-team context."""
+
+    player_id: int
+    name: str
+    position: str
+    club: str
+    market_value_eur: int
+    caps: int
+    international_goals: int
+    date_of_birth: str  # ISO date; age derived by consumers at query time
+    height_cm: int
+    team: TeamSide
+
+
+@dataclass(frozen=True, slots=True)
+class PlayerFilter:
+    """Optional catalog filters."""
+
+    team_id: int | None = None
+    position: str | None = None
+
+
+class PlayerReadModel(Protocol):
+    """Gold-backed access to the player registry."""
+
+    def list_players(
+        self, *, limit: int, offset: int, filters: PlayerFilter
+    ) -> list[PlayerRecord]: ...
+
+    def count_players(self, *, filters: PlayerFilter) -> int: ...
+
+    def get_player(self, player_id: int) -> PlayerRecord | None: ...
