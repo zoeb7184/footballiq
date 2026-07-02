@@ -16,13 +16,17 @@ from footballiq.ml.registry import VALUATION_FEATURE_VERSION
 _TOURNAMENT_START = "2026-06-11"
 
 # Dialect-specific age expression (PG for production, SQLite for tests).
+# Calendar-exact (birthday boundary), matching domain Player.age_at —
+# never days/365.25, which miscounts across leap-day distributions.
 _AGE_EXPR = {
     "postgresql": (
         f"date_part('year', age(DATE '{_TOURNAMENT_START}', p.date_of_birth))"
     ),
     "sqlite": (
-        f"CAST((julianday('{_TOURNAMENT_START}') - julianday(p.date_of_birth))"
-        " / 365.25 AS INTEGER)"
+        f"CAST(strftime('%Y', '{_TOURNAMENT_START}') AS INTEGER)"
+        " - CAST(strftime('%Y', p.date_of_birth) AS INTEGER)"
+        f" - (CASE WHEN strftime('%m-%d', '{_TOURNAMENT_START}')"
+        " < strftime('%m-%d', p.date_of_birth) THEN 1 ELSE 0 END)"
     ),
 }
 

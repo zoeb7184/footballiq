@@ -84,7 +84,8 @@ def test_builder_semantics_on_sqlite_star() -> None:
     # per-90 math: 2 goals in 180 min -> 1.0 per 90
     assert p1["goals_p90"] == 1.0
     assert p1["low_minutes_flag"] == 0
-    assert p1["age_years"] == 26  # born 2000-06-11, reference 2026-06-11
+    assert p1["age_years"] == 26  # born 2000-06-11: birthday IS the reference day
+    assert p3["age_years"] == 35  # born 1990-12-31: birthday not yet reached in 2026
 
     # shrinkage: p2 (<90 min) inherits FWD position mean (only p1 qualifies)
     assert p2["low_minutes_flag"] == 1
