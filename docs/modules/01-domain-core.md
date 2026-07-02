@@ -33,9 +33,11 @@ referee, match (lifecycle aggregate).
 19 invariant paths: kernel identity/result semantics; match lifecycle
 (structural nulls, forward-only, knockout draw ban, TBD resolve→complete,
 self-play ban); player/team/venue invariants; birthday-boundary age cases.
-Sandbox verification: full functional smoke (PyPI unavailable in-session);
-authoritative gate = `make check` on host (ruff, mypy strict, import-linter,
-pytest).
+**Validated 2026-07-02 on host (Python 3.12.10):** ruff clean, mypy strict
+clean (18 files), import-linter contract KEPT, 23/23 tests passed. First gate
+run surfaced 10 lint findings (StrEnum migration, TypeVar naming, fixture
+default, test-scoped ignores) — all fixed same-day; coverage gaps in
+master-data entities filled with dedicated tests.
 
 ## 6. Future improvements
 - Domain events (kernel has no event plumbing yet — added when a consumer exists)
