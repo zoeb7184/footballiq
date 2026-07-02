@@ -4,7 +4,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from footballiq.application.read_models import Page, TeamReadModel, TeamRecord
+from footballiq.application.read_models import (
+    MatchReadModel,
+    MatchRecord,
+    Page,
+    TeamReadModel,
+    TeamRecord,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -30,3 +36,28 @@ class TeamQueries:
 
     def get_team(self, team_id: int) -> TeamRecord | None:
         return self._teams.get_team(team_id)
+
+
+@dataclass(frozen=True, slots=True)
+class MatchPage:
+    """A page of matches with its envelope."""
+
+    items: list[MatchRecord]
+    page: Page
+
+
+class MatchQueries:
+    """User intents over the match ledger."""
+
+    def __init__(self, read_model: MatchReadModel) -> None:
+        self._matches = read_model
+
+    def list_matches(
+        self, *, limit: int, offset: int, status: str | None = None
+    ) -> MatchPage:
+        items = self._matches.list_matches(limit=limit, offset=offset, status=status)
+        total = self._matches.count_matches(status=status)
+        return MatchPage(items=items, page=Page(total=total, limit=limit, offset=offset))
+
+    def get_match(self, match_id: int) -> MatchRecord | None:
+        return self._matches.get_match(match_id)

@@ -41,3 +41,47 @@ class TeamReadModel(Protocol):
     def count_teams(self) -> int: ...
 
     def get_team(self, team_id: int) -> TeamRecord | None: ...
+
+
+@dataclass(frozen=True, slots=True)
+class MatchRecord:
+    """One match from the star (fact_match + conformed dims).
+
+    away_team is None when the away slot is a reserved member — the DTO
+    layer renders that as an explicit TBD state, never a null.
+    """
+
+    match_id: int
+    match_date: str  # ISO date
+    kickoff_utc: str  # HH:MM
+    stage_name: str
+    is_knockout: bool
+    venue_name: str
+    home_team: TeamSide
+    away_team: TeamSide | None
+    status: str
+    home_score: int | None
+    away_score: int | None
+    home_xg: float | None
+    away_xg: float | None
+
+
+@dataclass(frozen=True, slots=True)
+class TeamSide:
+    """Minimal team reference embedded in a match."""
+
+    team_id: int
+    name: str
+    fifa_code: str
+
+
+class MatchReadModel(Protocol):
+    """Gold-backed access to the match ledger."""
+
+    def list_matches(
+        self, *, limit: int, offset: int, status: str | None
+    ) -> list[MatchRecord]: ...
+
+    def count_matches(self, *, status: str | None) -> int: ...
+
+    def get_match(self, match_id: int) -> MatchRecord | None: ...
