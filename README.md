@@ -39,7 +39,7 @@ Local-first runtime, Azure-ready by construction — see
 | 0 | Foundation: scaffold, ADRs, quality gates | ✅ |
 | 1 | Domain core (entities, value objects) | ✅ |
 | 2 | Data platform: ingestion + medallion warehouse | ✅ |
-| 3 | FastAPI backend | ⏳ |
+| 3 | FastAPI backend | ✅ |
 | 4 | Power BI dashboards | ⏳ |
 | 5 | ML + explainable AI (SHAP) | ⏳ |
 | 6 | Graph analytics | ⏳ |
@@ -60,6 +60,12 @@ make pipeline  # bronze ingestion -> dbt silver/gold -> 68 data contracts
 FIFA World Cup 2026 CSVs (Kaggle) into `data/raw/` before running
 `make pipeline` — the 11 expected files are declared in
 `src/footballiq/infrastructure/ingestion/manifest.py`.
+
+**Try the API:** `cp .env.example .env && make api`, then open
+http://localhost:8000/docs and authorize with the dev key `dev-local-key`.
+Look at `GET /v1/matches/89`: a scheduled knockout fixture has no score
+field at all, and its undetermined opponent is an explicit typed state —
+the data contract, visible in raw JSON.
 
 ## Documentation
 

@@ -38,8 +38,11 @@
 - [Testing strategy](testing-strategy.md) — consolidated; most of it is running code
 
 ## Module reports (delivery record)
-- [00 Foundation](modules/00-foundation.md) · [01 Domain core](modules/01-domain-core.md) · [02 Data platform](modules/02-data-platform.md)
+- [00 Foundation](modules/00-foundation.md) · [01 Domain core](modules/01-domain-core.md) · [02 Data platform](modules/02-data-platform.md) · [03 API](modules/03-api.md)
 - Template: [module-report](templates/module-report.md)
+
+## Reviews
+- [Architecture Review Board — 2026-07-02](reviews/2026-07-02-architecture-review.md)
 
 ## Deliberately absent (owned by future modules)
 API reference (M3, auto-generated) · model cards (M5) · dashboard guide
