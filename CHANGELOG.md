@@ -5,6 +5,21 @@ All notable changes to FootballIQ Enterprise. Format follows
 (0.x = pre-stable; minor = completed module group).
 
 ## [Unreleased]
+### Added
+- **M5 Slice 3 — SHAP batch scoring (XAI design §§2-4):** `make score`
+  loads `gold.prediction_player_valuation` (predicted_value_eur,
+  value_gap_eur = predicted − market, denormalized top-k SHAP payload) and
+  `gold.explanation_player_valuation` (long format: player × feature,
+  shap_log canonical, multiplicative_factor = exp(φ), rank, baseline) in one
+  atomic transaction — an explanation cannot exist without its prediction
+- TreeSHAP via the booster's own `pred_contribs` in log1p space (the
+  trainer's fit space), so `base + Σφ` reconstructs the model margin exactly
+- **Write-time additivity invariant:** an independently computed margin must
+  equal `base + Σφ` within tolerance for every player, or the whole load is
+  refused (`ScoringAdditivityError`)
+- Registry getter `load_production_model` pins each scoring run to the served
+  model_version + feature_version; a feature-table version mismatch fails
+  fast (`FeatureVersionMismatch`) before any scoring
 
 ## [0.4.0] — 2026-07-02
 ### Added

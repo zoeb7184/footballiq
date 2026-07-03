@@ -73,6 +73,7 @@ def _synthetic(n: int = 240, teams: int = 12) -> Dataset:
         x=x, y_eur=y,
         groups=np.repeat(np.arange(teams, dtype=np.float64), n // teams),
         positions=positions, player_sks=list(range(n)),
+        feature_version="1.0.0",
     )
 
 

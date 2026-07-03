@@ -1,5 +1,5 @@
 # FootballIQ Enterprise — developer commands (single entry point, mirrored in CI)
-.PHONY: install lint format typecheck test check db-up db-down ingest transform dbt-test pipeline
+.PHONY: install lint format typecheck test check db-up db-down ingest transform dbt-test pipeline api features train score bi-up
 
 transform:      ## Build silver/gold models (dbt)
 	cd transform && dbt run --profiles-dir .
@@ -28,6 +28,9 @@ features:       ## Build ML feature tables in gold
 
 train:          ## Train valuation model (baselines + gate + registry)
 	python -m footballiq.ml train-valuation
+
+score:          ## Batch-score all players + SHAP explanations into gold
+	python -m footballiq.ml score-valuation
 
 bi-up:          ## Start Metabase (http://localhost:3000)
 	docker compose up -d bi

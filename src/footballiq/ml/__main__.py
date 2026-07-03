@@ -1,4 +1,4 @@
-"""ML batch CLI: `python -m footballiq.ml <features|train-valuation>`."""
+"""ML batch CLI: `python -m footballiq.ml <features|train-valuation|score-valuation>`."""
 
 from __future__ import annotations
 
@@ -28,7 +28,20 @@ def main(args: list[str]) -> int:
         print(json.dumps(metrics, indent=2))
         print("gate PASSED — model registered as production")
         return 0
-    print("usage: python -m footballiq.ml <features|train-valuation>")
+    if args == ["score-valuation"]:
+        from footballiq.ml.scoring import run_scoring
+
+        run = run_scoring(engine)
+        print(
+            f"gold.prediction_player_valuation: {run.n_predictions} rows; "
+            f"gold.explanation_player_valuation: {run.n_explanations} rows "
+            f"(model v{run.model_version}, features v{run.feature_version})"
+        )
+        return 0
+    print(
+        "usage: python -m footballiq.ml "
+        "<features|train-valuation|score-valuation>"
+    )
     return 2
 
 

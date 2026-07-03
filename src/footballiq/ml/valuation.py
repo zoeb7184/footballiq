@@ -60,6 +60,7 @@ class Dataset:
     groups: FloatArray
     positions: list[str]
     player_sks: list[int]
+    feature_version: str
 
 
 def load_dataset(engine: Engine, *, schema: str | None = "gold") -> Dataset:
@@ -91,6 +92,7 @@ def load_dataset(engine: Engine, *, schema: str | None = "gold") -> Dataset:
         groups=np.array([float(str(r["team_sk"])) for r in rows]),
         positions=positions,
         player_sks=[int(str(r["player_sk"])) for r in rows],
+        feature_version=VALUATION_FEATURE_VERSION,
     )
 
 

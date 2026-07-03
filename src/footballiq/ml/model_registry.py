@@ -10,9 +10,20 @@ from __future__ import annotations
 import json
 import subprocess
 import uuid
+from dataclasses import dataclass
 from datetime import UTC, datetime
 
 from sqlalchemy import Engine, text
+
+
+@dataclass(frozen=True, slots=True)
+class ProductionModel:
+    """The lineage a scoring run needs to load and pin the served model."""
+
+    model_id: str
+    version: str
+    feature_version: str
+    artifact_path: str
 
 _DDL = """
 CREATE TABLE IF NOT EXISTS {p}model_registry (
@@ -86,3 +97,33 @@ def register_production_model(  # noqa: PLR0913 - full lineage is the point
             },
         )
     return model_id
+
+
+class NoProductionModel(RuntimeError):
+    """No model is in production for the requested task — score run cannot start."""
+
+
+def load_production_model(
+    engine: Engine, *, task: str, schema: str | None = "gold"
+) -> ProductionModel:
+    """The single production model for a task; its version + feature_version pin
+    every prediction and explanation written against it."""
+    p = f"{schema}." if schema else ""
+    with engine.connect() as conn:
+        row = conn.execute(
+            text(
+                f"SELECT model_id, version, feature_version, artifact_path "
+                f"FROM {p}model_registry "
+                "WHERE task = :task AND status = 'production'"
+            ),
+            {"task": task},
+        ).one_or_none()
+    if row is None:
+        msg = f"no production model for task {task!r} — run `make train` first"
+        raise NoProductionModel(msg)
+    return ProductionModel(
+        model_id=str(row[0]),
+        version=str(row[1]),
+        feature_version=str(row[2]),
+        artifact_path=str(row[3]),
+    )
