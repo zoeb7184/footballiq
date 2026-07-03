@@ -121,3 +121,83 @@ class PlayerReadModel(Protocol):
     def count_players(self, *, filters: PlayerFilter) -> int: ...
 
     def get_player(self, player_id: int) -> PlayerRecord | None: ...
+
+
+@dataclass(frozen=True, slots=True)
+class ShapContribution:
+    """One feature's SHAP attribution for a player (XAI design §3).
+
+    shap_log is canonical (additive in log1p space); multiplicative_factor =
+    exp(shap_log) is the display form ("caps: x1.6"). rank is by |shap_log|.
+    """
+
+    feature_name: str
+    feature_value: float
+    shap_log: float
+    multiplicative_factor: float
+    rank: int
+
+
+@dataclass(frozen=True, slots=True)
+class ValuationRecord:
+    """A player's model valuation from gold.prediction_player_valuation.
+
+    Carries its full provenance (model_version, feature_version, scored_at):
+    every rendered valuation must show what produced it (XAI design §6).
+    top_k is the denormalized headline attribution for one-call reads.
+    """
+
+    player_id: int
+    name: str
+    position: str
+    market_value_eur: int
+    predicted_value_eur: float
+    value_gap_eur: float
+    model_version: str
+    feature_version: str
+    scored_at: str
+    top_k: list[ShapContribution]
+
+
+@dataclass(frozen=True, slots=True)
+class ExplanationRecord:
+    """The full SHAP breakdown for one player (all features, long format).
+
+    baseline_log is the model's expected log1p value; baseline_log + sum of
+    contributions' shap_log reconstructs log1p(predicted_value_eur) — the
+    additivity invariant enforced at scoring time (XAI design §4).
+    """
+
+    player_id: int
+    name: str
+    position: str
+    market_value_eur: int
+    predicted_value_eur: float
+    value_gap_eur: float
+    baseline_log: float
+    model_version: str
+    feature_version: str
+    scored_at: str
+    contributions: list[ShapContribution]
+
+
+@dataclass(frozen=True, slots=True)
+class ValuationFilter:
+    """Sort controls for the valuation shortlist (scout story 1)."""
+
+    sort: str = "value_gap"      # value_gap | predicted_value | market_value
+    descending: bool = True
+
+
+class ValuationReadModel(Protocol):
+    """Gold-backed access to model valuations and their explanations."""
+
+    def list_valuations(
+        self, *, limit: int, offset: int, filters: ValuationFilter
+    ) -> list[ValuationRecord]: ...
+
+    def count_valuations(self) -> int: ...
+
+    def get_valuation(self, player_id: int) -> ValuationRecord | None: ...
+
+    def get_explanation(self, player_id: int) -> ExplanationRecord | None: ...

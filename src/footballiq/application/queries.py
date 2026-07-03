@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from footballiq.application.read_models import (
+    ExplanationRecord,
     MatchReadModel,
     MatchRecord,
     Page,
@@ -13,7 +14,12 @@ from footballiq.application.read_models import (
     PlayerRecord,
     TeamReadModel,
     TeamRecord,
+    ValuationFilter,
+    ValuationReadModel,
+    ValuationRecord,
 )
+
+_VALUATION_SORTS = frozenset({"value_gap", "predicted_value", "market_value"})
 
 
 @dataclass(frozen=True, slots=True)
@@ -89,3 +95,43 @@ class PlayerQueries:
 
     def get_player(self, player_id: int) -> PlayerRecord | None:
         return self._players.get_player(player_id)
+
+
+class UnknownSortError(ValueError):
+    """Requested a sort column the valuation shortlist doesn't support."""
+
+
+@dataclass(frozen=True, slots=True)
+class ValuationPage:
+    """A page of valuations with its envelope."""
+
+    items: list[ValuationRecord]
+    page: Page
+
+
+class ValuationQueries:
+    """User intents over model valuations and their SHAP explanations."""
+
+    def __init__(self, read_model: ValuationReadModel) -> None:
+        self._valuations = read_model
+
+    def list_valuations(
+        self, *, limit: int, offset: int, sort: str, descending: bool
+    ) -> ValuationPage:
+        if sort not in _VALUATION_SORTS:
+            msg = f"unknown sort {sort!r}; allowed: {sorted(_VALUATION_SORTS)}"
+            raise UnknownSortError(msg)
+        filters = ValuationFilter(sort=sort, descending=descending)
+        items = self._valuations.list_valuations(
+            limit=limit, offset=offset, filters=filters
+        )
+        total = self._valuations.count_valuations()
+        return ValuationPage(
+            items=items, page=Page(total=total, limit=limit, offset=offset)
+        )
+
+    def get_valuation(self, player_id: int) -> ValuationRecord | None:
+        return self._valuations.get_valuation(player_id)
+
+    def get_explanation(self, player_id: int) -> ExplanationRecord | None:
+        return self._valuations.get_explanation(player_id)

@@ -5,7 +5,24 @@ All notable changes to FootballIQ Enterprise. Format follows
 (0.x = pre-stable; minor = completed module group).
 
 ## [Unreleased]
+
+## [0.5.0] — 2026-07-04
 ### Added
+- **Module 5 — ML + explainable AI (SHAP):** cross-sectional player valuation
+  model with per-player SHAP explanations, served as prediction-as-data. Four
+  vertical slices — feature store, gated trainer, batch scoring, serving —
+  each with tests and lineage. Honest metrics reported as-is (RMSLE 0.937 vs
+  0.942 linear / 1.698 median; MdAPE ~50%; ~20% within +/-20%).
+- **M5 Slice 4 — valuation serving (ML design §9):** `GET /v1/valuations`
+  (sortable by value_gap / predicted_value / market_value — value_gap desc is
+  the scout shortlist), `GET /v1/players/{id}/valuation` (headline top-k),
+  `GET /v1/players/{id}/valuation/explanation` (full breakdown + baseline).
+  Every response carries model_version + feature_version + scored_at and an
+  accuracy note; unscored/unknown player is an explicit 404, never a fake value
+- Readiness now requires a scoring run: `/ready` reports not-ready (503) until
+  `gold.prediction_player_valuation` is populated (`make score`)
+- Dashboard 2 value-gap SQL catalog: shortlist, gap-by-position, and a
+  per-player SHAP tornado/bridge drill-through query
 - **M5 Slice 3 — SHAP batch scoring (XAI design §§2-4):** `make score`
   loads `gold.prediction_player_valuation` (predicted_value_eur,
   value_gap_eur = predicted − market, denormalized top-k SHAP payload) and

@@ -65,13 +65,32 @@ def test_gold_probe_reports_unreachable_warehouse() -> None:
     assert "unreachable" in report.failures[0]
 
 
-def test_gold_probe_requires_populated_fact_match() -> None:
+def test_gold_probe_requires_populated_fact_match_and_scoring() -> None:
     engine = create_engine("sqlite://")
     with engine.begin() as conn:
         conn.execute(text("CREATE TABLE fact_match (match_id INTEGER)"))
+        conn.execute(text("CREATE TABLE prediction_player_valuation (player_sk INTEGER)"))
     probe = GoldReadinessProbe(engine, schema=None)
-    assert not probe.check().ready  # table exists but empty
+    assert not probe.check().ready  # both tables exist but empty
 
     with engine.begin() as conn:
         conn.execute(text("INSERT INTO fact_match VALUES (1)"))
-    assert probe.check().ready
+    # fact_match populated but no scoring run yet: still not ready
+    report = probe.check()
+    assert not report.ready
+    assert any("prediction_player_valuation" in f for f in report.failures)
+
+    with engine.begin() as conn:
+        conn.execute(text("INSERT INTO prediction_player_valuation VALUES (1)"))
+    assert probe.check().ready  # warehouse + core gold + scoring run all present
+
+
+def test_gold_probe_missing_prediction_table_is_not_ready() -> None:
+    """A pre-scoring warehouse (no prediction table) reports not-ready, not crash."""
+    engine = create_engine("sqlite://")
+    with engine.begin() as conn:
+        conn.execute(text("CREATE TABLE fact_match (match_id INTEGER)"))
+        conn.execute(text("INSERT INTO fact_match VALUES (1)"))
+    report = GoldReadinessProbe(engine, schema=None).check()
+    assert not report.ready
+    assert any("make score" in f for f in report.failures)

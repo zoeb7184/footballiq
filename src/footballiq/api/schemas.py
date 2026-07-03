@@ -11,7 +11,13 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field
 
-from footballiq.application.read_models import MatchRecord, PlayerRecord, TeamRecord
+from footballiq.application.read_models import (
+    ExplanationRecord,
+    MatchRecord,
+    PlayerRecord,
+    TeamRecord,
+    ValuationRecord,
+)
 
 
 class TeamResponse(BaseModel):
@@ -153,6 +159,122 @@ class MatchListResponse(BaseModel):
     total: int
     limit: int
     offset: int
+
+
+class ShapContributionOut(BaseModel):
+    """One feature's attribution. shap_log is canonical; multiplicative_factor
+    (= exp(shap_log)) is the display form. Attributional, never causal."""
+
+    feature_name: str
+    feature_value: float
+    shap_log: float
+    multiplicative_factor: float
+    rank: int
+
+
+class _Provenance(BaseModel):
+    """Every valuation response carries what produced it (XAI design §6)."""
+
+    model_version: str
+    feature_version: str
+    scored_at: str
+
+
+class ValuationResponse(_Provenance):
+    """A player's model valuation with its headline (top-k) attribution.
+
+    accuracy_note is displayed beside every valuation (trust rule): the model's
+    honest ±20% band from evaluation. SHAP explains the model, not the market.
+    """
+
+    player_id: int
+    name: str
+    position: str
+    market_value_eur: int
+    predicted_value_eur: float
+    value_gap_eur: float
+    top_k: list[ShapContributionOut]
+    accuracy_note: str = (
+        "Predictions are indicative: ~20% fall within +/-20% of market on "
+        "evaluation. SHAP explains the model, not the market."
+    )
+
+    @classmethod
+    def from_record(cls, rec: ValuationRecord) -> ValuationResponse:
+        return cls(
+            player_id=rec.player_id,
+            name=rec.name,
+            position=rec.position,
+            market_value_eur=rec.market_value_eur,
+            predicted_value_eur=rec.predicted_value_eur,
+            value_gap_eur=rec.value_gap_eur,
+            model_version=rec.model_version,
+            feature_version=rec.feature_version,
+            scored_at=rec.scored_at,
+            top_k=[
+                ShapContributionOut(
+                    feature_name=c.feature_name,
+                    feature_value=c.feature_value,
+                    shap_log=c.shap_log,
+                    multiplicative_factor=c.multiplicative_factor,
+                    rank=c.rank,
+                )
+                for c in rec.top_k
+            ],
+        )
+
+
+class ValuationListResponse(BaseModel):
+    """Paginated valuation shortlist (scout story 1; default sort value_gap)."""
+
+    items: list[ValuationResponse]
+    total: int
+    limit: int
+    offset: int
+    sort: str
+    order: str
+
+
+class ExplanationResponse(_Provenance):
+    """Full SHAP breakdown for one player.
+
+    baseline_log + sum(contributions.shap_log) reconstructs log1p(predicted)
+    — the additivity invariant guaranteed at scoring time (XAI design §4).
+    """
+
+    player_id: int
+    name: str
+    position: str
+    market_value_eur: int
+    predicted_value_eur: float
+    value_gap_eur: float
+    baseline_log: float
+    contributions: list[ShapContributionOut]
+
+    @classmethod
+    def from_record(cls, rec: ExplanationRecord) -> ExplanationResponse:
+        return cls(
+            player_id=rec.player_id,
+            name=rec.name,
+            position=rec.position,
+            market_value_eur=rec.market_value_eur,
+            predicted_value_eur=rec.predicted_value_eur,
+            value_gap_eur=rec.value_gap_eur,
+            baseline_log=rec.baseline_log,
+            model_version=rec.model_version,
+            feature_version=rec.feature_version,
+            scored_at=rec.scored_at,
+            contributions=[
+                ShapContributionOut(
+                    feature_name=c.feature_name,
+                    feature_value=c.feature_value,
+                    shap_log=c.shap_log,
+                    multiplicative_factor=c.multiplicative_factor,
+                    rank=c.rank,
+                )
+                for c in rec.contributions
+            ],
+        )
 
 
 def match_out_from_record(rec: MatchRecord) -> ScheduledMatch | CompletedMatch:
