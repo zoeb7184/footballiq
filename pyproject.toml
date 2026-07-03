@@ -73,6 +73,9 @@ ignore = [
 # PLR2004: literal expected values are the point of a test.
 # PLC0415: function-scoped imports are deliberate in importability smoke tests.
 "tests/*" = ["PLR2004", "PLC0415"]
+# PLC0415: heavy ML deps (sklearn/xgboost/shap) import lazily so that
+# `make features` and the pipeline image work without the ml extra.
+"src/footballiq/ml/*" = ["PLC0415"]
 
 [tool.mypy]
 strict = true

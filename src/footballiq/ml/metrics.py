@@ -11,6 +11,8 @@ from numpy.typing import NDArray
 
 FloatArray = NDArray[np.float64]
 
+_ACCURACY_BAND = 0.20  # scope.md: share of predictions within ±20%
+
 
 def rmsle(y_true_eur: FloatArray, y_pred_eur: FloatArray) -> float:
     """Root mean squared log error (log1p)."""
@@ -25,7 +27,8 @@ def mdape(y_true_eur: FloatArray, y_pred_eur: FloatArray) -> float:
 
 def within_20pct(y_true_eur: FloatArray, y_pred_eur: FloatArray) -> float:
     """Share of predictions within ±20% of actual (scope.md metric)."""
-    return float(np.mean(np.abs(y_pred_eur - y_true_eur) / y_true_eur <= 0.20))
+    err = np.abs(y_pred_eur - y_true_eur) / y_true_eur
+    return float(np.mean(err <= _ACCURACY_BAND))
 
 
 def evaluate(y_true_eur: FloatArray, y_pred_eur: FloatArray) -> dict[str, float]:

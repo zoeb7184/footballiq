@@ -1,4 +1,4 @@
-"""Player valuation training (ML design §5–6).
+"""Player valuation training (ML design sections 5-6).
 
 Baselines first, honestly reported. The production model must beat both
 baselines on pooled out-of-fold RMSLE or the evaluation gate refuses to
