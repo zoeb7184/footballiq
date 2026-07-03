@@ -20,6 +20,9 @@ transform/target/
 transform/logs/
 transform/dbt_packages/
 
+# ML model artifacts (registry references them; files stay local / go to Blob in Azure)
+/artifacts/
+
 # Environments & secrets — never in git
 .env
 .env.*

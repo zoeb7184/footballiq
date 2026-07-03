@@ -26,6 +26,9 @@ api:            ## Run the API locally (http://localhost:8000/docs)
 features:       ## Build ML feature tables in gold
 	python -m footballiq.ml features
 
+train:          ## Train valuation model (baselines + gate + registry)
+	python -m footballiq.ml train-valuation
+
 bi-up:          ## Start Metabase (http://localhost:3000)
 	docker compose up -d bi
 	@echo "Metabase starting — first boot takes ~1-2 min: http://localhost:3000"

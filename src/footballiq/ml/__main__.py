@@ -1,7 +1,8 @@
-"""ML batch CLI: `python -m footballiq.ml features`."""
+"""ML batch CLI: `python -m footballiq.ml <features|train-valuation>`."""
 
 from __future__ import annotations
 
+import json
 import sys
 
 from sqlalchemy import create_engine
@@ -12,13 +13,23 @@ from footballiq.ml.registry import VALUATION_FEATURE_VERSION
 
 
 def main(args: list[str]) -> int:
-    if args != ["features"]:
-        print("usage: python -m footballiq.ml features")
-        return 2
     engine = create_engine(load_settings().database_url)
-    count = build_valuation_features(engine)
-    print(f"gold.feature_player_valuation: {count} rows (v{VALUATION_FEATURE_VERSION})")
-    return 0
+    if args == ["features"]:
+        count = build_valuation_features(engine)
+        print(
+            f"gold.feature_player_valuation: {count} rows "
+            f"(v{VALUATION_FEATURE_VERSION})"
+        )
+        return 0
+    if args == ["train-valuation"]:
+        from footballiq.ml.valuation import train_production
+
+        metrics = train_production(engine)
+        print(json.dumps(metrics, indent=2))
+        print("gate PASSED — model registered as production")
+        return 0
+    print("usage: python -m footballiq.ml <features|train-valuation>")
+    return 2
 
 
 if __name__ == "__main__":
