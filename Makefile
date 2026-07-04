@@ -1,5 +1,5 @@
 # FootballIQ Enterprise — developer commands (single entry point, mirrored in CI)
-.PHONY: install lint format typecheck test check db-up db-down ingest transform dbt-test pipeline api features train score graph bi-up
+.PHONY: install lint format typecheck test check db-up db-down ingest transform dbt-test pipeline api features train score graph ai-up index bi-up
 
 transform:      ## Build silver/gold models (dbt)
 	cd transform && dbt run --profiles-dir .
@@ -34,6 +34,13 @@ score:          ## Batch-score all players + SHAP explanations into gold
 
 graph:          ## Build club<->nation talent-flow graph metrics into gold
 	python -m footballiq.graph build
+
+ai-up:          ## Apply the ai schema + pgvector + fiq_analyst role (idempotent)
+	docker compose exec -T warehouse psql -U fiq -d footballiq \
+		-f /docker-entrypoint-initdb.d/02-ai-schema-and-role.sql
+
+index:          ## Embed docs into the ai.document_chunk vector store
+	python -m footballiq.infrastructure.ai index
 
 bi-up:          ## Start Metabase (http://localhost:3000)
 	docker compose up -d bi

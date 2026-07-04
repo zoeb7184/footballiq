@@ -30,6 +30,10 @@ ml = [
 graph = [
     "networkx>=3.0",
 ]
+rag = [
+    "sentence-transformers>=2.2",
+    "pgvector>=0.2",
+]
 dev = [
     "ruff>=0.4",
     "mypy>=1.10",
@@ -80,6 +84,9 @@ ignore = [
 # PLC0415: heavy ML deps (sklearn/xgboost/shap) import lazily so that
 # `make features` and the pipeline image work without the ml extra.
 "src/footballiq/ml/*" = ["PLC0415"]
+# PLC0415: sentence-transformers loads lazily (heavy) so serving/tests never
+# pull it — same rationale as ml.
+"src/footballiq/infrastructure/ai/*" = ["PLC0415"]
 
 [tool.mypy]
 strict = true
@@ -87,7 +94,7 @@ mypy_path = "src"
 packages = ["footballiq"]
 
 [[tool.mypy.overrides]]
-module = ["xgboost.*", "sklearn.*", "shap.*", "networkx.*"]
+module = ["xgboost.*", "sklearn.*", "shap.*", "networkx.*", "sentence_transformers.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

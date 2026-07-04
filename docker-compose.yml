@@ -1,7 +1,9 @@
 # FootballIQ Enterprise — local runtime (ADR-0003: local-first, Azure-ready)
 services:
   warehouse:
-    image: postgres:16-alpine
+    # pgvector/pgvector:pg16 = Postgres 16 + the `vector` extension (Module 7
+    # RAG store). Same PG major version as before, so the data volume is reused.
+    image: pgvector/pgvector:pg16
     container_name: fiq-warehouse
     environment:
       POSTGRES_USER: fiq
