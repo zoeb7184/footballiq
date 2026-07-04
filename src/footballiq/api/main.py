@@ -14,18 +14,21 @@ from sqlalchemy import create_engine
 import footballiq
 from footballiq.api.auth import require_api_key
 from footballiq.api.errors import register_error_handlers
+from footballiq.api.routers.graph import router as graph_router
 from footballiq.api.routers.matches import router as matches_router
 from footballiq.api.routers.players import router as players_router
 from footballiq.api.routers.system import router as system_router
 from footballiq.api.routers.teams import router as teams_router
 from footballiq.api.routers.valuations import router as valuations_router
 from footballiq.application.queries import (
+    GraphQueries,
     MatchQueries,
     PlayerQueries,
     TeamQueries,
     ValuationQueries,
 )
 from footballiq.infrastructure.config import Settings, load_settings
+from footballiq.infrastructure.gold.graph import GoldGraphReadModel
 from footballiq.infrastructure.gold.matches import GoldMatchReadModel
 from footballiq.infrastructure.gold.players import GoldPlayerReadModel
 from footballiq.infrastructure.gold.readiness import GoldReadinessProbe
@@ -52,6 +55,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.match_queries = MatchQueries(GoldMatchReadModel(engine))
     app.state.player_queries = PlayerQueries(GoldPlayerReadModel(engine))
     app.state.valuation_queries = ValuationQueries(GoldValuationReadModel(engine))
+    app.state.graph_queries = GraphQueries(GoldGraphReadModel(engine))
 
     register_error_handlers(app)
     app.include_router(system_router)  # unauthenticated: probes must reach it
@@ -59,4 +63,5 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(matches_router, dependencies=[Depends(require_api_key)])
     app.include_router(players_router, dependencies=[Depends(require_api_key)])
     app.include_router(valuations_router, dependencies=[Depends(require_api_key)])
+    app.include_router(graph_router, dependencies=[Depends(require_api_key)])
     return app

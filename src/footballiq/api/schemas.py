@@ -12,9 +12,12 @@ from typing import Annotated, Literal
 from pydantic import BaseModel, Field
 
 from footballiq.application.read_models import (
+    ClubMetric,
     ExplanationRecord,
     MatchRecord,
+    NationConcentration,
     PlayerRecord,
+    TalentFlowEdge,
     TeamRecord,
     ValuationRecord,
 )
@@ -273,6 +276,102 @@ class ExplanationResponse(_Provenance):
                     rank=c.rank,
                 )
                 for c in rec.contributions
+            ],
+        )
+
+
+class TalentFlowEdgeOut(BaseModel):
+    """One club -> nation supply edge; doubles as network-viz data."""
+
+    club: str
+    nation_id: int
+    nation_name: str
+    player_count: int
+    total_value: float
+
+    @classmethod
+    def from_record(cls, rec: TalentFlowEdge) -> TalentFlowEdgeOut:
+        return cls(
+            club=rec.club, nation_id=rec.nation_id, nation_name=rec.nation_name,
+            player_count=rec.player_count, total_value=rec.total_value,
+        )
+
+
+class TalentFlowResponse(BaseModel):
+    """Paginated talent-flow edge list."""
+
+    items: list[TalentFlowEdgeOut]
+    total: int
+    limit: int
+    offset: int
+
+
+class ClubMetricOut(BaseModel):
+    """A club's supplier metrics."""
+
+    club: str
+    nations_supplied: int
+    players_supplied: int
+    value_exported: float
+
+    @classmethod
+    def from_record(cls, rec: ClubMetric) -> ClubMetricOut:
+        return cls(
+            club=rec.club, nations_supplied=rec.nations_supplied,
+            players_supplied=rec.players_supplied, value_exported=rec.value_exported,
+        )
+
+
+class ClubListResponse(BaseModel):
+    """Paginated club supplier ranking."""
+
+    items: list[ClubMetricOut]
+    total: int
+    limit: int
+    offset: int
+    sort: str
+    order: str
+
+
+class SupplierShareOut(BaseModel):
+    """One club's share of a nation's squad."""
+
+    club: str
+    player_count: int
+    total_value: float
+    share: float
+
+
+class NationConcentrationResponse(BaseModel):
+    """A nation's supplier-concentration profile.
+
+    hhi_players in (0, 1]: higher = squad drawn from fewer clubs = higher
+    supplier-concentration risk (enterprise reading, graph-design §2).
+    """
+
+    nation_id: int
+    nation_name: str
+    supplier_count: int
+    players_total: int
+    total_value: float
+    hhi_players: float
+    top_suppliers: list[SupplierShareOut]
+
+    @classmethod
+    def from_record(cls, rec: NationConcentration) -> NationConcentrationResponse:
+        return cls(
+            nation_id=rec.nation_id,
+            nation_name=rec.nation_name,
+            supplier_count=rec.supplier_count,
+            players_total=rec.players_total,
+            total_value=rec.total_value,
+            hhi_players=rec.hhi_players,
+            top_suppliers=[
+                SupplierShareOut(
+                    club=s.club, player_count=s.player_count,
+                    total_value=s.total_value, share=s.share,
+                )
+                for s in rec.top_suppliers
             ],
         )
 

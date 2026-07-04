@@ -6,6 +6,26 @@ All notable changes to FootballIQ Enterprise. Format follows
 
 ## [Unreleased]
 
+## [0.6.0] — 2026-07-04
+### Added
+- **Module 6 — graph analytics (talent flow, scope R2):** `make graph` builds a
+  bipartite club<->nation talent-flow network (NetworkX, batch) into three gold
+  tables — `graph_edge_talent_flow`, `graph_metrics_club` (nations/players
+  supplied, value exported), `graph_metrics_nation` (supplier count, players
+  total, total value, player-count HHI). Deterministic, versioned by
+  `graph_version`; real run reconciles to 1,248 players across 957 edges / 450
+  clubs / 48 nations
+- **Graph serving (graph-design §4):** `GET /v1/graph/talent-flow` (edge list,
+  doubles as network-viz data), `GET /v1/graph/clubs?sort=value_exported`
+  (supplier ranking), `GET /v1/graph/nations/{id}/supply-concentration` (HHI +
+  top supplying clubs)
+- Dashboard 2 graph SQL: top-suppliers ranking and nation concentration-risk
+- New `footballiq.graph` architecture layer (ADR-0002) between `ml` and
+  `infrastructure`; `networkx` dependency (`graph` + `dev` extras)
+### Notes
+- Cross-confederation edge metric (graph-design §2) deferred: no
+  club->confederation mapping in the warehouse (data-infeasible in MVP)
+
 ## [0.5.0] — 2026-07-04
 ### Added
 - **Module 5 — ML + explainable AI (SHAP):** cross-sectional player valuation

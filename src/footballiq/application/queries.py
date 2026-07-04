@@ -5,13 +5,18 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from footballiq.application.read_models import (
+    ClubFilter,
+    ClubMetric,
     ExplanationRecord,
+    GraphReadModel,
     MatchReadModel,
     MatchRecord,
+    NationConcentration,
     Page,
     PlayerFilter,
     PlayerReadModel,
     PlayerRecord,
+    TalentFlowEdge,
     TeamReadModel,
     TeamRecord,
     ValuationFilter,
@@ -20,6 +25,7 @@ from footballiq.application.read_models import (
 )
 
 _VALUATION_SORTS = frozenset({"value_gap", "predicted_value", "market_value"})
+_CLUB_SORTS = frozenset({"value_exported", "players_supplied", "nations_supplied"})
 
 
 @dataclass(frozen=True, slots=True)
@@ -135,3 +141,49 @@ class ValuationQueries:
 
     def get_explanation(self, player_id: int) -> ExplanationRecord | None:
         return self._valuations.get_explanation(player_id)
+
+
+@dataclass(frozen=True, slots=True)
+class EdgePage:
+    """A page of talent-flow edges with its envelope."""
+
+    items: list[TalentFlowEdge]
+    page: Page
+
+
+@dataclass(frozen=True, slots=True)
+class ClubPage:
+    """A page of club supplier metrics with its envelope."""
+
+    items: list[ClubMetric]
+    page: Page
+
+
+class GraphQueries:
+    """User intents over the talent-flow graph and its metrics."""
+
+    def __init__(self, read_model: GraphReadModel) -> None:
+        self._graph = read_model
+
+    def list_edges(self, *, limit: int, offset: int) -> EdgePage:
+        items = self._graph.list_edges(limit=limit, offset=offset)
+        total = self._graph.count_edges()
+        return EdgePage(items=items, page=Page(total=total, limit=limit, offset=offset))
+
+    def list_clubs(
+        self, *, limit: int, offset: int, sort: str, descending: bool
+    ) -> ClubPage:
+        if sort not in _CLUB_SORTS:
+            msg = f"unknown sort {sort!r}; allowed: {sorted(_CLUB_SORTS)}"
+            raise UnknownSortError(msg)
+        items = self._graph.list_clubs(
+            limit=limit, offset=offset,
+            filters=ClubFilter(sort=sort, descending=descending),
+        )
+        total = self._graph.count_clubs()
+        return ClubPage(items=items, page=Page(total=total, limit=limit, offset=offset))
+
+    def get_nation_concentration(
+        self, nation_id: int, *, top: int
+    ) -> NationConcentration | None:
+        return self._graph.get_nation_concentration(nation_id, top=top)

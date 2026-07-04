@@ -201,3 +201,79 @@ class ValuationReadModel(Protocol):
     def get_valuation(self, player_id: int) -> ValuationRecord | None: ...
 
     def get_explanation(self, player_id: int) -> ExplanationRecord | None: ...
+
+
+@dataclass(frozen=True, slots=True)
+class TalentFlowEdge:
+    """One club -> nation supply edge (graph-design §1). Doubles as viz data."""
+
+    club: str
+    nation_id: int
+    nation_name: str
+    player_count: int
+    total_value: float
+
+
+@dataclass(frozen=True, slots=True)
+class ClubMetric:
+    """A club's supplier metrics (graph-design §2)."""
+
+    club: str
+    nations_supplied: int
+    players_supplied: int
+    value_exported: float
+
+
+@dataclass(frozen=True, slots=True)
+class SupplierShare:
+    """One club's share of a nation's squad (concentration breakdown)."""
+
+    club: str
+    player_count: int
+    total_value: float
+    share: float
+
+
+@dataclass(frozen=True, slots=True)
+class NationConcentration:
+    """A nation's supplier-concentration profile (graph-design §2).
+
+    hhi_players in (0, 1]: higher = squad drawn from fewer clubs = more
+    concentrated supply risk. top_suppliers is the ranked breakdown.
+    """
+
+    nation_id: int
+    nation_name: str
+    supplier_count: int
+    players_total: int
+    total_value: float
+    hhi_players: float
+    top_suppliers: list[SupplierShare]
+
+
+@dataclass(frozen=True, slots=True)
+class ClubFilter:
+    """Sort control for the club supplier ranking."""
+
+    sort: str = "value_exported"  # value_exported | players_supplied | nations_supplied
+    descending: bool = True
+
+
+class GraphReadModel(Protocol):
+    """Gold-backed access to talent-flow edges and graph metrics."""
+
+    def list_edges(
+        self, *, limit: int, offset: int
+    ) -> list[TalentFlowEdge]: ...
+
+    def count_edges(self) -> int: ...
+
+    def list_clubs(
+        self, *, limit: int, offset: int, filters: ClubFilter
+    ) -> list[ClubMetric]: ...
+
+    def count_clubs(self) -> int: ...
+
+    def get_nation_concentration(
+        self, nation_id: int, *, top: int
+    ) -> NationConcentration | None: ...

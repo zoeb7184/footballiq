@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "footballiq"
-version = "0.5.0"
+version = "0.6.0"
 description = "FootballIQ Enterprise — Enterprise AI Decision Intelligence Platform (football demonstration domain)"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -27,6 +27,9 @@ ml = [
     "xgboost>=2.0",
     "shap>=0.45",
 ]
+graph = [
+    "networkx>=3.0",
+]
 dev = [
     "ruff>=0.4",
     "mypy>=1.10",
@@ -40,6 +43,7 @@ dev = [
     "scikit-learn>=1.4",
     "xgboost>=2.0",
     "shap>=0.45",
+    "networkx>=3.0",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -83,7 +87,7 @@ mypy_path = "src"
 packages = ["footballiq"]
 
 [[tool.mypy.overrides]]
-module = ["xgboost.*", "sklearn.*", "shap.*"]
+module = ["xgboost.*", "sklearn.*", "shap.*", "networkx.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
@@ -110,6 +114,7 @@ type = "layers"
 layers = [
     "footballiq.api",
     "footballiq.ml",
+    "footballiq.graph",
     "footballiq.infrastructure",
     "footballiq.application",
     "footballiq.domains",
