@@ -11,6 +11,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field
 
+from footballiq.application.rag.ports import AnalystAnswer
 from footballiq.application.read_models import (
     ClubMetric,
     ExplanationRecord,
@@ -373,6 +374,63 @@ class NationConcentrationResponse(BaseModel):
                 )
                 for s in rec.top_suppliers
             ],
+        )
+
+
+class AskRequest(BaseModel):
+    """A single-turn analyst question."""
+
+    question: str = Field(min_length=1, max_length=2000)
+
+
+class FactOut(BaseModel):
+    """One grounded numeric fact from executed SQL (never from the LLM)."""
+
+    label: str
+    value: str
+    source: str
+    kind: str
+
+
+class CitationOut(BaseModel):
+    """A retrieved document reference backing a definitional claim."""
+
+    source_path: str
+    section: str
+    score: float
+
+
+class AnalystResponse(BaseModel):
+    """A typed, cited, grounded answer (rag-design §7).
+
+    grounded=False means a number in the answer was not found in the tool
+    evidence — the client should treat the answer with caution.
+    """
+
+    question: str
+    route: str
+    answer: str
+    grounded: bool
+    facts: list[FactOut]
+    citations: list[CitationOut]
+    versions: dict[str, str]
+
+    @classmethod
+    def from_answer(cls, ans: AnalystAnswer) -> AnalystResponse:
+        return cls(
+            question=ans.question,
+            route=ans.route,
+            answer=ans.answer,
+            grounded=ans.grounded,
+            facts=[
+                FactOut(label=f.label, value=f.value, source=f.source, kind=f.kind)
+                for f in ans.facts
+            ],
+            citations=[
+                CitationOut(source_path=c.source_path, section=c.section, score=c.score)
+                for c in ans.citations
+            ],
+            versions=ans.versions,
         )
 
 

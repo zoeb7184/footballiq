@@ -40,10 +40,15 @@ class PgVectorChunkStore:
     """ChunkStore port over ai.document_chunk (Postgres + pgvector)."""
 
     def __init__(self, engine: Engine, *, schema: str = "ai") -> None:
+        # No DDL here: constructing the store is cheap so it can be wired into
+        # the API without touching Postgres. The indexer calls ensure_table().
         self._engine = engine
         self._schema = schema
-        with engine.begin() as conn:
-            conn.execute(text(_DDL.format(s=schema, dim=_DIM)))
+
+    def ensure_table(self) -> None:
+        """Create ai.document_chunk if absent (called by the indexer)."""
+        with self._engine.begin() as conn:
+            conn.execute(text(_DDL.format(s=self._schema, dim=_DIM)))
 
     def existing_hashes(self) -> dict[str, str]:
         with self._engine.connect() as conn:

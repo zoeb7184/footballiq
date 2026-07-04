@@ -14,6 +14,7 @@ from sqlalchemy import create_engine
 import footballiq
 from footballiq.api.auth import require_api_key
 from footballiq.api.errors import register_error_handlers
+from footballiq.api.routers.analyst import router as analyst_router
 from footballiq.api.routers.graph import router as graph_router
 from footballiq.api.routers.matches import router as matches_router
 from footballiq.api.routers.players import router as players_router
@@ -27,6 +28,11 @@ from footballiq.application.queries import (
     TeamQueries,
     ValuationQueries,
 )
+from footballiq.application.rag.pipeline import AnalystService
+from footballiq.infrastructure.ai.embeddings import SentenceTransformerEmbedder
+from footballiq.infrastructure.ai.fact_provider import GoldFactProvider
+from footballiq.infrastructure.ai.retriever import SemanticRetriever
+from footballiq.infrastructure.ai.vector_store import PgVectorChunkStore
 from footballiq.infrastructure.config import Settings, load_settings
 from footballiq.infrastructure.gold.graph import GoldGraphReadModel
 from footballiq.infrastructure.gold.matches import GoldMatchReadModel
@@ -56,6 +62,12 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.player_queries = PlayerQueries(GoldPlayerReadModel(engine))
     app.state.valuation_queries = ValuationQueries(GoldValuationReadModel(engine))
     app.state.graph_queries = GraphQueries(GoldGraphReadModel(engine))
+    app.state.analyst_service = AnalystService(
+        facts=GoldFactProvider(engine),
+        retriever=SemanticRetriever(
+            SentenceTransformerEmbedder(), PgVectorChunkStore(engine)
+        ),
+    )
 
     register_error_handlers(app)
     app.include_router(system_router)  # unauthenticated: probes must reach it
@@ -64,4 +76,5 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(players_router, dependencies=[Depends(require_api_key)])
     app.include_router(valuations_router, dependencies=[Depends(require_api_key)])
     app.include_router(graph_router, dependencies=[Depends(require_api_key)])
+    app.include_router(analyst_router, dependencies=[Depends(require_api_key)])
     return app

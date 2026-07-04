@@ -7,7 +7,8 @@ unit-testable with fakes — no model download, no database.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from enum import StrEnum
 from typing import Protocol
 
 
@@ -65,3 +66,57 @@ class ChunkStore(Protocol):
     def delete_missing(self, keep_ids: set[str]) -> int: ...
 
     def search(self, embedding: list[float], *, k: int) -> list[RetrievedChunk]: ...
+
+
+class Route(StrEnum):
+    """Where a question is routed (rag-design §1). DOCS = retrieval-only."""
+
+    KPI = "kpi"
+    PREDICTION = "prediction"
+    EXPLANATION = "explanation"
+    GRAPH = "graph"
+    DOCS = "docs"
+
+
+@dataclass(frozen=True, slots=True)
+class Fact:
+    """One grounded numeric fact from executed SQL — never from the LLM."""
+
+    label: str
+    value: str      # rendered exactly as it must appear in the answer
+    source: str     # e.g. "gold.prediction_player_valuation"
+    kind: str = "fact"  # fact | prediction | explanation | graph
+
+
+@dataclass(frozen=True, slots=True)
+class Citation:
+    """A retrieved document reference backing a definitional claim."""
+
+    source_path: str
+    section: str
+    score: float
+
+
+@dataclass(frozen=True, slots=True)
+class AnalystAnswer:
+    """A typed, cited, grounded answer (rag-design §7)."""
+
+    question: str
+    route: str
+    answer: str
+    grounded: bool
+    facts: list[Fact] = field(default_factory=list)
+    citations: list[Citation] = field(default_factory=list)
+    versions: dict[str, str] = field(default_factory=dict)
+
+
+class FactProvider(Protocol):
+    """Executes the SQL catalog for a route; returns grounded numeric facts."""
+
+    def facts(self, route: Route, question: str) -> list[Fact]: ...
+
+
+class Retriever(Protocol):
+    """Embeds a question and returns the closest document chunks."""
+
+    def retrieve(self, question: str, *, k: int) -> list[RetrievedChunk]: ...

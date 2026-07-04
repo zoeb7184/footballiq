@@ -42,10 +42,10 @@ def main(args: list[str]) -> int:
         docs_dir = Path(args[1]) if len(args) > 1 else Path("docs")
         chunks = _collect(docs_dir)
         engine = create_engine(load_settings().database_url)
+        store = PgVectorChunkStore(engine)
+        store.ensure_table()
         result = index_documents(
-            chunks,
-            embedder=SentenceTransformerEmbedder(),
-            store=PgVectorChunkStore(engine),
+            chunks, embedder=SentenceTransformerEmbedder(), store=store
         )
         print(
             f"ai.document_chunk: {result.total} chunks "
