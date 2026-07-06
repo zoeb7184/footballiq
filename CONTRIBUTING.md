@@ -25,5 +25,22 @@ Pre-commit hooks handle formatting. CI runs the same `make check` (Module 9).
 `api → application → domains → kernel`; `infrastructure` implements
 application ports. Imports against the arrows are defects.
 
+## Repository organization
+This repository favors **stability over cosmetic refactoring**. The layout
+follows common Python and enterprise conventions:
+
+- `src/` — application code (Clean Architecture layers).
+- `tests/` — mirrors the source tree (`unit`, `integration`, `fixtures`).
+- `docs/` — architecture, ADRs, specifications, module reports, reviews.
+- `infra/` — deployment and infrastructure assets (Bicep, DB init).
+- `portal/` — the Streamlit client (API-only).
+- `transform/` — the dbt project.
+
+Directories are not renamed or relocated solely for aesthetics. Any structural
+change must (1) provide a measurable maintainability improvement, (2) update
+every affected reference automatically, and (3) pass the full validation suite —
+`make check`, `make demo`, CI, and documentation link verification. This keeps
+paths stable and predictable for contributors, automation, and AI coding agents.
+
 ## Never commit
 Secrets, `.env` files, datasets, files > 500 KB.
