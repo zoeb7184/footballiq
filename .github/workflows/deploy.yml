@@ -25,7 +25,9 @@ jobs:
 
   deploy-staging:
     needs: validate-iac
-    if: github.ref == 'refs/heads/main'
+    # Only deploy once Azure is configured (OIDC var set). Until then this job
+    # skips cleanly instead of failing — the repo shows no red deployments.
+    if: github.ref == 'refs/heads/main' && vars.AZURE_CLIENT_ID != ''
     runs-on: ubuntu-latest
     environment: staging
     outputs:
@@ -62,7 +64,7 @@ jobs:
 
   deploy-prod:
     needs: deploy-staging
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && vars.AZURE_CLIENT_ID != ''
     runs-on: ubuntu-latest
     environment: production   # requires manual approval (branch/environment rule)
     steps:
