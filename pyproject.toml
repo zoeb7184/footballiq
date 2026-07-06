@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "footballiq"
-version = "0.7.0"
+version = "0.8.0"
 description = "FootballIQ Enterprise — Enterprise AI Decision Intelligence Platform (football demonstration domain)"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -33,6 +33,11 @@ graph = [
 rag = [
     "sentence-transformers>=2.2",
     "pgvector>=0.2",
+]
+portal = [
+    "streamlit>=1.30",
+    "httpx>=0.27",
+    "pandas>=2.0",
 ]
 dev = [
     "ruff>=0.4",
@@ -87,6 +92,12 @@ ignore = [
 # PLC0415: sentence-transformers loads lazily (heavy) so serving/tests never
 # pull it — same rationale as ml.
 "src/footballiq/infrastructure/ai/*" = ["PLC0415"]
+# Streamlit multipage requires numeric-prefixed filenames (pages/1_Name.py);
+# N999 (invalid module name) does not apply to script-run pages.
+"portal/pages/*" = ["N999"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["footballiq", "portal", "api_client", "session"]
 
 [tool.mypy]
 strict = true
@@ -99,7 +110,7 @@ ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "."]  # "." so the portal package (API client) is importable
 addopts = "-q --cov=footballiq --cov-report=term-missing --cov-fail-under=80"
 markers = [
     "integration: requires a real Postgres (FIQ_TEST_DATABASE_URL); skipped otherwise",

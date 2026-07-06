@@ -1,5 +1,5 @@
 # FootballIQ Enterprise — developer commands (single entry point, mirrored in CI)
-.PHONY: install lint format typecheck test check db-up db-down ingest transform dbt-test pipeline api features train score graph ai-up index bi-up
+.PHONY: install lint format typecheck test check db-up db-down ingest transform dbt-test pipeline api features train score graph ai-up index bi-up portal
 
 transform:      ## Build silver/gold models (dbt)
 	cd transform && dbt run --profiles-dir .
@@ -46,12 +46,15 @@ bi-up:          ## Start Metabase (http://localhost:3000)
 	docker compose up -d bi
 	@echo "Metabase starting — first boot takes ~1-2 min: http://localhost:3000"
 
+portal:         ## Run the Streamlit customer portal (API-only client)
+	streamlit run portal/app.py
+
 install:        ## Install package + dev tooling
 	pip install -e ".[dev]"
 	pre-commit install
 
 lint:           ## Static analysis
-	ruff check src tests
+	ruff check src tests portal
 
 format:         ## Auto-format
 	ruff format src tests

@@ -44,7 +44,7 @@ Local-first runtime, Azure-ready by construction — see
 | 5 | ML + explainable AI (SHAP) | ✅ |
 | 6 | Graph analytics | ✅ |
 | 7 | LLM + RAG assistant | ✅ |
-| 8 | Streamlit customer portal | ⏳ |
+| 8 | Streamlit customer portal | ✅ |
 | 9 | Docker, CI/CD, Bicep IaC | ⏳ |
 
 ## Quickstart

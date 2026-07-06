@@ -6,6 +6,19 @@ All notable changes to FootballIQ Enterprise. Format follows
 
 ## [Unreleased]
 
+## [0.8.0] — 2026-07-04
+### Added
+- **Module 8 — customer portal (Streamlit, scope stories 1-3):** a `portal/`
+  app that reads the FootballIQ API **only** (no warehouse access), proving the
+  public contract is sufficient for a real client. Three pages: Scout Shortlist
+  (valuations + SHAP drivers), Talent Flow (supplier bars + nation HHI), Ask the
+  Analyst (grounded RAG answers with facts + citations)
+- `portal/api_client.py` — typed httpx client over `/v1`, the portal's sole data
+  source; unit-tested with `httpx.MockTransport` (paths, API-key header, params,
+  error surfacing)
+- `make portal` (`streamlit run portal/app.py`); `portal` extra (streamlit,
+  httpx, pandas); lint now covers `portal`
+
 ## [0.7.0] — 2026-07-04
 ### Added
 - **Module 7 — AI analyst (single-turn RAG, scope story 3):** `POST
