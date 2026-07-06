@@ -45,7 +45,7 @@ if st.button("Ask", type="primary") and question.strip():
     if facts:
         st.subheader("Facts (from SQL)")
         st.dataframe(
-            pd.DataFrame(facts), use_container_width=True, hide_index=True
+            pd.DataFrame(facts), width="stretch", hide_index=True
         )
 
     citations = answer.get("citations", [])

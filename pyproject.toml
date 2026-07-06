@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "footballiq"
-version = "0.8.0"
+version = "1.0.0"
 description = "FootballIQ Enterprise — Enterprise AI Decision Intelligence Platform (football demonstration domain)"
 readme = "README.md"
 requires-python = ">=3.11"

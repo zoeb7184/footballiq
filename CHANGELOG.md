@@ -6,6 +6,27 @@ All notable changes to FootballIQ Enterprise. Format follows
 
 ## [Unreleased]
 
+## [1.0.0] — 2026-07-06
+### Added
+- **Module 9 — ship (Docker, CI/CD, IaC, demo):** the platform is now
+  deployable and reproducible end-to-end
+- **`make demo`** — one command builds the whole platform (warehouse ->
+  features -> train -> score -> graph -> ai schema -> RAG index) and runs
+  `scripts/demo_smoke.py`, which fails loudly if any layer is empty
+- **Bicep IaC** (`infra/bicep/main.bicep` + staging params + README): ACA API +
+  PostgreSQL Flexible Server (pgvector native) + ACR + Key Vault + Blob + Log
+  Analytics, parameterized per environment; `az bicep build` validates offline
+- **Deploy workflow** (`.github/workflows/deploy.yml`): validate IaC -> build to
+  ACR -> deploy staging -> smoke `/ready` -> manual approval -> prod (OIDC auth)
+- **Operations runbook** (`docs/runbook.md`): run, deploy, rollback,
+  backup/restore, incident response, secrets, routine checks
+### Changed
+- Portal: `use_container_width` -> `width="stretch"` (Streamlit deprecation)
+### Milestone
+- **v1.0.0 — all 10 modules shipped.** Ingest -> medallion warehouse -> ML +
+  SHAP -> versioned API -> BI dashboards -> talent-flow graph -> grounded RAG
+  analyst -> Streamlit portal -> cloud-deployable IaC. Production-grade per layer.
+
 ## [0.8.0] — 2026-07-04
 ### Added
 - **Module 8 — customer portal (Streamlit, scope stories 1-3):** a `portal/`

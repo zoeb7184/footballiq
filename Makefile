@@ -1,5 +1,5 @@
 # FootballIQ Enterprise — developer commands (single entry point, mirrored in CI)
-.PHONY: install lint format typecheck test check db-up db-down ingest transform dbt-test pipeline api features train score graph ai-up index bi-up portal
+.PHONY: install lint format typecheck test check db-up db-down ingest transform dbt-test pipeline api features train score graph ai-up index bi-up portal demo
 
 transform:      ## Build silver/gold models (dbt)
 	cd transform && dbt run --profiles-dir .
@@ -48,6 +48,14 @@ bi-up:          ## Start Metabase (http://localhost:3000)
 
 portal:         ## Run the Streamlit customer portal (API-only client)
 	streamlit run portal/app.py
+
+demo: db-up pipeline features train score graph ai-up index  ## One command: build the whole platform end-to-end + smoke-check
+	python scripts/demo_smoke.py
+	@echo ""
+	@echo "=== FootballIQ is built end-to-end ==="
+	@echo "  make api     -> http://localhost:8000/docs   (versioned read API + RAG analyst)"
+	@echo "  make portal  -> http://localhost:8501         (Streamlit scouting portal)"
+	@echo "  make bi-up   -> http://localhost:3000         (Metabase dashboards)"
 
 install:        ## Install package + dev tooling
 	pip install -e ".[dev]"

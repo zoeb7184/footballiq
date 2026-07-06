@@ -45,7 +45,7 @@ Local-first runtime, Azure-ready by construction — see
 | 6 | Graph analytics | ✅ |
 | 7 | LLM + RAG assistant | ✅ |
 | 8 | Streamlit customer portal | ✅ |
-| 9 | Docker, CI/CD, Bicep IaC | ⏳ |
+| 9 | Docker, CI/CD, Bicep IaC | ✅ |
 
 ## Quickstart
 
@@ -54,6 +54,16 @@ make install   # package + dev tooling + pre-commit hooks
 make check     # lint + strict type-check + import-linter + tests (the CI gate)
 make db-up     # warehouse (Postgres via docker compose)
 make pipeline  # bronze ingestion -> dbt silver/gold -> 68 data contracts
+```
+
+**One-command demo** (build every layer end-to-end, then smoke-check):
+
+```bash
+pip install -e ".[dev,rag,portal]"
+make demo      # warehouse -> features -> model+SHAP -> graph -> RAG index -> verify
+make api       # http://localhost:8000/docs      (read API + grounded RAG analyst)
+make portal    # http://localhost:8501           (Streamlit scouting portal)
+make bi-up     # http://localhost:3000           (Metabase dashboards)
 ```
 
 **Data setup:** datasets are never committed (see `.gitignore`). Place the

@@ -1,0 +1,80 @@
+# Deployment pipeline (azure-architecture.md §8): PR validates IaC; merge to main
+# builds the image, deploys staging, smoke-tests, then deploys prod behind a
+# manual approval (GitHub Environment protection). Auth via OIDC — no secrets in
+# code. Requires repo/environment config: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+# AZURE_SUBSCRIPTION_ID, ACR_NAME, and the PG_ADMIN_PASSWORD secret.
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths: ['infra/**', '.github/workflows/deploy.yml']
+
+permissions:
+  id-token: write   # OIDC federation to Azure
+  contents: read
+
+jobs:
+  validate-iac:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bicep build (compile + lint, no Azure needed)
+        run: az bicep build --file infra/bicep/main.bicep
+
+  deploy-staging:
+    needs: validate-iac
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: staging
+    outputs:
+      api_fqdn: ${{ steps.deploy.outputs.api_fqdn }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Build + push image to ACR
+        run: |
+          az acr build --registry ${{ vars.ACR_NAME }} \
+            --image footballiq-api:${{ github.sha }} .
+      - name: Deploy staging (Bicep)
+        id: deploy
+        run: |
+          az deployment group create -g rg-fiq-staging -f infra/bicep/main.bicep \
+            --parameters infra/bicep/staging.bicepparam \
+            --parameters pgAdminPassword='${{ secrets.PG_ADMIN_PASSWORD }}' \
+              apiImage='${{ vars.ACR_NAME }}.azurecr.io/footballiq-api:${{ github.sha }}'
+          fqdn=$(az deployment group show -g rg-fiq-staging -n main \
+            --query properties.outputs.apiFqdn.value -o tsv)
+          echo "api_fqdn=$fqdn" >> "$GITHUB_OUTPUT"
+      - name: Smoke test (/ready must be ready)
+        run: |
+          for i in $(seq 1 20); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://${{ steps.deploy.outputs.api_fqdn }}/ready")
+            [ "$code" = "200" ] && echo "ready" && exit 0
+            sleep 10
+          done
+          echo "staging /ready never returned 200" && exit 1
+
+  deploy-prod:
+    needs: deploy-staging
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production   # requires manual approval (branch/environment rule)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Deploy prod (Bicep)
+        run: |
+          az deployment group create -g rg-fiq-prod -f infra/bicep/main.bicep \
+            --parameters env=prod namePrefix=fiq location=germanywestcentral \
+            --parameters pgAdminPassword='${{ secrets.PG_ADMIN_PASSWORD }}' \
+              apiImage='${{ vars.ACR_NAME }}.azurecr.io/footballiq-api:${{ github.sha }}'

@@ -39,7 +39,7 @@ table = pd.DataFrame([
     }
     for it in items
 ])
-st.dataframe(table, use_container_width=True, hide_index=True)
+st.dataframe(table, width="stretch", hide_index=True)
 
 st.subheader("Player valuation & drivers")
 by_label = {f"{it['name']} — {it['position']}": it["player_id"] for it in items}

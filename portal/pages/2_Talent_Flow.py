@@ -68,6 +68,6 @@ if suppliers:
         }
         for s in suppliers
     ])
-    st.dataframe(supplier_table, use_container_width=True, hide_index=True)
+    st.dataframe(supplier_table, width="stretch", hide_index=True)
 
 st.caption("Higher HHI = squad drawn from fewer clubs (more concentration risk).")
