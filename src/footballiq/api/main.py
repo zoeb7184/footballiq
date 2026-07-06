@@ -31,6 +31,7 @@ from footballiq.application.queries import (
 from footballiq.application.rag.pipeline import AnalystService
 from footballiq.infrastructure.ai.embeddings import SentenceTransformerEmbedder
 from footballiq.infrastructure.ai.fact_provider import GoldFactProvider
+from footballiq.infrastructure.ai.query_log import PgQueryLog
 from footballiq.infrastructure.ai.retriever import SemanticRetriever
 from footballiq.infrastructure.ai.vector_store import PgVectorChunkStore
 from footballiq.infrastructure.config import Settings, load_settings
@@ -62,11 +63,15 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.player_queries = PlayerQueries(GoldPlayerReadModel(engine))
     app.state.valuation_queries = ValuationQueries(GoldValuationReadModel(engine))
     app.state.graph_queries = GraphQueries(GoldGraphReadModel(engine))
+    # Analyst reads through a least-privilege engine (fiq_analyst: gold + ai
+    # only); audit writes go through the app-owner engine.
+    analyst_engine = create_engine(settings.analyst_url, pool_pre_ping=True)
     app.state.analyst_service = AnalystService(
-        facts=GoldFactProvider(engine),
+        facts=GoldFactProvider(analyst_engine),
         retriever=SemanticRetriever(
-            SentenceTransformerEmbedder(), PgVectorChunkStore(engine)
+            SentenceTransformerEmbedder(), PgVectorChunkStore(analyst_engine)
         ),
+        log=PgQueryLog(engine),
     )
 
     register_error_handlers(app)

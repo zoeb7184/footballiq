@@ -120,3 +120,35 @@ class Retriever(Protocol):
     """Embeds a question and returns the closest document chunks."""
 
     def retrieve(self, question: str, *, k: int) -> list[RetrievedChunk]: ...
+
+
+class LLMClient(Protocol):
+    """Phrases a grounded answer from facts + retrieved context (rag-design §6).
+
+    The LLM may only use the supplied tool content; the pipeline re-checks
+    groundedness on whatever it returns. The default is a deterministic template
+    (no key required); a hosted model slots in behind this same shape.
+    """
+
+    def synthesize(
+        self, question: str, facts: list[Fact], chunks: list[RetrievedChunk]
+    ) -> str: ...
+
+
+@dataclass(frozen=True, slots=True)
+class QueryLogRecord:
+    """One audit row — every answer must be reconstructible (rag-design §8)."""
+
+    question: str
+    route: str
+    grounded: bool
+    fact_count: int
+    citation_count: int
+    response_hash: str
+    versions: dict[str, str]
+
+
+class QueryLog(Protocol):
+    """Append-only audit sink for analyst answers (ai.query_log)."""
+
+    def record(self, entry: QueryLogRecord) -> None: ...

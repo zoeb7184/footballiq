@@ -15,6 +15,20 @@ BEGIN
 END
 $$;
 
+-- Audit log (rag-design §8): every analyst answer is reconstructible. Written
+-- by the app (owner) role; created here so it exists before grants apply.
+CREATE TABLE IF NOT EXISTS ai.query_log (
+    log_id         BIGSERIAL PRIMARY KEY,
+    question       TEXT NOT NULL,
+    route          TEXT NOT NULL,
+    grounded       BOOLEAN NOT NULL,
+    fact_count     INTEGER NOT NULL,
+    citation_count INTEGER NOT NULL,
+    response_hash  TEXT NOT NULL,
+    versions       JSONB NOT NULL,
+    created_at     TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 GRANT USAGE ON SCHEMA gold TO fiq_analyst;
 GRANT USAGE ON SCHEMA ai   TO fiq_analyst;
 GRANT SELECT ON ALL TABLES IN SCHEMA gold TO fiq_analyst;

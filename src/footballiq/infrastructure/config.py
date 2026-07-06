@@ -34,6 +34,13 @@ class Settings:
     database_url: str
     data_dir: Path
     api_key_hashes: tuple[str, ...] = field(default=())
+    # Least-privilege engine for the RAG analyst's reads (fiq_analyst: SELECT on
+    # gold + ai only). Defaults to database_url so local dev works unconfigured.
+    analyst_database_url: str | None = None
+
+    @property
+    def analyst_url(self) -> str:
+        return self.analyst_database_url or self.database_url
 
 
 def load_settings(dotenv_path: Path = Path(".env")) -> Settings:
@@ -44,4 +51,5 @@ def load_settings(dotenv_path: Path = Path(".env")) -> Settings:
         database_url=os.environ.get("FIQ_DATABASE_URL", _DEFAULT_DB_URL),
         data_dir=Path(os.environ.get("FIQ_DATA_DIR", "data/raw")),
         api_key_hashes=tuple(h.strip() for h in raw_hashes.split(",") if h.strip()),
+        analyst_database_url=os.environ.get("FIQ_ANALYST_DATABASE_URL"),
     )

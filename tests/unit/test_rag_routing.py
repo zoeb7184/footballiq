@@ -1,7 +1,7 @@
 """Route classification tests (rag-design §1) — deterministic keyword routing."""
 
 from footballiq.application.rag.ports import Route
-from footballiq.application.rag.routing import classify
+from footballiq.application.rag.routing import classify, normalize
 
 
 def test_routes_by_keyword() -> None:
@@ -9,6 +9,17 @@ def test_routes_by_keyword() -> None:
     assert classify("Which players are most undervalued?") == Route.PREDICTION
     assert classify("Which clubs are the biggest talent suppliers?") == Route.GRAPH
     assert classify("How many goals were scored?") == Route.KPI
+
+
+def test_graph_routing_survives_phrasing_variation() -> None:
+    # singular/plural and verb variation all normalize to the GRAPH catalog
+    assert classify("Which club supplies the most talent value?") == Route.GRAPH
+    assert classify("Which clubs supply the most talent?") == Route.GRAPH
+    assert classify("Which team contributes the highest talent value?") == Route.GRAPH
+
+
+def test_normalization_folds_plurals() -> None:
+    assert normalize("Which clubs supply talent!") == "which club supply talent"
 
 
 def test_explanation_wins_over_prediction() -> None:

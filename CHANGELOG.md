@@ -6,6 +6,26 @@ All notable changes to FootballIQ Enterprise. Format follows
 
 ## [Unreleased]
 
+## [0.7.0] — 2026-07-04
+### Added
+- **Module 7 — AI analyst (single-turn RAG, scope story 3):** `POST
+  /v1/analyst/ask` answers grounded, cited questions over the warehouse and
+  indexed docs. Core rule enforced: numbers come only from executed SQL, never
+  the model — a programmatic groundedness check flags any numeric token in an
+  answer that isn't in the tool evidence
+- pgvector store in a new `ai` schema; heading-aware Markdown chunker + local
+  bge-small embeddings + incremental (content-hash) indexing (`make index`,
+  `make ai-up`); 226 chunks indexed (docs, module reports, ADRs)
+- Deterministic route classification (normalized keyword matching with
+  singular/plural folding) across KPI / prediction / explanation / graph / docs
+- `LLMClient` port (hosted LLM slots in behind a deterministic template
+  fallback — no key required today); `ai.query_log` audit (every answer
+  reconstructible); `fiq_analyst` least-privilege read role (gold + ai only)
+- Golden-question eval in CI (5 demo questions: route + groundedness)
+### Changed
+- Postgres image -> `pgvector/pgvector:pg16` (same PG16, data volume reused)
+- `Settings.analyst_database_url` for the least-privilege analyst engine
+
 ## [0.6.0] — 2026-07-04
 ### Added
 - **Module 6 — graph analytics (talent flow, scope R2):** `make graph` builds a

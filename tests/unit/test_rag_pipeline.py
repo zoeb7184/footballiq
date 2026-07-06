@@ -3,6 +3,7 @@
 from footballiq.application.rag.pipeline import AnalystService
 from footballiq.application.rag.ports import (
     Fact,
+    QueryLogRecord,
     RetrievedChunk,
     Route,
 )
@@ -24,8 +25,31 @@ class _Retriever:
         return self._chunks
 
 
-def _service(facts: list[Fact], chunks: list[RetrievedChunk]) -> AnalystService:
-    return AnalystService(facts=_Facts(facts), retriever=_Retriever(chunks))
+class _Log:
+    def __init__(self) -> None:
+        self.records: list[QueryLogRecord] = []
+
+    def record(self, entry: QueryLogRecord) -> None:
+        self.records.append(entry)
+
+
+class _LLM:
+    def synthesize(
+        self, question: str, facts: list[Fact], chunks: list[RetrievedChunk]  # noqa: ARG002
+    ) -> str:
+        return "phrased: " + "; ".join(f.value for f in facts)  # stays grounded
+
+
+def _service(
+    facts: list[Fact], chunks: list[RetrievedChunk],
+    *, llm: object = None, log: object = None,
+) -> AnalystService:
+    return AnalystService(
+        facts=_Facts(facts),
+        retriever=_Retriever(chunks),
+        llm=llm,  # type: ignore[arg-type]
+        log=log,  # type: ignore[arg-type]
+    )
 
 
 def test_grounded_answer_carries_facts_and_citations() -> None:
@@ -50,3 +74,20 @@ def test_guardrail_rejects_empty_and_overlong() -> None:
     svc = _service([Fact("x", "1", "s")], [])
     assert svc.ask("   ").route == "rejected"
     assert svc.ask("q" * 501).route == "rejected"
+
+
+def test_every_answer_is_audited() -> None:
+    log = _Log()
+    _service([Fact("Goals", "223", "gold.fact_match_event")], [], log=log).ask(
+        "How many goals?")
+    assert len(log.records) == 1
+    rec = log.records[0]
+    assert rec.route == "kpi" and rec.grounded is True and rec.fact_count == 1
+    assert len(rec.response_hash) == 64  # sha256 hex
+
+
+def test_llm_phrasing_is_used_and_grounding_rechecked() -> None:
+    facts = [Fact("Goals", "223", "gold.fact_match_event")]
+    ans = _service(facts, [], llm=_LLM()).ask("How many goals?")
+    assert ans.answer.startswith("phrased:") and "223" in ans.answer
+    assert ans.grounded is True
