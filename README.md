@@ -83,10 +83,23 @@ pip install -e ".[dev,rag,portal]"   # add ML, RAG (embeddings), and portal extr
 
 ### 2. Data preparation
 
-Datasets are never committed (see `.gitignore`). Place the FIFA World Cup 2026
-CSVs (Kaggle) into `data/raw/` before running the pipeline — the 11 expected
-files are declared in
-[`manifest.py`](src/footballiq/infrastructure/ingestion/manifest.py).
+Datasets are never committed (git holds code, not data — see `.gitignore`). The
+platform ingests a public **FIFA World Cup 2026** CSV dataset from Kaggle.
+
+> **Source:** [FIFA World Cup 2026 dataset on Kaggle](https://www.kaggle.com/datasets/mominullptr/fifa-world-cup-2026-dataset)
+
+Download it and place these 11 files into `data/raw/` before running
+`make pipeline` (the source manifest is
+[`manifest.py`](src/footballiq/infrastructure/ingestion/manifest.py)):
+
+```text
+teams.csv              venues.csv            tournament_stages.csv
+referees.csv           matches.csv           matches_detailed.csv
+squads_and_players.csv player_stats.csv      match_team_stats.csv
+match_lineups.csv      match_events.csv
+```
+
+`make pipeline` validates that every declared file is present before ingesting.
 
 ### 3. Local development
 
