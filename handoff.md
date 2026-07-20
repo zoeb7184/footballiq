@@ -12,8 +12,15 @@ medallion data warehouse, a versioned API, explainable ML, graph analytics, a
 grounded RAG assistant, a customer portal, and cloud-deployable IaC — built to
 show production engineering practices end to end.
 
+> **Update (2026-07-18):** Module 10 (simulation + model governance,
+> ADR-0006) and the production Next.js web app (`web/`) were added on top of
+> v1.0.0; version bumped to 1.1.0. See CHANGELOG `[1.1.0]`,
+> `FRONTEND_BLUEPRINT.md`, `docs/modules/10-simulation.md`, and
+> `docs/deployment-free-tier.md`. Host verification pending: run
+> `make check` and the web quality gate (see README) before tagging v1.1.0.
+
 ## Current Status
-- **Version:** 1.0.0 (feature complete — all 10 modules shipped).
+- **Version:** 1.1.0 (in working tree; tag after host `make check` passes).
 - **Completed modules:** M0 foundation, M1 domain core, M2 data platform
   (medallion + dbt, 68 contracts), M3 FastAPI, M4 Metabase BI, M5 ML+SHAP,
   M6 graph analytics, M7 RAG analyst, M8 Streamlit portal, M9 ship (Docker/
@@ -179,6 +186,17 @@ green and the import-linter contract intact.
   `fact_provider`/`vector_store`/`embeddings`/`query_log` show low unit coverage
   by design (integration-only); portal is ruff-linted + client-tested but not
   under mypy.
+
+## Disk Cleanup (post-v1.0.0)
+Freed ~4 GB safely: removed stray venvs `.venv-1`/`.venv-2`, caches
+(`.mypy_cache`, `.ruff_cache`, `.pytest_cache`, `.import_linter_cache`),
+`transform/target`+`logs`, `__pycache__`, `.coverage`; `docker compose down` +
+`docker image prune -a` (−2.76 GB images). All regenerate/re-pull on demand.
+Kept: `.venv` (1.8 GB), `data/raw/`, `artifacts/`, `.git`, Docker volumes (hold
+Metabase dashboards + warehouse). Optional further: `python3 -m pip cache purge`,
+`rm -rf ~/.cache/huggingface`, `rm -rf .venv` (recreate via
+`python3 -m venv .venv && pip install -e ".[dev,rag,portal]"`). Note: images were
+pruned, so `make db-up`/`bi-up` re-download pgvector+Metabase (~2.76 GB).
 
 ## Session Summary
 - Delivered Modules 6–9, taking the project from v0.5.0 to a complete **v1.0.0**.

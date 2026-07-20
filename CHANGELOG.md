@@ -6,6 +6,27 @@ All notable changes to FootballIQ Enterprise. Format follows
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-07-18
+### Added
+- **Module 10 — simulation & model governance (ADR-0006):**
+  `POST /v1/simulations/match` — seeded Monte Carlo over warehouse Elo
+  ratings (observed goal rate, Wilson 95% intervals, score matrix,
+  assumptions in-band; deterministic per seed) and
+  `GET /v1/models/performance` — registry lineage with CV metrics vs
+  baselines plus global mean |SHAP| feature importance
+- Opt-in CORS via `FIQ_CORS_ORIGINS` (empty = middleware not installed)
+- **Production web application (`web/`):** Next.js 16 + TypeScript + Tailwind
+  v4 + TanStack Query/Table + ECharts over the public API only — landing page,
+  demo personas, dashboards, scout shortlist, SHAP waterfall with browser-side
+  additivity proof, grounded analyst UI, talent-network explorer, Monte Carlo
+  simulator, model-governance page; BFF proxy keeps the API key server-side;
+  labeled snapshot fallback for sleeping free-tier backends; web CI workflow
+- Free-tier deployment guide (Neon + Render + Vercel) + `render.yaml` blueprint
+- `FRONTEND_BLUEPRINT.md` — full frontend design rationale
+### Deferred
+- Qualification probability: FIFA tie-break inputs are not in the warehouse;
+  computing odds would fabricate precision (ADR-0006)
+
 ## [1.0.0] — 2026-07-06
 ### Added
 - **Module 9 — ship (Docker, CI/CD, IaC, demo):** the platform is now

@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   FootballIQ design tokens (frontend blueprint §3)
+   Dark-first; light theme via [data-theme="light"].
+--------------------------------------------------------------------------- */
+
+:root {
+  --bg-base: #0a0b0e;
+  --bg-surface: #111318;
+  --bg-raised: #191c23;
+  --border: #262a33;
+  --border-strong: #343945;
+  --text-primary: #f2f4f8;
+  --text-secondary: #9ba3b0;
+  --text-muted: #5c6470;
+  --accent: #3ddc84;
+  --accent-dim: rgba(61, 220, 132, 0.12);
+  --signal: #f5a623;
+  --signal-dim: rgba(245, 166, 35, 0.12);
+  --critical: #f0526b;
+  --critical-dim: rgba(240, 82, 107, 0.12);
+  --info: #5b8def;
+  --info-dim: rgba(91, 141, 239, 0.12);
+  --viz-1: #3ddc84;
+  --viz-2: #5b8def;
+  --viz-3: #f5a623;
+  --viz-4: #c084fc;
+  --viz-5: #22d3ee;
+  --viz-6: #f0526b;
+}
+
+[data-theme="light"] {
+  --bg-base: #f7f8fa;
+  --bg-surface: #ffffff;
+  --bg-raised: #eef0f4;
+  --border: #dde1e8;
+  --border-strong: #c3c9d4;
+  --text-primary: #14161b;
+  --text-secondary: #4c5566;
+  --text-muted: #8a92a3;
+  --accent: #15803d;
+  --accent-dim: rgba(21, 128, 61, 0.1);
+}
+
+@theme inline {
+  --color-base: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-raised: var(--bg-raised);
+  --color-edge: var(--border);
+  --color-edge-strong: var(--border-strong);
+  --color-fg: var(--text-primary);
+  --color-fg-secondary: var(--text-secondary);
+  --color-fg-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-signal: var(--signal);
+  --color-signal-dim: var(--signal-dim);
+  --color-critical: var(--critical);
+  --color-critical-dim: var(--critical-dim);
+  --color-info: var(--info);
+  --color-info-dim: var(--info-dim);
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+html {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+body {
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Numbers are typography: every metric uses tabular mono. */
+.num {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Accessible focus, visible on dark surfaces. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Landing hero glass — the one sanctioned use of glassmorphism. */
+.glass {
+  background: rgba(17, 19, 24, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Subtle pitch-grid backdrop for the hero. */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(61, 220, 132, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 220, 132, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
+}

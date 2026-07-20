@@ -37,6 +37,9 @@ class Settings:
     # Least-privilege engine for the RAG analyst's reads (fiq_analyst: SELECT on
     # gold + ai only). Defaults to database_url so local dev works unconfigured.
     analyst_database_url: str | None = None
+    # Browser origins allowed by CORS (FIQ_CORS_ORIGINS, comma-separated).
+    # Empty = middleware not installed; the API stays same-origin-only.
+    cors_origins: tuple[str, ...] = field(default=())
 
     @property
     def analyst_url(self) -> str:
@@ -47,9 +50,11 @@ def load_settings(dotenv_path: Path = Path(".env")) -> Settings:
     """Build settings from environment (+ optional .env) with local defaults."""
     _load_dotenv(dotenv_path)
     raw_hashes = os.environ.get("FIQ_API_KEY_HASHES", "")
+    raw_origins = os.environ.get("FIQ_CORS_ORIGINS", "")
     return Settings(
         database_url=os.environ.get("FIQ_DATABASE_URL", _DEFAULT_DB_URL),
         data_dir=Path(os.environ.get("FIQ_DATA_DIR", "data/raw")),
         api_key_hashes=tuple(h.strip() for h in raw_hashes.split(",") if h.strip()),
         analyst_database_url=os.environ.get("FIQ_ANALYST_DATABASE_URL"),
+        cors_origins=tuple(o.strip() for o in raw_origins.split(",") if o.strip()),
     )

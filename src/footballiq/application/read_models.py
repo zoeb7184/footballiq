@@ -277,3 +277,55 @@ class GraphReadModel(Protocol):
     def get_nation_concentration(
         self, nation_id: int, *, top: int
     ) -> NationConcentration | None: ...
+
+
+@dataclass(frozen=True, slots=True)
+class ScoringRate:
+    """Observed tournament scoring rate (simulation design §2).
+
+    avg_total_goals is the mean of home+away goals over completed matches;
+    matches_observed carries the sample size so consumers can judge it.
+    """
+
+    avg_total_goals: float
+    matches_observed: int
+
+
+class ScoringRateReadModel(Protocol):
+    """Gold-backed access to the observed scoring rate of completed matches."""
+
+    def observed_scoring_rate(self) -> ScoringRate | None: ...
+
+
+@dataclass(frozen=True, slots=True)
+class ModelRegistryEntry:
+    """One registered model with its full lineage (ML design §10)."""
+
+    model_id: str
+    task: str
+    version: str
+    feature_version: str
+    git_commit: str
+    params: dict[str, float | int | str]
+    metrics: dict[str, dict[str, float]]
+    seed: int
+    status: str
+    created_at: str
+
+
+@dataclass(frozen=True, slots=True)
+class FeatureImportanceRow:
+    """Global importance of one feature: mean |SHAP| over all scored players."""
+
+    feature_name: str
+    mean_abs_shap_log: float
+    mean_feature_value: float
+    players: int
+
+
+class ModelPerformanceReadModel(Protocol):
+    """Gold-backed access to the model registry and aggregated SHAP."""
+
+    def list_registry_entries(self, *, task: str) -> list[ModelRegistryEntry]: ...
+
+    def feature_importance(self) -> list[FeatureImportanceRow]: ...

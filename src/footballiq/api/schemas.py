@@ -9,18 +9,29 @@ from __future__ import annotations
 
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
+from footballiq.application.model_performance import ModelPerformanceReport
 from footballiq.application.rag.ports import AnalystAnswer
 from footballiq.application.read_models import (
     ClubMetric,
     ExplanationRecord,
+    FeatureImportanceRow,
     MatchRecord,
+    ModelRegistryEntry,
     NationConcentration,
     PlayerRecord,
     TalentFlowEdge,
     TeamRecord,
     ValuationRecord,
+)
+from footballiq.application.simulation import (
+    DEFAULT_RUNS,
+    MAX_RUNS,
+    MIN_RUNS,
+    MatchSimulationResult,
+    ProbabilityWithCI,
+    TeamSimSide,
 )
 
 
@@ -482,3 +493,171 @@ def match_out_from_record(rec: MatchRecord) -> ScheduledMatch | CompletedMatch:
         home=home,
         away=away,
     )
+
+
+class SimulateMatchRequest(BaseModel):
+    """One Monte Carlo simulation request; fully deterministic per seed."""
+
+    home_team_id: int = Field(ge=1)
+    away_team_id: int = Field(ge=1)
+    n_runs: int = Field(default=DEFAULT_RUNS, ge=MIN_RUNS, le=MAX_RUNS)
+    seed: int = Field(default=42, ge=0)
+
+    @model_validator(mode="after")
+    def _distinct_teams(self) -> SimulateMatchRequest:
+        if self.home_team_id == self.away_team_id:
+            msg = "home_team_id and away_team_id must differ"
+            raise ValueError(msg)
+        return self
+
+
+class ProbabilityOut(BaseModel):
+    """A Monte Carlo probability with its Wilson 95% interval."""
+
+    value: float
+    ci_low: float
+    ci_high: float
+
+    @classmethod
+    def from_record(cls, rec: ProbabilityWithCI) -> ProbabilityOut:
+        return cls(value=rec.value, ci_low=rec.ci_low, ci_high=rec.ci_high)
+
+
+class SimSideOut(BaseModel):
+    """One simulated side with the model inputs that produced it."""
+
+    team_id: int
+    name: str
+    fifa_code: str
+    elo_rating: int
+    lambda_goals: float
+    mean_goals_sampled: float
+
+    @classmethod
+    def from_record(cls, rec: TeamSimSide) -> SimSideOut:
+        return cls(
+            team_id=rec.team_id,
+            name=rec.name,
+            fifa_code=rec.fifa_code,
+            elo_rating=rec.elo_rating,
+            lambda_goals=rec.lambda_goals,
+            mean_goals_sampled=rec.mean_goals_sampled,
+        )
+
+
+class SimulationResponse(BaseModel):
+    """A self-describing simulation: inputs, outputs, uncertainty, assumptions.
+
+    score_matrix[h][a] is the share of runs ending h:a; the final index of
+    each axis is an open ">= score_cap" bucket. Reproducible: identical
+    inputs and seed always return identical output.
+    """
+
+    home: SimSideOut
+    away: SimSideOut
+    n_runs: int
+    seed: int
+    p_home_win: ProbabilityOut
+    p_draw: ProbabilityOut
+    p_away_win: ProbabilityOut
+    score_matrix: list[list[float]]
+    score_cap: int
+    goals_per_match_used: float
+    goal_rate_source: str
+    matches_observed: int
+    elo_win_expectancy_home: float
+    method_version: str
+    assumptions: list[str]
+
+    @classmethod
+    def from_result(cls, rec: MatchSimulationResult) -> SimulationResponse:
+        return cls(
+            home=SimSideOut.from_record(rec.home),
+            away=SimSideOut.from_record(rec.away),
+            n_runs=rec.n_runs,
+            seed=rec.seed,
+            p_home_win=ProbabilityOut.from_record(rec.p_home_win),
+            p_draw=ProbabilityOut.from_record(rec.p_draw),
+            p_away_win=ProbabilityOut.from_record(rec.p_away_win),
+            score_matrix=rec.score_matrix,
+            score_cap=rec.score_cap,
+            goals_per_match_used=rec.goals_per_match_used,
+            goal_rate_source=rec.goal_rate_source,
+            matches_observed=rec.matches_observed,
+            elo_win_expectancy_home=rec.elo_win_expectancy_home,
+            method_version=rec.method_version,
+            assumptions=list(rec.assumptions),
+        )
+
+
+class RegistryModelOut(BaseModel):
+    """One registered model with complete lineage (ML design §10)."""
+
+    model_id: str
+    version: str
+    feature_version: str
+    git_commit: str
+    params: dict[str, float | int | str]
+    metrics: dict[str, dict[str, float]]
+    seed: int
+    status: str
+    created_at: str
+
+    @classmethod
+    def from_record(cls, rec: ModelRegistryEntry) -> RegistryModelOut:
+        return cls(
+            model_id=rec.model_id,
+            version=rec.version,
+            feature_version=rec.feature_version,
+            git_commit=rec.git_commit,
+            params=rec.params,
+            metrics=rec.metrics,
+            seed=rec.seed,
+            status=rec.status,
+            created_at=rec.created_at,
+        )
+
+
+class FeatureImportanceOut(BaseModel):
+    """Global mean |SHAP| of one feature across all scored players."""
+
+    feature_name: str
+    mean_abs_shap_log: float
+    mean_feature_value: float
+    players: int
+
+    @classmethod
+    def from_record(cls, rec: FeatureImportanceRow) -> FeatureImportanceOut:
+        return cls(
+            feature_name=rec.feature_name,
+            mean_abs_shap_log=rec.mean_abs_shap_log,
+            mean_feature_value=rec.mean_feature_value,
+            players=rec.players,
+        )
+
+
+class ModelPerformanceResponse(BaseModel):
+    """Model governance report: registry lineage + aggregated explainability.
+
+    Metrics include the honest baselines (median, linear) next to the
+    production model — evaluation numbers were computed at training time
+    and stored in the registry; nothing is recomputed at request time.
+    """
+
+    task: str
+    models: list[RegistryModelOut]
+    feature_importance: list[FeatureImportanceOut]
+    accuracy_note: str = (
+        "Predictions are indicative: ~20% fall within +/-20% of market on "
+        "evaluation. SHAP explains the model, not the market."
+    )
+
+    @classmethod
+    def from_report(cls, rec: ModelPerformanceReport) -> ModelPerformanceResponse:
+        return cls(
+            task=rec.task,
+            models=[RegistryModelOut.from_record(m) for m in rec.models],
+            feature_importance=[
+                FeatureImportanceOut.from_record(f) for f in rec.feature_importance
+            ],
+        )

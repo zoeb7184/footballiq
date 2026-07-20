@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/zoebalikhan/**)",
+      "Bash(curl -s \"http://localhost:8000/v1/teams?limit=1\" -H \"X-API-Key: dev-local-key\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:8000/v1/teams\" -H \"X-API-Key: dev-local-key\")",
+      "Bash(curl -s \"http://localhost:8000/v1/teams\" -H \"X-API-Key: dev-local-key\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(len\\(d\\) if isinstance\\(d,list\\) else d.get\\('total', d\\)\\)\")",
+      "Bash(curl -s \"http://localhost:8000/v1/players?limit=1\" -H \"X-API-Key: dev-local-key\")",
+      "Bash(curl -s -o /dev/null -w \"explanation page: %{http_code}\\\\n\" http://localhost:3000/app/players/521/explanation)",
+      "Bash(curl -s http://localhost:3000/app/players/521/explanation)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -i http://localhost:3000/app/players/521/explanation)",
+      "Bash(curl -s -i -X POST http://localhost:3000/api/session -H \"Content-Type: application/json\" -d '{\"persona\":\"scout\"}' -c cookies.txt)",
+      "Bash(curl -s -b cookies.txt -o /dev/null -w \"valuations: %{http_code}\\\\n\" http://localhost:3000/app/valuations)",
+      "Bash(curl -s -b cookies.txt -o /dev/null -w \"explanation: %{http_code}\\\\n\" http://localhost:3000/app/players/521/explanation)",
+      "Bash(curl -s -b cookies.txt http://localhost:3000/app/players/521/explanation)",
+      "Bash(grep -o \"log1p[^<]\\\\{0,60\\\\}\" /tmp/explanation.html)",
+      "Bash(curl -s \"http://localhost:8000/v1/players/521/explanation\" -H \"X-API-Key: dev-local-key\")",
+      "Bash(curl -s \"http://localhost:8000/v1/players/521/valuation/explanation\" -H \"X-API-Key: dev-local-key\")",
+      "Bash(grep -rn \"players/\\\\${.*}/explanation\\\\|players/\\\\\\\\\\\\${.*}/explanation\\\\|/explanation\\\\b\" /Users/zoebalikhan/footballiq/web/src /Users/zoebalikhan/footballiq/web/scripts)",
+      "Bash(curl -s \"http://localhost:3000/api/proxy/v1/players/521/valuation/explanation\" -c /tmp/cookies.txt -b /tmp/cookies.txt -w \"\\\\nstatus:%{http_code}\\\\n\")",
+      "Bash(curl -s -b /tmp/cookies.txt http://localhost:3000/app/players/521/explanation -o /tmp/explanation2.html -w \"status:%{http_code}\\\\n\")",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}

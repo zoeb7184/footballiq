@@ -54,8 +54,8 @@ Local-first runtime, Azure-ready by construction — see
 
 ## Capabilities
 
-All ten modules are shipped (v1.0.0). Each was delivered with a design doc,
-tests, the full quality gate green, a module report, and a tagged release.
+All modules are shipped. Each was delivered with a design doc, tests, the
+full quality gate green, a module report, and a tagged release.
 
 | Module | Capability | Status |
 |:------:|------------|:------:|
@@ -67,8 +67,25 @@ tests, the full quality gate green, a module report, and a tagged release.
 | 5 | ML + explainable AI (SHAP) | ✅ |
 | 6 | Graph analytics | ✅ |
 | 7 | LLM + RAG assistant | ✅ |
-| 8 | Streamlit customer portal | ✅ |
+| 8 | Streamlit customer portal (API-contract reference client) | ✅ |
 | 9 | Docker, CI/CD, Bicep IaC | ✅ |
+| 10 | Match simulation + model governance API (ADR-0006) | ✅ |
+| — | **Production web app** (`web/`, Next.js — the public face) | ✅ |
+
+### The web application
+
+`web/` is a production Next.js frontend over the public API only: interactive
+dashboards, the scout shortlist, per-player SHAP waterfalls with a
+browser-side additivity proof, the grounded AI analyst with SQL-sourced facts
+and citations, the talent-flow network, a seeded Monte Carlo match simulator,
+and a model-governance page. Design rationale in `FRONTEND_BLUEPRINT.md`;
+free-tier deployment (Neon + Render + Vercel) in
+`docs/deployment-free-tier.md`.
+
+```bash
+cd web && npm install && cp .env.example .env.local && npm run dev
+# needs the API running: make api  (http://localhost:8000)
+```
 
 ---
 

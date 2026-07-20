@@ -1,0 +1,26 @@
+# Render blueprint — free-tier API deployment (docs/deployment-free-tier.md).
+# The database lives on Neon (pgvector supported on the free tier); Render
+# hosts only the FastAPI service. Free instances sleep after ~15 min idle;
+# the web frontend degrades to labeled snapshots while the API wakes.
+
+services:
+  - type: web
+    name: footballiq-api
+    runtime: python
+    plan: free
+    buildCommand: pip install ".[rag]"
+    startCommand: >
+      uvicorn footballiq.api.main:create_app --factory
+      --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+      - key: FIQ_DATABASE_URL
+        sync: false # postgresql+psycopg://... (Neon, role fiq)
+      - key: FIQ_ANALYST_DATABASE_URL
+        sync: false # least-privilege fiq_analyst role (optional but recommended)
+      - key: FIQ_API_KEY_HASHES
+        sync: false # sha256 of the demo key; never the key itself
+      - key: FIQ_CORS_ORIGINS
+        sync: false # optional: the Vercel origin, for direct Swagger use
