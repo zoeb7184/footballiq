@@ -22,7 +22,13 @@
       "Bash(grep -rn \"players/\\\\${.*}/explanation\\\\|players/\\\\\\\\\\\\${.*}/explanation\\\\|/explanation\\\\b\" /Users/zoebalikhan/footballiq/web/src /Users/zoebalikhan/footballiq/web/scripts)",
       "Bash(curl -s \"http://localhost:3000/api/proxy/v1/players/521/valuation/explanation\" -c /tmp/cookies.txt -b /tmp/cookies.txt -w \"\\\\nstatus:%{http_code}\\\\n\")",
       "Bash(curl -s -b /tmp/cookies.txt http://localhost:3000/app/players/521/explanation -o /tmp/explanation2.html -w \"status:%{http_code}\\\\n\")",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(docker compose *)",
+      "Bash(pg_dump --version)",
+      "Bash(psql --version)",
+      "Bash(brew install *)",
+      "Bash(curl *)",
+      "Bash(xargs -I{} echo {})"
     ]
   }
 }

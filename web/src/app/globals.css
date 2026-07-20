@@ -111,11 +111,79 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Subtle pitch-grid backdrop for the hero. */
-.hero-grid {
+/* Pitch-grid + glow backdrop for the hero, painted on ::before/::after so the
+   decorative mask-image never touches real content (a real bug: mask-image on
+   a container masks the WHOLE element including descendants, not just its own
+   background — it was silently erasing the header nav near the edges). */
+.hero-backdrop {
+  position: relative;
+  isolation: isolate;
+}
+.hero-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background-image:
     linear-gradient(rgba(61, 220, 132, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(61, 220, 132, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
+}
+.hero-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 28% 22%, rgba(61, 220, 132, 0.16), transparent 60%),
+    radial-gradient(ellipse 45% 40% at 76% 32%, rgba(91, 141, 239, 0.12), transparent 60%);
+  animation: hero-glow-drift 18s ease-in-out infinite;
+}
+@keyframes hero-glow-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(-2%, 3%) scale(1.08);
+    opacity: 1;
+  }
+}
+
+/* Feature cards: gradient border + hover lift (blueprint §3 — real depth, not
+   flat panels). Border painted on ::before so mask-composite never touches
+   the card's own text content. */
+.feature-card {
+  position: relative;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(61, 220, 132, 0.4),
+    rgba(91, 141, 239, 0.16) 55%,
+    transparent 85%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 28px -16px rgba(0, 0, 0, 0.55);
 }

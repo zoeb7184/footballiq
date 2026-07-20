@@ -8,6 +8,8 @@ import {
   Sparkles,
   Workflow,
 } from "lucide-react";
+import { AnimatedStat } from "@/components/marketing/animated-stat";
+import { MatchPredictor } from "@/components/marketing/match-predictor";
 import { upstreamFetch } from "@/lib/api/server";
 
 export const revalidate = 3600;
@@ -64,7 +66,7 @@ export default async function LandingPage() {
   const live = teams !== null;
 
   return (
-    <div className="hero-grid min-h-dvh">
+    <div className="min-h-dvh">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <span className="flex items-center gap-2">
           <ShieldCheck className="h-6 w-6 text-accent" aria-hidden="true" />
@@ -75,7 +77,7 @@ export default async function LandingPage() {
         <nav className="flex items-center gap-4">
           <a
             href="https://github.com/zoeb7184/footballiq"
-            className="text-sm text-fg-secondary hover:text-fg"
+            className="text-sm text-fg-secondary transition-colors hover:text-fg"
             target="_blank"
             rel="noreferrer"
           >
@@ -91,7 +93,7 @@ export default async function LandingPage() {
       </header>
 
       <main className="mx-auto max-w-6xl px-6">
-        <section className="flex flex-col items-center gap-6 py-20 text-center sm:py-28">
+        <section className="hero-backdrop flex flex-col items-center gap-5 py-12 text-center sm:py-14">
           <span className="rounded-full border border-edge bg-surface px-3 py-1 text-xs text-fg-secondary">
             Decision intelligence · demonstrated on the FIFA World Cup 2026
           </span>
@@ -118,15 +120,19 @@ export default async function LandingPage() {
             </Link>
           </div>
 
-          <dl className="glass mt-8 grid w-full max-w-2xl grid-cols-3 divide-x divide-edge rounded-xl">
+          <div className="mt-2 flex justify-center">
+            <MatchPredictor />
+          </div>
+
+          <dl className="glass mt-2 grid w-full max-w-2xl grid-cols-3 divide-x divide-edge rounded-xl">
             {[
               { label: "national teams", value: teams?.total },
               { label: "players registered", value: players?.total },
               { label: "ML valuations", value: valuations?.total },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col gap-1 p-5">
-                <dd className="num text-2xl font-bold text-accent sm:text-3xl">
-                  {stat.value ?? "—"}
+                <dd>
+                  <AnimatedStat value={stat.value} />
                 </dd>
                 <dt className="text-xs text-fg-muted">{stat.label}</dt>
               </div>
@@ -143,7 +149,7 @@ export default async function LandingPage() {
           {FEATURES.map((f) => (
             <article
               key={f.title}
-              className="rounded-lg border border-edge bg-surface p-5 transition-colors hover:border-edge-strong"
+              className="feature-card rounded-lg border border-edge bg-surface p-5"
             >
               <f.icon className="mb-3 h-6 w-6 text-accent" aria-hidden="true" />
               <h2 className="font-display mb-1.5 font-semibold">{f.title}</h2>
