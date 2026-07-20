@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Badge } from "@/components/ui/badge";
+import { MatchCard } from "@/components/domain/match-card";
 import { PageHeader } from "@/components/domain/page-header";
 import { SourceBadge } from "@/components/domain/source-badge";
 import { StatCard } from "@/components/domain/stat-card";
@@ -89,13 +89,13 @@ export default function OverviewPage() {
           </CardHeader>
           <CardContent className="p-0">
             {players.isPending ? (
-              <div className="flex flex-col gap-2 p-4">
+              <div className="flex flex-col gap-2 p-3">
                 {[...Array(5)].map((_, i) => (
                   <Skeleton key={i} className="h-10" />
                 ))}
               </div>
             ) : players.isError ? (
-              <div className="p-4">
+              <div className="p-3">
                 <ErrorState error={players.error} onRetry={() => players.refetch()} />
               </div>
             ) : (
@@ -104,7 +104,7 @@ export default function OverviewPage() {
                   <li key={v.player_id}>
                     <Link
                       href={`/app/players/${v.player_id}`}
-                      className="flex items-center justify-between px-4 py-2.5 transition-colors hover:bg-raised"
+                      className="flex items-center justify-between px-3 py-2 transition-colors hover:bg-raised"
                     >
                       <span className="min-w-0">
                         <span className="block truncate text-sm font-medium">{v.name}</span>
@@ -133,39 +133,20 @@ export default function OverviewPage() {
           </CardHeader>
           <CardContent className="p-0">
             {fixtures.isPending ? (
-              <div className="flex flex-col gap-2 p-4">
+              <div className="flex flex-col gap-2 p-3">
                 {[...Array(5)].map((_, i) => (
                   <Skeleton key={i} className="h-10" />
                 ))}
               </div>
             ) : fixtures.isError ? (
-              <div className="p-4">
+              <div className="p-3">
                 <ErrorState error={fixtures.error} onRetry={() => fixtures.refetch()} />
               </div>
             ) : (
               <ul className="divide-y divide-edge">
                 {fixtures.data.data.items.map((m) => (
-                  <li key={m.match_id} className="flex items-center justify-between px-4 py-2.5">
-                    <span className="min-w-0 text-sm">
-                      <span className="font-medium">{m.home.name}</span>
-                      <span className="text-fg-muted"> vs </span>
-                      <span className="font-medium">
-                        {m.away.kind === "team" ? m.away.name : "TBD"}
-                      </span>
-                      <span className="block text-xs text-fg-muted">
-                        {m.stage} · {m.venue}
-                      </span>
-                    </span>
-                    {m.away.kind === "team" ? (
-                      <Link
-                        href={`/app/simulator?home=${m.home.team_id}&away=${m.away.team_id}`}
-                        className="shrink-0 text-xs text-accent hover:underline"
-                      >
-                        Simulate
-                      </Link>
-                    ) : (
-                      <Badge>TBD</Badge>
-                    )}
+                  <li key={m.match_id}>
+                    <MatchCard match={m} compact />
                   </li>
                 ))}
               </ul>

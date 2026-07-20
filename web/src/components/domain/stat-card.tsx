@@ -14,7 +14,7 @@ export function StatCard({
 }) {
   return (
     <Card>
-      <CardContent className="flex flex-col gap-1 p-4">
+      <CardContent className="flex flex-col gap-1 p-3">
         <span className="text-xs uppercase tracking-wide text-fg-muted">{label}</span>
         <span
           className={cn(

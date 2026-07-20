@@ -29,9 +29,9 @@ export function TR({ className, ...props }: React.HTMLAttributes<HTMLTableRowEle
 }
 
 export function TH({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {
-  return <th className={cn("px-3 py-2.5 font-medium", className)} {...props} />;
+  return <th className={cn("px-3 py-1.5 font-medium", className)} {...props} />;
 }
 
 export function TD({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {
-  return <td className={cn("px-3 py-2.5", className)} {...props} />;
+  return <td className={cn("px-3 py-1.5", className)} {...props} />;
 }

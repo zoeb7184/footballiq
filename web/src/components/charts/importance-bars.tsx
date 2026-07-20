@@ -12,19 +12,19 @@ export function ImportanceBars({ rows }: { rows: FeatureImportance[] }) {
       xAxis: {
         type: "value",
         name: "mean |SHAP| (log)",
-        axisLabel: { color: "#5c6470" },
-        splitLine: { lineStyle: { color: "#262a33" } },
-        nameTextStyle: { color: "#5c6470" },
+        axisLabel: { color: "#8590a6" },
+        splitLine: { lineStyle: { color: "#24314d" } },
+        nameTextStyle: { color: "#8590a6" },
       },
       yAxis: {
         type: "category",
         data: sorted.map((r) => r.feature_name),
-        axisLabel: { color: "#9ba3b0", fontSize: 11 },
-        axisLine: { lineStyle: { color: "#262a33" } },
+        axisLabel: { color: "#a9b4c7", fontSize: 11 },
+        axisLine: { lineStyle: { color: "#24314d" } },
       },
       tooltip: {
-        backgroundColor: "#191c23",
-        borderColor: "#343945",
+        backgroundColor: "#1b2740",
+        borderColor: "#33436a",
         textStyle: { color: "#f2f4f8", fontSize: 12 },
         formatter: (p: unknown) => {
           const { dataIndex } = p as { dataIndex: number };
@@ -39,7 +39,7 @@ export function ImportanceBars({ rows }: { rows: FeatureImportance[] }) {
         {
           type: "bar",
           data: sorted.map((r) => r.mean_abs_shap_log),
-          itemStyle: { color: "#5b8def", borderRadius: [0, 3, 3, 0] },
+          itemStyle: { color: "#3b82f6", borderRadius: [0, 3, 3, 0] },
           barMaxWidth: 16,
         },
       ],

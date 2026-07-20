@@ -43,7 +43,7 @@ function SimulatorInner() {
       />
 
       <Card>
-        <CardContent className="flex flex-wrap items-end gap-3 p-4">
+        <CardContent className="flex flex-wrap items-end gap-3 p-3">
           <label className="flex flex-col gap-1 text-xs text-fg-muted">
             Home side
             <Select value={home} onChange={(e) => setHome(e.target.value)} aria-label="Home team">

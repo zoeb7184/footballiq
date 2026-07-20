@@ -6,24 +6,26 @@
 --------------------------------------------------------------------------- */
 
 :root {
-  --bg-base: #0a0b0e;
-  --bg-surface: #111318;
-  --bg-raised: #191c23;
-  --border: #262a33;
-  --border-strong: #343945;
+  --bg-base: #0b1220;
+  --bg-surface: #131c2e;
+  --bg-raised: #1b2740;
+  --border: #24314d;
+  --border-strong: #33436a;
   --text-primary: #f2f4f8;
-  --text-secondary: #9ba3b0;
-  --text-muted: #5c6470;
-  --accent: #3ddc84;
-  --accent-dim: rgba(61, 220, 132, 0.12);
+  --text-secondary: #a9b4c7;
+  /* Spec asked for #6b7893, but that fails AA (3.35:1) on --bg-raised — nudged
+     lighter within the same hue to clear 4.5:1 on base/surface/raised. */
+  --text-muted: #8590a6;
+  --accent: #00e07a;
+  --accent-dim: rgba(0, 224, 122, 0.12);
   --signal: #f5a623;
   --signal-dim: rgba(245, 166, 35, 0.12);
   --critical: #f0526b;
   --critical-dim: rgba(240, 82, 107, 0.12);
-  --info: #5b8def;
-  --info-dim: rgba(91, 141, 239, 0.12);
-  --viz-1: #3ddc84;
-  --viz-2: #5b8def;
+  --info: #3b82f6;
+  --info-dim: rgba(59, 130, 246, 0.12);
+  --viz-1: #00e07a;
+  --viz-2: #3b82f6;
   --viz-3: #f5a623;
   --viz-4: #c084fc;
   --viz-5: #22d3ee;
@@ -39,8 +41,12 @@
   --text-primary: #14161b;
   --text-secondary: #4c5566;
   --text-muted: #8a92a3;
-  --accent: #15803d;
-  --accent-dim: rgba(21, 128, 61, 0.1);
+  /* Darkened variants of the new navy-brand hues — bright #00e07a/#3b82f6 read
+     fine on dark navy but fail AA as text/icon color on white. */
+  --accent: #007a42;
+  --accent-dim: rgba(0, 122, 66, 0.1);
+  --info: #0b61ee;
+  --info-dim: rgba(11, 97, 238, 0.1);
 }
 
 @theme inline {
@@ -106,7 +112,7 @@ body {
 
 /* Landing hero glass — the one sanctioned use of glassmorphism. */
 .glass {
-  background: rgba(17, 19, 24, 0.7);
+  background: rgba(19, 28, 46, 0.7);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -126,8 +132,8 @@ body {
   z-index: -1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(61, 220, 132, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(61, 220, 132, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(0, 224, 122, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 224, 122, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
 }
@@ -138,8 +144,8 @@ body {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 55% 45% at 28% 22%, rgba(61, 220, 132, 0.16), transparent 60%),
-    radial-gradient(ellipse 45% 40% at 76% 32%, rgba(91, 141, 239, 0.12), transparent 60%);
+    radial-gradient(ellipse 55% 45% at 28% 22%, rgba(0, 224, 122, 0.16), transparent 60%),
+    radial-gradient(ellipse 45% 40% at 76% 32%, rgba(59, 130, 246, 0.12), transparent 60%);
   animation: hero-glow-drift 18s ease-in-out infinite;
 }
 @keyframes hero-glow-drift {
@@ -172,8 +178,8 @@ body {
   padding: 1px;
   background: linear-gradient(
     135deg,
-    rgba(61, 220, 132, 0.4),
-    rgba(91, 141, 239, 0.16) 55%,
+    rgba(0, 224, 122, 0.4),
+    rgba(59, 130, 246, 0.16) 55%,
     transparent 85%
   );
   -webkit-mask:

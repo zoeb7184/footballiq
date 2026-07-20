@@ -2,59 +2,87 @@
 
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { PageHeader } from "@/components/domain/page-header";
+import { ComparisonBar } from "@/components/domain/comparison-bar";
 import { Monogram } from "@/components/domain/monogram";
-import { EmptyState } from "@/components/domain/states";
+import { PageHeader } from "@/components/domain/page-header";
+import { EmptyState, ErrorState } from "@/components/domain/states";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNationConcentration, usePlayers, useTeam, useTeams } from "@/lib/api/queries";
 import { fmtEur } from "@/lib/format";
 
-function TeamColumn({ teamId }: { teamId: number }) {
-  const team = useTeam(teamId);
-  const squad = usePlayers({ teamId, limit: 100 });
-  const concentration = useNationConcentration(teamId);
+function CompareBody({ teamIdA, teamIdB }: { teamIdA: number; teamIdB: number }) {
+  const teamA = useTeam(teamIdA);
+  const teamB = useTeam(teamIdB);
+  const squadA = usePlayers({ teamId: teamIdA, limit: 100 });
+  const squadB = usePlayers({ teamId: teamIdB, limit: 100 });
+  const concA = useNationConcentration(teamIdA);
+  const concB = useNationConcentration(teamIdB);
 
-  if (team.isPending) return <Skeleton className="h-80" />;
-  if (team.isError || !team.data) return <EmptyState title="Team unavailable" />;
+  const pending =
+    teamA.isPending || teamB.isPending || squadA.isPending || squadB.isPending ||
+    concA.isPending || concB.isPending;
+  const erroredQuery = [teamA, teamB, squadA, squadB, concA, concB].find((q) => q.isError);
 
-  const t = team.data.data;
-  const squadValue = (squad.data?.data.items ?? []).reduce(
-    (acc, p) => acc + p.market_value_eur,
-    0,
-  );
-  const rows: [string, React.ReactNode][] = [
-    ["FIFA ranking", t.fifa_ranking ?? "—"],
-    ["Elo rating", t.elo_rating ?? "—"],
-    ["Group", t.group_letter ?? "—"],
-    ["Squad size", squad.data?.data.total ?? "…"],
-    ["Squad value", squad.data ? fmtEur(squadValue) : "…"],
-    [
-      "Supplier HHI",
-      concentration.data ? concentration.data.data.hhi_players.toFixed(3) : "…",
-    ],
-    [
-      "Supplying clubs",
-      concentration.data ? concentration.data.data.supplier_count : "…",
-    ],
-  ];
+  if (pending) return <Skeleton className="h-96" />;
+  if (erroredQuery || !teamA.data || !teamB.data || !squadA.data || !squadB.data) {
+    return <ErrorState error={erroredQuery?.error} onRetry={() => teamA.refetch()} />;
+  }
+
+  const a = teamA.data.data;
+  const b = teamB.data.data;
+  const squadValueA = squadA.data.data.items.reduce((acc, p) => acc + p.market_value_eur, 0);
+  const squadValueB = squadB.data.data.items.reduce((acc, p) => acc + p.market_value_eur, 0);
 
   return (
     <Card>
-      <CardHeader className="flex-row items-center gap-3">
-        <Monogram code={t.fifa_code} confederation={t.confederation} />
-        <CardTitle>{t.name}</CardTitle>
+      <CardHeader className="flex-row items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-2">
+          <Monogram code={a.fifa_code} confederation={a.confederation} />
+          <span className="min-w-0">
+            <CardTitle className="truncate">{a.name}</CardTitle>
+            <span className="text-[11px] text-fg-muted">
+              FIFA #{a.fifa_ranking ?? "—"} · Group {a.group_letter ?? "—"}
+            </span>
+          </span>
+        </div>
+        <div className="flex min-w-0 items-center gap-2 text-right">
+          <span className="min-w-0">
+            <CardTitle className="truncate">{b.name}</CardTitle>
+            <span className="text-[11px] text-fg-muted">
+              FIFA #{b.fifa_ranking ?? "—"} · Group {b.group_letter ?? "—"}
+            </span>
+          </span>
+          <Monogram code={b.fifa_code} confederation={b.confederation} />
+        </div>
       </CardHeader>
-      <CardContent className="p-0">
-        <dl className="divide-y divide-edge">
-          {rows.map(([label, value]) => (
-            <div key={label} className="flex items-center justify-between px-4 py-2.5">
-              <dt className="text-sm text-fg-secondary">{label}</dt>
-              <dd className="num text-sm font-semibold">{value}</dd>
-            </div>
-          ))}
-        </dl>
+      <CardContent className="flex flex-col gap-3 p-3">
+        <ComparisonBar
+          label="Elo rating"
+          home={a.elo_rating ?? 0}
+          away={b.elo_rating ?? 0}
+          format={(v) => v.toFixed(0)}
+        />
+        <ComparisonBar label="Squad value" home={squadValueA} away={squadValueB} format={fmtEur} />
+        <ComparisonBar
+          label="Squad size"
+          home={squadA.data.data.total}
+          away={squadB.data.data.total}
+          format={(v) => v.toFixed(0)}
+        />
+        <ComparisonBar
+          label="Supplier HHI"
+          home={concA.data?.data.hhi_players ?? 0}
+          away={concB.data?.data.hhi_players ?? 0}
+          format={(v) => v.toFixed(3)}
+        />
+        <ComparisonBar
+          label="Supplying clubs"
+          home={concA.data?.data.supplier_count ?? 0}
+          away={concB.data?.data.supplier_count ?? 0}
+          format={(v) => v.toFixed(0)}
+        />
       </CardContent>
     </Card>
   );
@@ -80,7 +108,7 @@ function CompareInner() {
     <div className="flex flex-col gap-6">
       <PageHeader
         title="Compare teams"
-        description="Side-by-side rankings, squad economics, and supplier-concentration risk. The comparison is URL-addressable — share the link."
+        description="Head-to-head rankings, squad economics, and supplier-concentration risk. The comparison is URL-addressable — share the link."
       />
       <div className="flex flex-wrap gap-2">
         <Select value={a} onChange={(e) => update(e.target.value, b)} aria-label="First team">
@@ -101,14 +129,11 @@ function CompareInner() {
         </Select>
       </div>
       {a && b ? (
-        <div className="grid gap-4 md:grid-cols-2">
-          <TeamColumn teamId={Number(a)} />
-          <TeamColumn teamId={Number(b)} />
-        </div>
+        <CompareBody teamIdA={Number(a)} teamIdB={Number(b)} />
       ) : (
         <EmptyState
           title="Pick two teams to compare"
-          hint="Rankings, squad value, and concentration risk, side by side."
+          hint="Rankings, squad value, and concentration risk, head to head."
         />
       )}
     </div>

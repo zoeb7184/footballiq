@@ -30,9 +30,9 @@ echarts.use([
   CanvasRenderer,
 ]);
 
-export const VIZ = ["#3ddc84", "#5b8def", "#f5a623", "#c084fc", "#22d3ee", "#f0526b"];
+export const VIZ = ["#00e07a", "#3b82f6", "#f5a623", "#c084fc", "#22d3ee", "#f0526b"];
 
-export const BASE_TEXT = { color: "#9ba3b0", fontFamily: "var(--font-jetbrains-mono), monospace" };
+export const BASE_TEXT = { color: "#a9b4c7", fontFamily: "var(--font-jetbrains-mono), monospace" };
 
 export function EChart({
   option,

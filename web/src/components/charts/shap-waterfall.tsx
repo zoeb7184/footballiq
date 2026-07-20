@@ -39,13 +39,13 @@ export function ShapWaterfall({ explanation }: { explanation: Explanation }) {
     const colors: string[] = [];
     invisible.push(0);
     visible.push(explanation.baseline_log);
-    colors.push("#5b8def");
+    colors.push("#3b82f6");
     running = explanation.baseline_log;
     for (const c of sorted) {
       if (c.shap_log >= 0) {
         invisible.push(running);
         visible.push(c.shap_log);
-        colors.push("#3ddc84");
+        colors.push("#00e07a");
       } else {
         invisible.push(running + c.shap_log);
         visible.push(-c.shap_log);
@@ -58,21 +58,21 @@ export function ShapWaterfall({ explanation }: { explanation: Explanation }) {
       xAxis: {
         type: "value",
         name: "log1p(EUR)",
-        axisLabel: { color: "#5c6470" },
-        splitLine: { lineStyle: { color: "#262a33" } },
+        axisLabel: { color: "#8590a6" },
+        splitLine: { lineStyle: { color: "#24314d" } },
       },
       yAxis: {
         type: "category",
         data: names,
         inverse: true,
-        axisLabel: { color: "#9ba3b0", fontSize: 11 },
-        axisLine: { lineStyle: { color: "#262a33" } },
+        axisLabel: { color: "#a9b4c7", fontSize: 11 },
+        axisLine: { lineStyle: { color: "#24314d" } },
       },
       tooltip: {
         trigger: "axis",
         axisPointer: { type: "shadow" },
-        backgroundColor: "#191c23",
-        borderColor: "#343945",
+        backgroundColor: "#1b2740",
+        borderColor: "#33436a",
         textStyle: { color: "#f2f4f8", fontSize: 12 },
         formatter: (params: unknown) => {
           const items = params as { dataIndex: number }[];

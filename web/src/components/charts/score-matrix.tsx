@@ -25,25 +25,25 @@ export function ScoreMatrix({ simulation }: { simulation: Simulation }) {
         name: `${simulation.away.fifa_code} goals`,
         nameLocation: "middle",
         nameGap: 28,
-        axisLabel: { color: "#9ba3b0" },
-        nameTextStyle: { color: "#5c6470" },
+        axisLabel: { color: "#a9b4c7" },
+        nameTextStyle: { color: "#8590a6" },
       },
       yAxis: {
         type: "category",
         data: axis,
         name: `${simulation.home.fifa_code} goals`,
-        axisLabel: { color: "#9ba3b0" },
-        nameTextStyle: { color: "#5c6470" },
+        axisLabel: { color: "#a9b4c7" },
+        nameTextStyle: { color: "#8590a6" },
       },
       visualMap: {
         min: 0,
         max,
         show: false,
-        inRange: { color: ["#111318", "#1d4f37", "#3ddc84"] },
+        inRange: { color: ["#131c2e", "#1d4f37", "#00e07a"] },
       },
       tooltip: {
-        backgroundColor: "#191c23",
-        borderColor: "#343945",
+        backgroundColor: "#1b2740",
+        borderColor: "#33436a",
         textStyle: { color: "#f2f4f8", fontSize: 12 },
         formatter: (p: unknown) => {
           const { data: d } = p as { data: [number, number, number] };
@@ -56,14 +56,14 @@ export function ScoreMatrix({ simulation }: { simulation: Simulation }) {
           data,
           label: {
             show: true,
-            color: "#9ba3b0",
+            color: "#a9b4c7",
             fontSize: 10,
             formatter: (p: unknown) => {
               const { data: d } = p as { data: [number, number, number] };
               return d[2] >= 0.005 ? `${(d[2] * 100).toFixed(1)}` : "";
             },
           },
-          emphasis: { itemStyle: { borderColor: "#3ddc84", borderWidth: 1 } },
+          emphasis: { itemStyle: { borderColor: "#00e07a", borderWidth: 1 } },
         },
       ],
     };

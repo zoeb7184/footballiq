@@ -45,13 +45,13 @@ export function NetworkGraph({
     }));
     return {
       tooltip: {
-        backgroundColor: "#191c23",
-        borderColor: "#343945",
+        backgroundColor: "#1b2740",
+        borderColor: "#33436a",
         textStyle: { color: "#f2f4f8", fontSize: 12 },
       },
       legend: {
         data: ["Club", "Nation"],
-        textStyle: { color: "#9ba3b0" },
+        textStyle: { color: "#a9b4c7" },
         top: 0,
       },
       series: [
@@ -60,13 +60,13 @@ export function NetworkGraph({
           layout: "force",
           roam: true,
           categories: [
-            { name: "Club", itemStyle: { color: "#5b8def" } },
-            { name: "Nation", itemStyle: { color: "#3ddc84" } },
+            { name: "Club", itemStyle: { color: "#3b82f6" } },
+            { name: "Nation", itemStyle: { color: "#00e07a" } },
           ],
           force: { repulsion: 60, gravity: 0.08, edgeLength: 40, friction: 0.2 },
-          label: { color: "#9ba3b0", fontSize: 10 },
-          lineStyle: { color: "#343945", opacity: 0.5, curveness: 0.1 },
-          emphasis: { focus: "adjacency", lineStyle: { opacity: 1, color: "#3ddc84" } },
+          label: { color: "#a9b4c7", fontSize: 10 },
+          lineStyle: { color: "#33436a", opacity: 0.5, curveness: 0.1 },
+          emphasis: { focus: "adjacency", lineStyle: { opacity: 1, color: "#00e07a" } },
           nodes,
           links,
         },

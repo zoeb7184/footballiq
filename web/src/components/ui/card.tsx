@@ -21,7 +21,7 @@ export function CardHeader({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("flex flex-col gap-1 border-b border-edge p-4", className)}
+      className={cn("flex flex-col gap-1 border-b border-edge p-3", className)}
       {...props}
     />
   );
@@ -50,5 +50,5 @@ export function CardContent({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("p-4", className)} {...props} />;
+  return <div className={cn("p-3", className)} {...props} />;
 }
