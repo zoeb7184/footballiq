@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useMutation } from "@tanstack/react-query";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -12,6 +12,7 @@ import { ApiError, apiPost } from "@/lib/api/client";
 import { useTeams } from "@/lib/api/queries";
 import type { Simulation, Team } from "@/lib/api/types";
 import { fmtPct } from "@/lib/format";
+import { cn } from "@/lib/utils";
 
 const N_RUNS = 2000;
 
@@ -102,6 +103,7 @@ export function MatchPredictor() {
   const ready = selectedHome && selectedAway && selectedHome !== selectedAway;
   const result = sim.data?.data;
   const sleeping = sim.error instanceof ApiError && sim.error.status === 503;
+  const showResultsArea = sim.isPending || sim.isError || Boolean(result);
 
   function swap() {
     setHome(selectedAway);
@@ -117,6 +119,26 @@ export function MatchPredictor() {
       n_runs: N_RUNS,
     });
   }
+
+  // Auto-run once with the default teams so visitors see filled bars
+  // immediately, without waiting for a click. Guarded by a ref (not state) so
+  // it fires exactly once per mount, never again on re-render. resultNonce
+  // stays at its initial value here — the result block mounts fresh either
+  // way (it wasn't rendered before), which alone triggers its entrance
+  // animation; bumping the nonce only matters for replaying that animation
+  // on a *subsequent* manual predict() while already mounted.
+  const autoRanRef = useRef(false);
+  const { mutate: runSimulation } = sim;
+  useEffect(() => {
+    if (autoRanRef.current) return;
+    if (!defaultHome || !defaultAway) return;
+    autoRanRef.current = true;
+    runSimulation({
+      home_team_id: Number(defaultHome),
+      away_team_id: Number(defaultAway),
+      n_runs: N_RUNS,
+    });
+  }, [defaultHome, defaultAway, runSimulation]);
 
   return (
     <div className="glass w-full max-w-2xl rounded-xl p-5 text-left sm:p-6">
@@ -187,7 +209,11 @@ export function MatchPredictor() {
         <p className="mt-2 text-xs text-critical">Pick two different teams.</p>
       ) : null}
 
-      <div className="mt-5 min-h-[168px]">
+      <motion.div
+        layout
+        transition={{ duration: reduceMotion ? 0 : 0.35, ease: "easeOut" }}
+        className={cn("overflow-hidden", showResultsArea && "mt-5")}
+      >
         {sim.isPending ? (
           <div className="flex flex-col gap-3" aria-live="polite" aria-label="Simulating">
             <Skeleton className="h-3 w-full" />
@@ -276,7 +302,7 @@ export function MatchPredictor() {
             </motion.div>
           ) : null}
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       <Link
         href="/app/simulator"
